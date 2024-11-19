@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\BLL\\BLL.csproj": {}
+    "D:\\C#1\\AppWinForm\\AppWinForm\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\BLL\\BLL.csproj": {
+    "D:\\C#1\\AppWinForm\\AppWinForm\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\BLL\\BLL.csproj",
+        "projectUniqueName": "D:\\C#1\\AppWinForm\\AppWinForm\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\BLL\\BLL.csproj",
-        "packagesPath": "C:\\Users\\MVK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\BLL\\obj\\",
+        "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\BLL\\BLL.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "D:\\C#1\\AppWinForm\\AppWinForm\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\MVK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,17 +22,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\DAL.csproj"
+              "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj": {
+                "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj"
               },
-              "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj": {
-                "projectPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj"
+              "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj": {
+                "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj"
               }
             }
           }
@@ -87,17 +88,17 @@
         }
       }
     },
-    "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\DAL.csproj": {
+    "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\DAL.csproj",
+        "projectUniqueName": "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\MVK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\obj\\",
+        "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\MVK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -105,14 +106,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj": {
-                "projectPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj"
+              "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj": {
+                "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj"
               }
             }
           }
@@ -167,17 +169,17 @@
         }
       }
     },
-    "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj": {
+    "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj",
+        "projectUniqueName": "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj",
         "projectName": "DTO",
-        "projectPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj",
-        "packagesPath": "C:\\Users\\MVK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\obj\\",
+        "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\MVK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -185,6 +187,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

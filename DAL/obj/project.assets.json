@@ -1895,19 +1895,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MVK\\.nuget\\packages\\": {}
+    "C:\\Users\\ACER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\DAL.csproj",
+      "projectUniqueName": "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\DAL.csproj",
-      "packagesPath": "C:\\Users\\MVK\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DAL\\obj\\",
+      "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MVK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1915,14 +1915,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Users\\MVK\\Downloads\\QuanLyCaPhe\\DTO\\DTO.csproj"
+            "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj": {
+              "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj"
             }
           }
         }
