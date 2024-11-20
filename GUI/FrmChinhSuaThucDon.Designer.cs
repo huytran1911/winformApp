@@ -101,6 +101,7 @@
             btLuu.TabIndex = 6;
             btLuu.Text = "Lưu và đóng";
             btLuu.UseVisualStyleBackColor = true;
+            btLuu.Click += btLuu_Click;
             // 
             // btDong
             // 
@@ -138,6 +139,7 @@
             Name = "FrmChinhSuaThucDon";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmChinhSuaThucDon";
+            Load += FrmChinhSuaThucDon_Load;
             ResumeLayout(false);
             PerformLayout();
         }

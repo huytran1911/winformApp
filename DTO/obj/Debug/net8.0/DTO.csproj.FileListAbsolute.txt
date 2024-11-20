@@ -19,3 +19,16 @@ D:\C#1\AppWinForm\AppWinForm\DTO\obj\Debug\net8.0\DTO.sourcelink.json
 D:\C#1\AppWinForm\AppWinForm\DTO\obj\Debug\net8.0\DTO.dll
 D:\C#1\AppWinForm\AppWinForm\DTO\obj\Debug\net8.0\refint\DTO.dll
 D:\C#1\AppWinForm\AppWinForm\DTO\obj\Debug\net8.0\DTO.pdb
+D:\AppWinForm\DTO\obj\Debug\net8.0\DTO.csproj.AssemblyReference.cache
+D:\AppWinForm\DTO\obj\Debug\net8.0\DTO.GeneratedMSBuildEditorConfig.editorconfig
+D:\AppWinForm\DTO\obj\Debug\net8.0\DTO.AssemblyInfoInputs.cache
+D:\AppWinForm\DTO\obj\Debug\net8.0\DTO.AssemblyInfo.cs
+D:\AppWinForm\DTO\obj\Debug\net8.0\DTO.csproj.CoreCompileInputs.cache
+D:\AppWinForm\DTO\obj\Debug\net8.0\DTO.sourcelink.json
+D:\AppWinForm\DTO\obj\Debug\net8.0\DTO.dll
+D:\AppWinForm\DTO\obj\Debug\net8.0\refint\DTO.dll
+D:\AppWinForm\DTO\obj\Debug\net8.0\DTO.pdb
+D:\AppWinForm\DTO\bin\Debug\net8.0\DTO.deps.json
+D:\AppWinForm\DTO\bin\Debug\net8.0\DTO.dll
+D:\AppWinForm\DTO\bin\Debug\net8.0\DTO.pdb
+D:\AppWinForm\DTO\obj\Debug\net8.0\ref\DTO.dll

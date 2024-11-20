@@ -1916,19 +1916,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ACER\\.nuget\\packages\\": {}
+    "C:\\Users\\MVK\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#1\\AppWinForm\\AppWinForm\\BLL\\BLL.csproj",
+      "projectUniqueName": "D:\\AppWinForm\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\BLL\\BLL.csproj",
-      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "D:\\C#1\\AppWinForm\\AppWinForm\\BLL\\obj\\",
+      "projectPath": "D:\\AppWinForm\\BLL\\BLL.csproj",
+      "packagesPath": "C:\\Users\\MVK\\.nuget\\packages\\",
+      "outputPath": "D:\\AppWinForm\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MVK\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1936,18 +1936,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj": {
-              "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DAL\\DAL.csproj"
+            "D:\\AppWinForm\\DAL\\DAL.csproj": {
+              "projectPath": "D:\\AppWinForm\\DAL\\DAL.csproj"
             },
-            "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj": {
-              "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm\\DTO\\DTO.csproj"
+            "D:\\AppWinForm\\DTO\\DTO.csproj": {
+              "projectPath": "D:\\AppWinForm\\DTO\\DTO.csproj"
             }
           }
         }

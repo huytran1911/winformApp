@@ -306,6 +306,7 @@
             btChinhsua.TabIndex = 8;
             btChinhsua.Text = "Chỉnh sửa";
             btChinhsua.UseVisualStyleBackColor = false;
+            btChinhsua.Click += btChinhsua_Click;
             // 
             // btChonmon
             // 
