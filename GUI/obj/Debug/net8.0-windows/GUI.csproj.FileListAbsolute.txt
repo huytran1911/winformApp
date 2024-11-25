@@ -210,3 +210,4 @@ D:\AppWinForm\GUI\obj\Debug\net8.0-windows\refint\GUI.dll
 D:\AppWinForm\GUI\obj\Debug\net8.0-windows\GUI.pdb
 D:\AppWinForm\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfig.cache
 D:\AppWinForm\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
+D:\AppWinForm\GUI\obj\Debug\net8.0-windows\GUI.Ban.resources

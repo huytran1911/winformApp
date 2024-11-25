@@ -16,7 +16,7 @@ namespace GUI
     public partial class FrmChonMon : Form
     {
         private FrmChonMonBLL frmChonMonBLL;
-        public DataGridView thucdon;
+        public DataTable danhSachMon;
         private DataGridViewRow row;
         public FrmChonMon()
         {
@@ -42,13 +42,13 @@ namespace GUI
 
         private void btChon_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row2 = new DataGridViewRow();
-
-            row2.Cells.Add(new DataGridViewTextBoxCell { Value = row.Cells[0].Value });
-            row2.Cells.Add(new DataGridViewTextBoxCell { Value = row.Cells[1].Value });
-            row2.Cells.Add(new DataGridViewTextBoxCell { Value = row.Cells[2].Value });
-            row2.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
-            thucdon.Rows.Add(row2);
+            DataRow row2 = danhSachMon.NewRow();
+            row2["STT"] = danhSachMon.Rows.Count + 1;
+            row2["Thực Đơn"] = row.Cells[1].Value;
+            row2["Đơn Giá"] =  row.Cells[2].Value ;
+            row2["SL"] = 1 ;
+            row2["Ghi Chú"] = "";
+            danhSachMon.Rows.Add(row2);
             this.Close();
         }
 

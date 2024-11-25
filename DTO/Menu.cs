@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    internal class Menu
+    public class Menu
     {         
         private string MaThucDon { get; set; }
         private string TenThucDon { get; set;}

@@ -34,11 +34,6 @@
             panelBan = new FlowLayoutPanel();
             grbHoadon = new GroupBox();
             dgvThucDon = new DataGridView();
-            STT = new DataGridViewTextBoxColumn();
-            ThucDon = new DataGridViewTextBoxColumn();
-            DonGia = new DataGridViewTextBoxColumn();
-            SL = new DataGridViewTextBoxColumn();
-            GhiChu = new DataGridViewTextBoxColumn();
             btThanhtoan = new Button();
             cbGiamGia = new ComboBox();
             cbPhuThu = new ComboBox();
@@ -128,7 +123,6 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvThucDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvThucDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvThucDon.Columns.AddRange(new DataGridViewColumn[] { STT, ThucDon, DonGia, SL, GhiChu });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -151,41 +145,6 @@
             dgvThucDon.RowHeadersWidth = 51;
             dgvThucDon.Size = new Size(462, 259);
             dgvThucDon.TabIndex = 20;
-            // 
-            // STT
-            // 
-            STT.HeaderText = "STT";
-            STT.MinimumWidth = 6;
-            STT.Name = "STT";
-            STT.Width = 50;
-            // 
-            // ThucDon
-            // 
-            ThucDon.HeaderText = "Thực Đơn";
-            ThucDon.MinimumWidth = 6;
-            ThucDon.Name = "ThucDon";
-            ThucDon.Width = 125;
-            // 
-            // DonGia
-            // 
-            DonGia.HeaderText = "Đơn Giá";
-            DonGia.MinimumWidth = 6;
-            DonGia.Name = "DonGia";
-            DonGia.Width = 125;
-            // 
-            // SL
-            // 
-            SL.HeaderText = "SL";
-            SL.MinimumWidth = 6;
-            SL.Name = "SL";
-            SL.Width = 50;
-            // 
-            // GhiChu
-            // 
-            GhiChu.HeaderText = "Ghi Chú";
-            GhiChu.MinimumWidth = 6;
-            GhiChu.Name = "GhiChu";
-            GhiChu.Width = 125;
             // 
             // btThanhtoan
             // 
@@ -417,6 +376,7 @@
             bànToolStripMenuItem.Name = "bànToolStripMenuItem";
             bànToolStripMenuItem.Size = new Size(184, 22);
             bànToolStripMenuItem.Text = "Bàn";
+            bànToolStripMenuItem.Click += bànToolStripMenuItem_Click;
             // 
             // danhSáchNhânViênToolStripMenuItem
             // 
@@ -480,6 +440,7 @@
             Name = "GiaoDien";
             Text = "Quản lý cà phê";
             WindowState = FormWindowState.Maximized;
+            Load += GiaoDien_Load;
             grbHoadon.ResumeLayout(false);
             grbHoadon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvThucDon).EndInit();
@@ -526,11 +487,6 @@
         private ToolStripMenuItem thoátToolStripMenuItem;
         private ToolStripMenuItem menuToolStripMenuItem;
         private DataGridView dgvThucDon;
-        private DataGridViewTextBoxColumn STT;
-        private DataGridViewTextBoxColumn ThucDon;
-        private DataGridViewTextBoxColumn DonGia;
-        private DataGridViewTextBoxColumn SL;
-        private DataGridViewTextBoxColumn GhiChu;
         private ToolStripMenuItem danhSáchNhânViênToolStripMenuItem;
         private ToolStripMenuItem thêmNhânViênToolStripMenuItem;
     }
