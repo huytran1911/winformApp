@@ -18,7 +18,7 @@ namespace GUI
         private DataTable[] danhSachMon;
         private double tongtien = 0;
         DAL.BanDAL banDAL = new BanDAL();
-        DataTable dataTable ;
+        DataTable dataTable;
         DataTable danhSachMonHT;
         private int SLB;
         public GiaoDien()
@@ -104,7 +104,7 @@ namespace GUI
         {
             panelBan.Controls.Clear();
             for (int i = 0; i < SLB; i++)
-            {          
+            {
                 panelBan.Controls.Add(ban[i]);
             }
 
@@ -149,7 +149,7 @@ namespace GUI
         private void btChonmon_Click(object sender, EventArgs e)
         {
             FrmChonMon frmChonMon = new FrmChonMon();
-            frmChonMon.danhSachMon = danhSachMonHT  ;
+            frmChonMon.danhSachMon = danhSachMonHT;
             frmChonMon.ShowDialog();
         }
 
@@ -172,7 +172,7 @@ namespace GUI
                     // Cập nhật giá trị trong DataGridView
                     row.Cells[3].Value = thucDon.SoLuong;
                     row.Cells[4].Value = thucDon.GhiChu;
-                    
+
                 }
             }
             catch (Exception ex)
@@ -187,6 +187,10 @@ namespace GUI
             ban.ShowDialog();
         }
 
-        
+        private void danhSáchNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.ShowDialog();
+        }
     }
 }

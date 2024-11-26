@@ -13,7 +13,7 @@ namespace DAL
 {
     public class DB
     {
-        public static string connectiongString = @"Data Source=KHAI\KHAIVAN;Initial Catalog=QuanLyBanCaPhe;Integrated Security=True;Trust Server Certificate=True";
+        public static string connectionString = @"Data Source=KHAI\KHAIVAN;Initial Catalog=QuanLyBanCaPhe;Integrated Security=True;Trust Server Certificate=True";
         
         
     }

@@ -13,9 +13,9 @@ namespace DAL
     {  
         public DataTable LayDanhSachNhanVien()
         {
-            using (SqlConnection connection = new SqlConnection(DB.connectiongString))
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM NhanVien", DB.connectiongString);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM NhanVien", DB.connectionString);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 return dataTable;
@@ -23,7 +23,7 @@ namespace DAL
         }
         public DataTable TimNhanVien(string maNV, string tenNV)
         {
-            using (SqlConnection connection = new SqlConnection(DB.connectiongString)) // Sử dụng phương thức kết nối từ lớp DB
+            using (SqlConnection connection = new SqlConnection(DB.connectionString)) // Sử dụng phương thức kết nối từ lớp DB
             {
                 try
                 {
@@ -47,7 +47,7 @@ namespace DAL
         }
         public bool ThemNhanVien(string maNV,string tenNV, string diaChi, string sdt, string email, string dangNhap, string matKhau,string maQuyen)
         {
-            using (SqlConnection connection = new SqlConnection(DB.connectiongString))
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
             {
                 string query = "INSERT INTO NhanVien VALUES (@MaNhanVien,@TenNV, @DiaChi, @SDT, @Email, @TenDangNhap, @MatKhau, @MaQuyen)";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -66,7 +66,7 @@ namespace DAL
         } 
         public bool SuaNhanVien(string maNV, string tenNV, string diaChi, string sdt, string email, string dangNhap, string matKhau,string maQuyen)
         {
-            using (SqlConnection connection = new SqlConnection(DB.connectiongString)) 
+            using (SqlConnection connection = new SqlConnection(DB.connectionString)) 
             {
                 string query = "UPDATE NhanVien SET TenNV = @TenNV, DiaChi = @DiaChi, SDT = @SDT, Email = @Email, TenDangNhap = @TenDangNhap, MatKhau = @MatKhau, MaQuyen = @MaQuyen WHERE MaNhanVien = @MaNhanVien";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -84,7 +84,7 @@ namespace DAL
         }
         public bool XoaNhanVien(string maNV)
         {
-            using (SqlConnection connection = new SqlConnection(DB.connectiongString))
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
             {
                 string query = "DELETE FROM NhanVien WHERE @MaNhanVien = MaNhanVien";
                 SqlCommand command = new SqlCommand(query, connection);

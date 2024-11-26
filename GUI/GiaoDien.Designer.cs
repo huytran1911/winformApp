@@ -58,7 +58,6 @@
             danhToolStripMenuItem = new ToolStripMenuItem();
             bànToolStripMenuItem = new ToolStripMenuItem();
             danhSáchNhânViênToolStripMenuItem = new ToolStripMenuItem();
-            thêmNhânViênToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
             hệThốngToolStripMenuItem = new ToolStripMenuItem();
             đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
@@ -73,10 +72,10 @@
             // 
             panelBan.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelBan.BackColor = Color.DimGray;
-            panelBan.Location = new Point(178, 24);
-            panelBan.Margin = new Padding(2);
+            panelBan.Location = new Point(203, 32);
+            panelBan.Margin = new Padding(2, 3, 2, 3);
             panelBan.Name = "panelBan";
-            panelBan.Size = new Size(569, 517);
+            panelBan.Size = new Size(650, 689);
             panelBan.TabIndex = 8;
             // 
             // grbHoadon
@@ -103,11 +102,11 @@
             grbHoadon.Controls.Add(lbBan01);
             grbHoadon.Dock = DockStyle.Right;
             grbHoadon.Font = new Font("Segoe UI", 9F);
-            grbHoadon.Location = new Point(745, 24);
-            grbHoadon.Margin = new Padding(2);
+            grbHoadon.Location = new Point(851, 30);
+            grbHoadon.Margin = new Padding(2, 3, 2, 3);
             grbHoadon.Name = "grbHoadon";
-            grbHoadon.Padding = new Padding(2);
-            grbHoadon.Size = new Size(466, 517);
+            grbHoadon.Padding = new Padding(2, 3, 2, 3);
+            grbHoadon.Size = new Size(533, 691);
             grbHoadon.TabIndex = 9;
             grbHoadon.TabStop = false;
             grbHoadon.Text = "Chi tiết hóa đơn";
@@ -131,8 +130,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvThucDon.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvThucDon.Location = new Point(4, 154);
-            dgvThucDon.Margin = new Padding(3, 2, 3, 2);
+            dgvThucDon.Location = new Point(5, 205);
             dgvThucDon.Name = "dgvThucDon";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -143,7 +141,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvThucDon.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvThucDon.RowHeadersWidth = 51;
-            dgvThucDon.Size = new Size(462, 259);
+            dgvThucDon.Size = new Size(528, 345);
             dgvThucDon.TabIndex = 20;
             // 
             // btThanhtoan
@@ -151,10 +149,10 @@
             btThanhtoan.BackColor = Color.DodgerBlue;
             btThanhtoan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btThanhtoan.ForeColor = Color.White;
-            btThanhtoan.Location = new Point(89, 495);
-            btThanhtoan.Margin = new Padding(2);
+            btThanhtoan.Location = new Point(102, 660);
+            btThanhtoan.Margin = new Padding(2, 3, 2, 3);
             btThanhtoan.Name = "btThanhtoan";
-            btThanhtoan.Size = new Size(160, 25);
+            btThanhtoan.Size = new Size(183, 33);
             btThanhtoan.TabIndex = 19;
             btThanhtoan.Text = "Thanh toán";
             btThanhtoan.UseVisualStyleBackColor = false;
@@ -164,10 +162,10 @@
             cbGiamGia.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGiamGia.FormattingEnabled = true;
             cbGiamGia.Items.AddRange(new object[] { "Phần trăm (%)", "Số tiền (VNĐ)" });
-            cbGiamGia.Location = new Point(242, 416);
-            cbGiamGia.Margin = new Padding(2);
+            cbGiamGia.Location = new Point(277, 555);
+            cbGiamGia.Margin = new Padding(2, 3, 2, 3);
             cbGiamGia.Name = "cbGiamGia";
-            cbGiamGia.Size = new Size(104, 23);
+            cbGiamGia.Size = new Size(118, 28);
             cbGiamGia.TabIndex = 18;
             // 
             // cbPhuThu
@@ -175,27 +173,27 @@
             cbPhuThu.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPhuThu.FormattingEnabled = true;
             cbPhuThu.Items.AddRange(new object[] { "Phần trăm (%)", "Số tiền (VNĐ)" });
-            cbPhuThu.Location = new Point(242, 440);
-            cbPhuThu.Margin = new Padding(2);
+            cbPhuThu.Location = new Point(277, 587);
+            cbPhuThu.Margin = new Padding(2, 3, 2, 3);
             cbPhuThu.Name = "cbPhuThu";
-            cbPhuThu.Size = new Size(104, 23);
+            cbPhuThu.Size = new Size(118, 28);
             cbPhuThu.TabIndex = 17;
             // 
             // tbThanhTien
             // 
-            tbThanhTien.Location = new Point(89, 464);
-            tbThanhTien.Margin = new Padding(2);
+            tbThanhTien.Location = new Point(102, 619);
+            tbThanhTien.Margin = new Padding(2, 3, 2, 3);
             tbThanhTien.Name = "tbThanhTien";
             tbThanhTien.ReadOnly = true;
-            tbThanhTien.Size = new Size(257, 23);
+            tbThanhTien.Size = new Size(293, 27);
             tbThanhTien.TabIndex = 16;
             // 
             // tbPhuThu
             // 
-            tbPhuThu.Location = new Point(89, 441);
-            tbPhuThu.Margin = new Padding(2);
+            tbPhuThu.Location = new Point(102, 588);
+            tbPhuThu.Margin = new Padding(2, 3, 2, 3);
             tbPhuThu.Name = "tbPhuThu";
-            tbPhuThu.Size = new Size(146, 23);
+            tbPhuThu.Size = new Size(166, 27);
             tbPhuThu.TabIndex = 15;
             tbPhuThu.Text = "0";
             tbPhuThu.TextAlign = HorizontalAlignment.Right;
@@ -203,10 +201,10 @@
             // tbGiamGia
             // 
             tbGiamGia.Cursor = Cursors.IBeam;
-            tbGiamGia.Location = new Point(89, 418);
-            tbGiamGia.Margin = new Padding(2);
+            tbGiamGia.Location = new Point(102, 557);
+            tbGiamGia.Margin = new Padding(2, 3, 2, 3);
             tbGiamGia.Name = "tbGiamGia";
-            tbGiamGia.Size = new Size(146, 23);
+            tbGiamGia.Size = new Size(166, 27);
             tbGiamGia.TabIndex = 14;
             tbGiamGia.Text = "0";
             tbGiamGia.TextAlign = HorizontalAlignment.Right;
@@ -214,30 +212,30 @@
             // lbThanhtien
             // 
             lbThanhtien.AutoSize = true;
-            lbThanhtien.Location = new Point(11, 470);
+            lbThanhtien.Location = new Point(13, 627);
             lbThanhtien.Margin = new Padding(2, 0, 2, 0);
             lbThanhtien.Name = "lbThanhtien";
-            lbThanhtien.Size = new Size(66, 15);
+            lbThanhtien.Size = new Size(81, 20);
             lbThanhtien.TabIndex = 13;
             lbThanhtien.Text = "Thành tiền:";
             // 
             // lbPhuthu
             // 
             lbPhuthu.AutoSize = true;
-            lbPhuthu.Location = new Point(14, 444);
+            lbPhuthu.Location = new Point(16, 592);
             lbPhuthu.Margin = new Padding(2, 0, 2, 0);
             lbPhuthu.Name = "lbPhuthu";
-            lbPhuthu.Size = new Size(52, 15);
+            lbPhuthu.Size = new Size(61, 20);
             lbPhuthu.TabIndex = 12;
             lbPhuthu.Text = "Phụ thu:";
             // 
             // lbGiamgia
             // 
             lbGiamgia.AutoSize = true;
-            lbGiamgia.Location = new Point(4, 416);
+            lbGiamgia.Location = new Point(5, 555);
             lbGiamgia.Margin = new Padding(2, 0, 2, 0);
             lbGiamgia.Name = "lbGiamgia";
-            lbGiamgia.Size = new Size(57, 15);
+            lbGiamgia.Size = new Size(72, 20);
             lbGiamgia.TabIndex = 11;
             lbGiamgia.Text = "Giảm giá:";
             // 
@@ -246,10 +244,10 @@
             btXoa.BackColor = Color.Red;
             btXoa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btXoa.ForeColor = Color.White;
-            btXoa.Location = new Point(240, 126);
-            btXoa.Margin = new Padding(2);
+            btXoa.Location = new Point(274, 168);
+            btXoa.Margin = new Padding(2, 3, 2, 3);
             btXoa.Name = "btXoa";
-            btXoa.Size = new Size(91, 24);
+            btXoa.Size = new Size(104, 32);
             btXoa.TabIndex = 9;
             btXoa.Text = "Xóa";
             btXoa.UseVisualStyleBackColor = false;
@@ -258,10 +256,10 @@
             // 
             btChinhsua.BackColor = Color.Yellow;
             btChinhsua.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btChinhsua.Location = new Point(122, 126);
-            btChinhsua.Margin = new Padding(2);
+            btChinhsua.Location = new Point(139, 168);
+            btChinhsua.Margin = new Padding(2, 3, 2, 3);
             btChinhsua.Name = "btChinhsua";
-            btChinhsua.Size = new Size(91, 24);
+            btChinhsua.Size = new Size(104, 32);
             btChinhsua.TabIndex = 8;
             btChinhsua.Text = "Chỉnh sửa";
             btChinhsua.UseVisualStyleBackColor = false;
@@ -272,10 +270,10 @@
             btChonmon.BackColor = Color.Green;
             btChonmon.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btChonmon.ForeColor = Color.White;
-            btChonmon.Location = new Point(4, 126);
-            btChonmon.Margin = new Padding(2);
+            btChonmon.Location = new Point(5, 168);
+            btChonmon.Margin = new Padding(2, 3, 2, 3);
             btChonmon.Name = "btChonmon";
-            btChonmon.Size = new Size(91, 24);
+            btChonmon.Size = new Size(104, 32);
             btChonmon.TabIndex = 7;
             btChonmon.Text = "Chọn món";
             btChonmon.UseVisualStyleBackColor = false;
@@ -284,57 +282,57 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(89, 93);
-            comboBox1.Margin = new Padding(2);
+            comboBox1.Location = new Point(102, 124);
+            comboBox1.Margin = new Padding(2, 3, 2, 3);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(243, 23);
+            comboBox1.Size = new Size(277, 28);
             comboBox1.TabIndex = 6;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(4, 93);
+            label1.Location = new Point(5, 124);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(64, 15);
+            label1.Size = new Size(78, 20);
             label1.TabIndex = 5;
             label1.Text = "Nhân viên:";
             // 
             // textBox1
             // 
             textBox1.Cursor = Cursors.IBeam;
-            textBox1.Location = new Point(89, 68);
-            textBox1.Margin = new Padding(2);
+            textBox1.Location = new Point(102, 91);
+            textBox1.Margin = new Padding(2, 3, 2, 3);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(243, 23);
+            textBox1.Size = new Size(277, 27);
             textBox1.TabIndex = 4;
             // 
             // lbKhachhang
             // 
             lbKhachhang.AutoSize = true;
-            lbKhachhang.Location = new Point(4, 68);
+            lbKhachhang.Location = new Point(5, 91);
             lbKhachhang.Margin = new Padding(2, 0, 2, 0);
             lbKhachhang.Name = "lbKhachhang";
-            lbKhachhang.Size = new Size(73, 15);
+            lbKhachhang.Size = new Size(89, 20);
             lbKhachhang.TabIndex = 3;
             lbKhachhang.Text = "Khách hàng:";
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.CalendarFont = new Font("Segoe UI", 7F);
-            dateTimePicker1.Location = new Point(89, 44);
-            dateTimePicker1.Margin = new Padding(2);
+            dateTimePicker1.Location = new Point(102, 59);
+            dateTimePicker1.Margin = new Padding(2, 3, 2, 3);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(243, 23);
+            dateTimePicker1.Size = new Size(277, 27);
             dateTimePicker1.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(4, 44);
+            label2.Location = new Point(5, 59);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(60, 15);
+            label2.Size = new Size(75, 20);
             label2.TabIndex = 1;
             label2.Text = "Ngày vào:";
             // 
@@ -342,10 +340,10 @@
             // 
             lbBan01.AutoSize = true;
             lbBan01.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lbBan01.Location = new Point(4, 16);
+            lbBan01.Location = new Point(5, 21);
             lbBan01.Margin = new Padding(2, 0, 2, 0);
             lbBan01.Name = "lbBan01";
-            lbBan01.Size = new Size(0, 21);
+            lbBan01.Size = new Size(0, 28);
             lbBan01.TabIndex = 0;
             // 
             // nhânViênToolStripMenuItem
@@ -358,37 +356,31 @@
             // 
             panelKhuVuc.BackColor = Color.DarkGray;
             panelKhuVuc.Dock = DockStyle.Left;
-            panelKhuVuc.Location = new Point(0, 24);
-            panelKhuVuc.Margin = new Padding(3, 2, 3, 2);
+            panelKhuVuc.Location = new Point(0, 30);
             panelKhuVuc.Name = "panelKhuVuc";
-            panelKhuVuc.Size = new Size(180, 517);
+            panelKhuVuc.Size = new Size(206, 691);
             panelKhuVuc.TabIndex = 11;
             // 
             // danhToolStripMenuItem
             // 
-            danhToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bànToolStripMenuItem, danhSáchNhânViênToolStripMenuItem, thêmNhânViênToolStripMenuItem });
+            danhToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bànToolStripMenuItem, danhSáchNhânViênToolStripMenuItem });
             danhToolStripMenuItem.Name = "danhToolStripMenuItem";
-            danhToolStripMenuItem.Size = new Size(74, 20);
+            danhToolStripMenuItem.Size = new Size(90, 24);
             danhToolStripMenuItem.Text = "Danh mục";
             // 
             // bànToolStripMenuItem
             // 
             bànToolStripMenuItem.Name = "bànToolStripMenuItem";
-            bànToolStripMenuItem.Size = new Size(184, 22);
+            bànToolStripMenuItem.Size = new Size(227, 26);
             bànToolStripMenuItem.Text = "Bàn";
             bànToolStripMenuItem.Click += bànToolStripMenuItem_Click;
             // 
             // danhSáchNhânViênToolStripMenuItem
             // 
             danhSáchNhânViênToolStripMenuItem.Name = "danhSáchNhânViênToolStripMenuItem";
-            danhSáchNhânViênToolStripMenuItem.Size = new Size(184, 22);
+            danhSáchNhânViênToolStripMenuItem.Size = new Size(227, 26);
             danhSáchNhânViênToolStripMenuItem.Text = "Danh sách nhân viên";
-            // 
-            // thêmNhânViênToolStripMenuItem
-            // 
-            thêmNhânViênToolStripMenuItem.Name = "thêmNhânViênToolStripMenuItem";
-            thêmNhânViênToolStripMenuItem.Size = new Size(184, 22);
-            thêmNhânViênToolStripMenuItem.Text = "Thêm nhân viên";
+            danhSáchNhânViênToolStripMenuItem.Click += danhSáchNhânViênToolStripMenuItem_Click;
             // 
             // menuStrip1
             // 
@@ -396,8 +388,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { hệThốngToolStripMenuItem, danhToolStripMenuItem, menuToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(4, 2, 0, 2);
-            menuStrip1.Size = new Size(1211, 24);
+            menuStrip1.Padding = new Padding(5, 3, 0, 3);
+            menuStrip1.Size = new Size(1384, 30);
             menuStrip1.TabIndex = 10;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -405,38 +397,38 @@
             // 
             hệThốngToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { đăngXuấtToolStripMenuItem, thoátToolStripMenuItem });
             hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            hệThốngToolStripMenuItem.Size = new Size(69, 20);
+            hệThốngToolStripMenuItem.Size = new Size(85, 24);
             hệThốngToolStripMenuItem.Text = "Hệ thống";
             // 
             // đăngXuấtToolStripMenuItem
             // 
             đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            đăngXuấtToolStripMenuItem.Size = new Size(128, 22);
+            đăngXuấtToolStripMenuItem.Size = new Size(160, 26);
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             // 
             // thoátToolStripMenuItem
             // 
             thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            thoátToolStripMenuItem.Size = new Size(128, 22);
+            thoátToolStripMenuItem.Size = new Size(160, 26);
             thoátToolStripMenuItem.Text = "Thoát";
             // 
             // menuToolStripMenuItem
             // 
             menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            menuToolStripMenuItem.Size = new Size(50, 20);
+            menuToolStripMenuItem.Size = new Size(60, 24);
             menuToolStripMenuItem.Text = "Menu";
             // 
             // GiaoDien
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(1211, 541);
+            ClientSize = new Size(1384, 721);
             Controls.Add(panelKhuVuc);
             Controls.Add(grbHoadon);
             Controls.Add(panelBan);
             Controls.Add(menuStrip1);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "GiaoDien";
             Text = "Quản lý cà phê";
             WindowState = FormWindowState.Maximized;
@@ -488,6 +480,5 @@
         private ToolStripMenuItem menuToolStripMenuItem;
         private DataGridView dgvThucDon;
         private ToolStripMenuItem danhSáchNhânViênToolStripMenuItem;
-        private ToolStripMenuItem thêmNhânViênToolStripMenuItem;
     }
 }

@@ -14,7 +14,7 @@ namespace DAL
         public DataTable GetMenu()
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection connection = new SqlConnection(DB.connectiongString))
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
             {
                 string query = "SELECT * FROM Menu";
                 SqlCommand command = new SqlCommand(query, connection);

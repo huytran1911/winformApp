@@ -14,7 +14,7 @@ namespace DAL
         private SqlConnection connection;
         public BanDAL()
         {
-            connection = new SqlConnection(DB.connectiongString);
+            connection = new SqlConnection(DB.connectionString);
         }
         public DataTable GetAll()
         {
