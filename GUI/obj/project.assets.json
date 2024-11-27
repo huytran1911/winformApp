@@ -1937,19 +1937,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MVK\\.nuget\\packages\\": {}
+    "C:\\Users\\ACER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AppWinForm\\GUI\\GUI.csproj",
+      "projectUniqueName": "D:\\C#1\\AppWinForm\\AppWinForm5\\GUI\\GUI.csproj",
       "projectName": "GUI",
-      "projectPath": "D:\\AppWinForm\\GUI\\GUI.csproj",
-      "packagesPath": "C:\\Users\\MVK\\.nuget\\packages\\",
-      "outputPath": "D:\\AppWinForm\\GUI\\obj\\",
+      "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm5\\GUI\\GUI.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "D:\\C#1\\AppWinForm\\AppWinForm5\\GUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MVK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1957,17 +1957,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "D:\\AppWinForm\\BLL\\BLL.csproj": {
-              "projectPath": "D:\\AppWinForm\\BLL\\BLL.csproj"
+            "D:\\C#1\\AppWinForm\\AppWinForm5\\BLL\\BLL.csproj": {
+              "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm5\\BLL\\BLL.csproj"
             },
-            "D:\\AppWinForm\\DTO\\DTO.csproj": {
-              "projectPath": "D:\\AppWinForm\\DTO\\DTO.csproj"
+            "D:\\C#1\\AppWinForm\\AppWinForm5\\DTO\\DTO.csproj": {
+              "projectPath": "D:\\C#1\\AppWinForm\\AppWinForm5\\DTO\\DTO.csproj"
             }
           }
         }

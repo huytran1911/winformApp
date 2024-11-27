@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\MVK\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\MVK\\.nuget\\packages"
+      "C:\\Users\\ACER\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ACER\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,

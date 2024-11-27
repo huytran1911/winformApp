@@ -92,7 +92,7 @@ namespace GUI
             panelKhuVuc.Controls.Add(tang1);
             panelKhuVuc.Controls.Add(tang2);
 
-            
+
 
             cbGiamGia.SelectedIndex = 0;
             cbPhuThu.SelectedIndex = 0;
@@ -197,6 +197,12 @@ namespace GUI
         {
             NhanVien nhanVien = new NhanVien();
             nhanVien.ShowDialog();
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QLMenu menu = new QLMenu();
+            menu.ShowDialog();
         }
     }
 }
