@@ -25,12 +25,44 @@ namespace GUI
         {
             InitializeComponent();
         }
-        private void GiaoDien_Load(object sender, EventArgs e)
+        private void HienBan()
         {
             dataTable = banDAL.GetAll();
             SLB = dataTable.Rows.Count;
             ban = new Button[SLB];
             danhSachMon = new DataTable[SLB];
+            for (int i = 0; i < ban.Length; i++)
+            {
+                ban[i] = new Button();
+                danhSachMon[i] = new DataTable();
+                DataColumn stt = new DataColumn("STT");
+                DataColumn thucDon = new DataColumn("Thực Đơn");
+                DataColumn tenMon = new DataColumn("Đơn Giá");
+                DataColumn sL = new DataColumn("SL");
+                DataColumn ghiChu = new DataColumn("Ghi Chú");
+                stt.DataType = typeof(int);
+                thucDon.DataType = typeof(string);
+                tenMon.DataType = typeof(string);
+                sL.DataType = typeof(int);
+                ghiChu.DataType = typeof(string);
+                ban[i].Click += banso;
+                ban[i].BackColor = Color.FloralWhite;
+                ban[i].Text = "Bàn số " + (i + 1).ToString();
+                ban[i].Width = 180;
+                ban[i].Height = 110;
+                ban[i].Image = new Bitmap("BanTrong.png");
+                ban[i].TextImageRelation = TextImageRelation.ImageAboveText;
+                danhSachMon[i].Columns.Add(stt);
+                danhSachMon[i].Columns.Add(thucDon);
+                danhSachMon[i].Columns.Add(tenMon);
+                danhSachMon[i].Columns.Add(sL);
+                danhSachMon[i].Columns.Add(ghiChu);
+                panelBan.Controls.Add(ban[i]);
+            }
+        }
+        private void GiaoDien_Load(object sender, EventArgs e)
+        {
+            HienBan();
             Button tatca = new Button();
             tatca.Text = "Tất cả";
             tatca.BackColor = Color.Bisque;
@@ -60,34 +92,7 @@ namespace GUI
             panelKhuVuc.Controls.Add(tang1);
             panelKhuVuc.Controls.Add(tang2);
 
-            for (int i = 0; i < ban.Length; i++)
-            {
-                ban[i] = new Button();
-                danhSachMon[i] = new DataTable();
-                DataColumn stt = new DataColumn("STT");
-                DataColumn thucDon = new DataColumn("Thực Đơn");
-                DataColumn tenMon = new DataColumn("Đơn Giá");
-                DataColumn sL = new DataColumn("SL");
-                DataColumn ghiChu = new DataColumn("Ghi Chú");
-                stt.DataType = typeof(int);
-                thucDon.DataType = typeof(string);
-                tenMon.DataType = typeof(string);
-                sL.DataType = typeof(int);
-                ghiChu.DataType = typeof(string);
-                ban[i].Click += banso;
-                ban[i].BackColor = Color.FloralWhite;
-                ban[i].Text = "Bàn số " + (i + 1).ToString();
-                ban[i].Width = 180;
-                ban[i].Height = 110;
-                ban[i].Image = new Bitmap("BanTrong.png");
-                ban[i].TextImageRelation = TextImageRelation.ImageAboveText;
-                danhSachMon[i].Columns.Add(stt);
-                danhSachMon[i].Columns.Add(thucDon);
-                danhSachMon[i].Columns.Add(tenMon);
-                danhSachMon[i].Columns.Add(sL);
-                danhSachMon[i].Columns.Add(ghiChu);
-                panelBan.Controls.Add(ban[i]);
-            }
+            
 
             cbGiamGia.SelectedIndex = 0;
             cbPhuThu.SelectedIndex = 0;
@@ -185,6 +190,7 @@ namespace GUI
         {
             Ban ban = new Ban();
             ban.ShowDialog();
+            HienBan();
         }
 
         private void danhSáchNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
