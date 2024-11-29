@@ -145,6 +145,5 @@ namespace GUI
             tbMaQuyen.Text = dgvDanhSachNhanVien.Rows[i].Cells[7].Value.ToString();
         }
 
-        
     }
 }

@@ -1,7 +1,5 @@
 ﻿using BLL;
 using DTO;
-using BLL;
-using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,23 +19,18 @@ namespace GUI
             InitializeComponent();
         }
 
-        private MenuBLL menuBLL = new MenuBLL();
-
-
-
-        private void QLMenu_Load(object sender, EventArgs e)
-        {
-            LoadMenu();
-        }
-
+        private MenuBLL menuBLL = new MenuBLL(); 
         private void LoadMenu()
         {
-            dgvMenu.DataSource = menuBLL.GetAllMenu();
+            dgvMenu.DataSource = menuBLL.GetAllMenus();
             dgvMenu.Columns[0].HeaderText = "Mã thực đơn";
             dgvMenu.Columns[1].HeaderText = "Tên thực đơn";
             dgvMenu.Columns[2].HeaderText = "Giá";
         }
-
+        private void QLMenu_Load(object sender, EventArgs e)
+        {
+            LoadMenu();
+        }
         private void dgvMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvMenu.Rows[e.RowIndex];
@@ -63,7 +56,7 @@ namespace GUI
         private void btSua_Click(object sender, EventArgs e)
         {
             MenuDTO menu = new MenuDTO(tbMaThucDon.Text, tbTenThucDon.Text, float.Parse(tbGia.Text));
-            if (menuBLL.EditMenu(menu))
+            if (menuBLL.UpdateMenu(menu))
             {
                 MessageBox.Show("Sửa thành công!");
                 LoadMenu();
@@ -76,7 +69,7 @@ namespace GUI
 
         private void btXoa_Click(object sender, EventArgs e)
         {
-            if (menuBLL.RemoveMenu(tbMaThucDon.Text))
+            if (menuBLL.DeleteMenu(tbMaThucDon.Text))
             {
                 MessageBox.Show("Xóa thành công!");
                 LoadMenu();

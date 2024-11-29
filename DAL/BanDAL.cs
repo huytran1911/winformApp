@@ -18,7 +18,7 @@ namespace DAL
         }
         public DataTable GetAll()
         {
-            string query = "SELECT MaBan, TenBan, MaKhuVuc, TenKhuVuc = (SELECT TenKhuVuc FROM KHUVUC WHERE KHUVUC.MaKhuVuc = BAN.MaKhuVuc), '' AS GhiChu FROM BAN";
+            string query = "SELECT MaBan, TenBan, MaKhuVuc, TenKhuVuc = (SELECT TenKhuVuc FROM KHUVUC WHERE KHUVUC.MaKhuVuc = Ban.MaKhuVuc), '' AS GhiChu FROM Ban";
             SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
@@ -26,7 +26,7 @@ namespace DAL
         }
         public void Add(BanDTO ban)
         {
-            string query = "INSERT INTO BAN VALUES (@MaBan, @TenBan, @MaKhuVuc)";
+            string query = "INSERT INTO Ban VALUES (@MaBan, @TenBan, @MaKhuVuc)";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@MaBan", ban.MaBan);
             cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);
@@ -38,7 +38,7 @@ namespace DAL
         }
         public void Delete(string maBan)
         {
-            string query = "DELETE FROM BAN WHERE MaBan = @MaBan";
+            string query = "DELETE FROM Ban WHERE MaBan = @MaBan";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@MaBan", maBan);
 
@@ -48,7 +48,7 @@ namespace DAL
         }
         public void Update(BanDTO ban)
         {
-            string query = "UPDATE BAN SET TenBan = @TenBan, MaKhuVuc = @MaKhuVuc WHERE MaBan = @MaBan";
+            string query = "UPDATE Ban SET TenBan = @TenBan, MaKhuVuc = @MaKhuVuc WHERE MaBan = @MaBan";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@MaBan", ban.MaBan);
             cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);

@@ -92,10 +92,9 @@
             // 
             tbMaThucDon.Location = new Point(185, 132);
             tbMaThucDon.Margin = new Padding(3, 4, 3, 4);
-            tbMaThucDon.Multiline = true;
             tbMaThucDon.Name = "tbMaThucDon";
-            tbMaThucDon.Size = new Size(562, 29);
-            tbMaThucDon.TabIndex = 5;
+            tbMaThucDon.Size = new Size(562, 27);
+            tbMaThucDon.TabIndex = 4;
             // 
             // tbTenThucDon
             // 
@@ -133,6 +132,7 @@
             btXoa.TabIndex = 9;
             btXoa.Text = "Xóa";
             btXoa.UseVisualStyleBackColor = true;
+            btXoa.Click += btXoa_Click;
             // 
             // btSua
             // 
@@ -143,6 +143,7 @@
             btSua.TabIndex = 10;
             btSua.Text = "Sửa";
             btSua.UseVisualStyleBackColor = true;
+            btSua.Click += btSua_Click;
             // 
             // Thoát
             // 
@@ -163,6 +164,7 @@
             dgvMenu.RowHeadersWidth = 51;
             dgvMenu.Size = new Size(706, 349);
             dgvMenu.TabIndex = 12;
+            dgvMenu.CellClick += dgvMenu_CellClick;
             // 
             // QLMenu
             // 

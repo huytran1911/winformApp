@@ -1,6 +1,4 @@
-﻿using BLL;
-using DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using DAL;
 
 namespace GUI
 {
@@ -27,6 +27,7 @@ namespace GUI
         }
         private void HienBan()
         {
+            panelBan.Controls.Clear();
             dataTable = banDAL.GetAll();
             SLB = dataTable.Rows.Count;
             ban = new Button[SLB];
@@ -47,7 +48,7 @@ namespace GUI
                 ghiChu.DataType = typeof(string);
                 ban[i].Click += banso;
                 ban[i].BackColor = Color.FloralWhite;
-                ban[i].Text = "Bàn số " + (i + 1).ToString();
+                ban[i].Text = "Bàn số " + (dataTable.Rows[i]["TenBan"]).ToString();
                 ban[i].Width = 180;
                 ban[i].Height = 110;
                 ban[i].Image = new Bitmap("BanTrong.png");
@@ -99,12 +100,30 @@ namespace GUI
         }
         private void banso(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            lbBan01.Text = button.Text;
-            int soBan = int.Parse(lbBan01.Text.Substring(lbBan01.Text.Length - 1));
-            dgvThucDon.DataSource = danhSachMon[soBan - 1];
-            danhSachMonHT = danhSachMon[soBan - 1];
+            try
+            {
+                Button button = (Button)sender;
+                lbBan01.Text = button.Text;
+
+                // Lấy số từ chuỗi "Bàn số X"
+                string[] parts = lbBan01.Text.Split(' ');
+                if (parts.Length > 2 && int.TryParse(parts[2], out int soBan))
+                {
+                    // Gán dữ liệu cho DataGridView
+                    dgvThucDon.DataSource = danhSachMon[soBan - 1];
+                    danhSachMonHT = danhSachMon[soBan - 1];
+                }
+                else
+                {
+                    MessageBox.Show("Không thể lấy số bàn từ chuỗi: " + lbBan01.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xử lý bàn: " + ex.Message);
+            }
         }
+
         private void tatca_click(object sender, EventArgs e)
         {
             panelBan.Controls.Clear();
@@ -189,7 +208,12 @@ namespace GUI
         private void bànToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ban ban = new Ban();
+            ban.OnBanAdd += OnBanAdd_BanForm;
             ban.ShowDialog();
+        }
+
+        private void OnBanAdd_BanForm(object sender, EventArgs e)
+        {
             HienBan();
         }
 

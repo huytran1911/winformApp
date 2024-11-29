@@ -15,6 +15,7 @@ namespace GUI
     public partial class Ban : Form
     {
         private BanBLL banBLL = new BanBLL();
+        public event EventHandler OnBanAdd;
         public Ban()
         {
             InitializeComponent();
@@ -34,19 +35,20 @@ namespace GUI
         {
             BanDTO ban = new BanDTO
             {
-                MaBan = tbMaBan.Text,
+                MaBan = int.Parse(tbMaBan.Text),
                 TenBan = tbTenBan.Text,
                 MaKhuVuc = tbMaKhuVuc.Text
             };
             banBLL.Add(ban);
             LoadData();
+            OnBanAdd?.Invoke(this, EventArgs.Empty);
         }
 
         private void bt_update_Click(object sender, EventArgs e)
         {
             BanDTO ban = new BanDTO
             {
-                MaBan = tbMaBan.Text,
+                MaBan = int.Parse(tbMaBan.Text),
                 TenBan = tbTenBan.Text,
                 MaKhuVuc = tbMaKhuVuc.Text
             };

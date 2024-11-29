@@ -1,11 +1,6 @@
-﻿using DAL;
+﻿using System.Data;
+using DAL;
 using DTO;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
@@ -13,7 +8,7 @@ namespace BLL
     {
         private MenuDAL menuDAL = new MenuDAL();
 
-        public DataTable GetAllMenu()
+        public DataTable GetAllMenus()
         {
             return menuDAL.LoadMenu();
         }
@@ -23,14 +18,14 @@ namespace BLL
             return menuDAL.InsertMenu(menu);
         }
 
-        public bool EditMenu(MenuDTO menu)
-        {
-            return menuDAL.UpdateMenu(menu);
-        }
-
-        public bool RemoveMenu(string maThucDon)
+        public bool DeleteMenu(string maThucDon)
         {
             return menuDAL.DeleteMenu(maThucDon);
+        }
+
+        public bool UpdateMenu(MenuDTO menu)
+        {
+            return menuDAL.UpdateMenu(menu);
         }
     }
 }
