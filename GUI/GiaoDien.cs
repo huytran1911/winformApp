@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BLL;
-using DAL;
 
 namespace GUI
 {
     public partial class GiaoDien : Form
     {
-        private Button[] ban;
-        private DataTable[] danhSachMon;
+        private DataTable mon = new DataTable();
+        private Button ban;
         private double tongtien = 0;
         DAL.BanDAL banDAL = new BanDAL();
         DataTable dataTable;
         DataTable danhSachMonHT;
+        Dictionary<string, DataTable> danhSachMon = new Dictionary<string, DataTable>();
+        Dictionary<string,Button> danhSachBan = new Dictionary<string,Button>();
+        Dictionary<string, DataRow> table = new Dictionary<string, DataRow>(); 
         private int SLB;
         public GiaoDien()
         {
@@ -27,15 +30,16 @@ namespace GUI
         }
         private void HienBan()
         {
+            danhSachMon = new Dictionary<string, DataTable>();
+            danhSachBan = new Dictionary<string, Button>();
+            table = new Dictionary<string, DataRow>();
             panelBan.Controls.Clear();
-            dataTable = banDAL.GetAll();
-            SLB = dataTable.Rows.Count;
-            ban = new Button[SLB];
-            danhSachMon = new DataTable[SLB];
-            for (int i = 0; i < ban.Length; i++)
+            dataTable = banDAL.LoadBan();
+            SLB = dataTable.Rows.Count;           
+            for (int i = 0; i < SLB; i++)
             {
-                ban[i] = new Button();
-                danhSachMon[i] = new DataTable();
+                ban = new Button();
+                mon = new DataTable();
                 DataColumn stt = new DataColumn("STT");
                 DataColumn thucDon = new DataColumn("Thực Đơn");
                 DataColumn tenMon = new DataColumn("Đơn Giá");
@@ -46,21 +50,25 @@ namespace GUI
                 tenMon.DataType = typeof(string);
                 sL.DataType = typeof(int);
                 ghiChu.DataType = typeof(string);
-                ban[i].Click += banso;
-                ban[i].BackColor = Color.FloralWhite;
-                ban[i].Text = "Bàn số " + (dataTable.Rows[i]["TenBan"]).ToString();
-                ban[i].Width = 180;
-                ban[i].Height = 110;
-                ban[i].Image = new Bitmap("BanTrong.png");
-                ban[i].TextImageRelation = TextImageRelation.ImageAboveText;
-                danhSachMon[i].Columns.Add(stt);
-                danhSachMon[i].Columns.Add(thucDon);
-                danhSachMon[i].Columns.Add(tenMon);
-                danhSachMon[i].Columns.Add(sL);
-                danhSachMon[i].Columns.Add(ghiChu);
-                panelBan.Controls.Add(ban[i]);
+                ban.Click += banso;
+                ban.BackColor = Color.FloralWhite;
+                ban.Text =  (dataTable.Rows[i]["TenBan"]).ToString();
+                ban.Width = 180;
+                ban.Height = 110;
+                ban.Image = new Bitmap("BanTrong.png");
+                ban.TextImageRelation = TextImageRelation.ImageAboveText;
+                mon.Columns.Add(stt);
+                mon.Columns.Add(thucDon);
+                mon.Columns.Add(tenMon);
+                mon.Columns.Add(sL);
+                mon.Columns.Add(ghiChu);
+                panelBan.Controls.Add(ban);
+                danhSachBan.Add(ban.Text,ban);
+                danhSachMon.Add(ban.Text,mon);
+                table.Add(ban.Text, dataTable.Rows[i]);
             }
         }
+
         private void GiaoDien_Load(object sender, EventArgs e)
         {
             HienBan();
@@ -104,75 +112,61 @@ namespace GUI
             {
                 Button button = (Button)sender;
                 lbBan01.Text = button.Text;
-
-                // Lấy số từ chuỗi "Bàn số X"
-                string[] parts = lbBan01.Text.Split(' ');
-                if (parts.Length > 2 && int.TryParse(parts[2], out int soBan))
-                {
-                    // Gán dữ liệu cho DataGridView
-                    dgvThucDon.DataSource = danhSachMon[soBan - 1];
-                    danhSachMonHT = danhSachMon[soBan - 1];
-                }
-                else
-                {
-                    MessageBox.Show("Không thể lấy số bàn từ chuỗi: " + lbBan01.Text);
-                }
+                dgvThucDon.DataSource = danhSachMon[lbBan01.Text];
+                danhSachMonHT = danhSachMon[lbBan01.Text];
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi xử lý bàn: " + ex.Message);
             }
         }
-
         private void tatca_click(object sender, EventArgs e)
         {
             panelBan.Controls.Clear();
-            for (int i = 0; i < SLB; i++)
+            foreach (var button in danhSachBan)
             {
-                panelBan.Controls.Add(ban[i]);
+                panelBan.Controls.Add(button.Value);
             }
 
         }
         private void tangtret_click(object sender, EventArgs e)
         {
             panelBan.Controls.Clear();
-            for (int i = 0; i < SLB; i++)
+            foreach (var button in danhSachBan)
             {
-                if (dataTable.Rows[i]["MaKhuVuc"].ToString() == "KV01")
+                if (table[button.Key]["MaKhuVuc"].ToString() == "KV01")
                 {
-                    panelBan.Controls.Add(ban[i]);
+                    panelBan.Controls.Add(danhSachBan[button.Key]);                    
                 }
             }
-
         }
         private void tang1_click(object sender, EventArgs e)
         {
             panelBan.Controls.Clear();
-            for (int i = 0; i < SLB; i++)
+            foreach (var button in danhSachBan)
             {
-                if (dataTable.Rows[i]["MaKhuVuc"].ToString() == "KV02")
+                if (table[button.Key]["MaKhuVuc"].ToString() == "KV02")
                 {
-                    panelBan.Controls.Add(ban[i]);
+                    panelBan.Controls.Add(danhSachBan[button.Key]);
                 }
             }
-
         }
         private void tang2_click(object sender, EventArgs e)
         {
             panelBan.Controls.Clear();
-            for (int i = 0; i < SLB; i++)
+            foreach (var button in danhSachBan)
             {
-                if (dataTable.Rows[i]["MaKhuVuc"].ToString() == "KV03")
+                if (table[button.Key]["MaKhuVuc"].ToString() == "KV03")
                 {
-                    panelBan.Controls.Add(ban[i]);
-
+                    panelBan.Controls.Add(danhSachBan[button.Key]);
                 }
             }
 
         }
         private void btChonmon_Click(object sender, EventArgs e)
         {
-            FrmChonMon frmChonMon = new FrmChonMon();
+            FrmChonMon frmChonMon = new FrmChonMon();           
             frmChonMon.danhSachMon = danhSachMonHT;
             frmChonMon.ShowDialog();
         }
@@ -208,12 +202,7 @@ namespace GUI
         private void bànToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ban ban = new Ban();
-            ban.OnBanAdd += OnBanAdd_BanForm;
             ban.ShowDialog();
-        }
-
-        private void OnBanAdd_BanForm(object sender, EventArgs e)
-        {
             HienBan();
         }
 

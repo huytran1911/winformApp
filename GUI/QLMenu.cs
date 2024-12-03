@@ -1,5 +1,7 @@
 ﻿using BLL;
 using DTO;
+using BLL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +19,15 @@ namespace GUI
         public QLMenu()
         {
             InitializeComponent();
+
         }
 
-        private MenuBLL menuBLL = new MenuBLL(); 
+        private MenuBLL menuBLL = new MenuBLL();
+
+
+
+
+
         private void LoadMenu()
         {
             dgvMenu.DataSource = menuBLL.GetAllMenus();

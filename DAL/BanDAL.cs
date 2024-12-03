@@ -16,52 +16,68 @@ namespace DAL
         {
             connection = new SqlConnection(DB.connectionString);
         }
-        public DataTable GetAll()
+        public DataTable LoadBan()
         {
-            string query = "SELECT MaBan, TenBan, MaKhuVuc, TenKhuVuc = (SELECT TenKhuVuc FROM KHUVUC WHERE KHUVUC.MaKhuVuc = Ban.MaKhuVuc), '' AS GhiChu FROM Ban";
+            string query = "SELECT MaBan, TenBan, MaKhuVuc, (SELECT TenKhuVuc FROM KHUVUC WHERE KHUVUC.MaKhuVuc = Ban.MaKhuVuc) AS TenKhuVuc FROM Ban";
             SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
+            connection.Close();
+            adapter.Dispose();
             return table;
         }
-        public void Add(BanDTO ban)
+        public bool Add(BanDTO ban)
         {
-            string query = "INSERT INTO Ban VALUES (@MaBan, @TenBan, @MaKhuVuc)";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@MaBan", ban.MaBan);
-            cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);
-            cmd.Parameters.AddWithValue("@MaKhuVuc", ban.MaKhuVuc);
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
+            {
+                string query = "INSERT INTO Ban (TenBan,MaKhuVuc) VALUES ( @TenBan, @MaKhuVuc)";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);
+                cmd.Parameters.AddWithValue("@MaKhuVuc", ban.MaKhuVuc);
 
-            connection.Open();
-            cmd.ExecuteNonQuery();
-            connection.Close();
+                connection.Open();
+                return cmd.ExecuteNonQuery() > 0;
+
+            }
+
+
         }
-        public void Delete(string maBan)
+        public bool Delete(string maBan)
         {
-            string query = "DELETE FROM Ban WHERE MaBan = @MaBan";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@MaBan", maBan);
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
+            {
+                string query = "DELETE FROM Ban WHERE MaBan = @MaBan";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@MaBan", maBan);
+                    
 
-            connection.Open();
-            cmd.ExecuteNonQuery();
-            connection.Close();
+                connection.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+            
         }
-        public void Update(BanDTO ban)
+        public bool Update(BanDTO ban)
         {
-            string query = "UPDATE Ban SET TenBan = @TenBan, MaKhuVuc = @MaKhuVuc WHERE MaBan = @MaBan";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@MaBan", ban.MaBan);
-            cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);
-            cmd.Parameters.AddWithValue("@MaKhuVuc", ban.MaKhuVuc);
+            using ( SqlConnection connection  = new SqlConnection(DB.connectionString))
+            {
+                string query = "UPDATE Ban SET TenBan = @TenBan, MaKhuVuc = @MaKhuVuc WHERE MaBan = @MaBan";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@MaBan", ban.MaBan);
+                cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);
+                cmd.Parameters.AddWithValue("@MaKhuVuc", ban.MaKhuVuc);
 
-            connection.Open();
-            cmd.ExecuteNonQuery();
-            connection.Close();
+            
+
+
+                connection.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+            
         }
 
         public DataTable Search(string keyword)
         {
-            string query = "SELECT MaBan, TenBan, MaKhuVuc, TenKhuVuc = (SELECT TenKhuVuc FROM KHUVUC WHERE KHUVUC.MaKhuVuc = BAN.MaKhuVuc), '' AS GhiChu FROM BAN WHERE MaBan LIKE @Keyword OR TenBan LIKE @Keyword OR MaKhuVuc LIKE @Keyword";
+            string query = "SELECT MaBan, TenBan, MaKhuVuc, (SELECT TenKhuVuc FROM KHUVUC WHERE KHUVUC.MaKhuVuc = BAN.MaKhuVuc) AS TenKhuVuc FROM BAN WHERE MaBan LIKE @Keyword OR TenBan LIKE @Keyword OR MaKhuVuc LIKE @Keyword";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
 

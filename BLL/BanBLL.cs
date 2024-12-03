@@ -11,29 +11,29 @@ namespace BLL
 {
     public class BanBLL
     {
-        private BanDAL dal = new BanDAL();
+        private BanDAL banDAL = new BanDAL();
         public DataTable GetAll()
         {
-            return dal.GetAll();
+            return banDAL.LoadBan();
         }
-        public void Add(BanDTO ban)
+        public bool Add(BanDTO ban)
         {
-            dal.Add(ban);
-        }
-
-        public void Delete(string maBan)
-        {
-            dal.Delete(maBan);
+            return banDAL.Add(ban);
         }
 
-        public void Update(BanDTO ban)
+        public bool Delete(string maBan)
         {
-            dal.Update(ban);
+            return banDAL.Delete(maBan);
+        }
+
+        public bool Update(BanDTO ban)
+        {
+            return banDAL.Update(ban);
         }
 
         public DataTable Search(string keyword)
         {
-            return dal.Search(keyword);
+            return banDAL.Search(keyword);
         }
     }
 }

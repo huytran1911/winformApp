@@ -277,7 +277,6 @@
             tbTimKiem.Margin = new Padding(3, 4, 3, 4);
             tbTimKiem.Multiline = true;
             tbTimKiem.Name = "tbTimKiem";
-            tbTimKiem.PlaceholderText = "Nhập mã nhân viên";
             tbTimKiem.Size = new Size(628, 43);
             tbTimKiem.TabIndex = 16;
             // 
