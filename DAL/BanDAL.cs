@@ -42,13 +42,13 @@ namespace DAL
 
 
         }
-        public bool Delete(string maBan)
+        public bool Delete(string tenBan)
         {
             using (SqlConnection connection = new SqlConnection(DB.connectionString))
             {
-                string query = "DELETE FROM Ban WHERE MaBan = @MaBan";
+                string query = "DELETE FROM Ban WHERE TenBan = @TenBan";
                 SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@MaBan", maBan);
+                cmd.Parameters.AddWithValue("@TenBan", tenBan);
                     
 
                 connection.Open();
@@ -62,7 +62,6 @@ namespace DAL
             {
                 string query = "UPDATE Ban SET TenBan = @TenBan, MaKhuVuc = @MaKhuVuc WHERE MaBan = @MaBan";
                 SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@MaBan", ban.MaBan);
                 cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);
                 cmd.Parameters.AddWithValue("@MaKhuVuc", ban.MaKhuVuc);
 
