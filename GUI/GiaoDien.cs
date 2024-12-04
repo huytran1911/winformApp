@@ -258,8 +258,15 @@ namespace GUI
         private void tbGiamGia_TextChanged(object sender, EventArgs e)
         {
             double giamGia;
-            giamGia = int.Parse(tbThanhTien.Text) -(int.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text)/100);
+            giamGia = int.Parse(tbThanhTien.Text) - (int.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
             tbThanhTien.Text = giamGia.ToString();
+        }
+
+        private void tbPhuThu_TextChanged(object sender, EventArgs e)
+        {
+            double phuThu;
+            phuThu = int.Parse(tbThanhTien.Text) + (int.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
+            tbThanhTien.Text = phuThu.ToString();
         }
     }
 }

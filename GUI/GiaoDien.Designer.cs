@@ -192,6 +192,7 @@
             tbPhuThu.TabIndex = 15;
             tbPhuThu.Text = "0";
             tbPhuThu.TextAlign = HorizontalAlignment.Right;
+            tbPhuThu.TextChanged += tbPhuThu_TextChanged;
             tbPhuThu.KeyPress += nhapSo;
             // 
             // tbGiamGia
