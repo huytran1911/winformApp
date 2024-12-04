@@ -21,8 +21,8 @@ namespace GUI
         DataTable dataTable;
         DataTable danhSachMonHT;
         Dictionary<string, DataTable> danhSachMon = new Dictionary<string, DataTable>();
-        Dictionary<string,Button> danhSachBan = new Dictionary<string,Button>();
-        Dictionary<string, DataRow> table = new Dictionary<string, DataRow>(); 
+        Dictionary<string, Button> danhSachBan = new Dictionary<string, Button>();
+        Dictionary<string, DataRow> table = new Dictionary<string, DataRow>();
         private int SLB;
         public GiaoDien()
         {
@@ -35,7 +35,7 @@ namespace GUI
             table = new Dictionary<string, DataRow>();
             panelBan.Controls.Clear();
             dataTable = banDAL.LoadBan();
-            SLB = dataTable.Rows.Count;           
+            SLB = dataTable.Rows.Count;
             for (int i = 0; i < SLB; i++)
             {
                 ban = new Button();
@@ -52,7 +52,7 @@ namespace GUI
                 ghiChu.DataType = typeof(string);
                 ban.Click += banso;
                 ban.BackColor = Color.FloralWhite;
-                ban.Text =  (dataTable.Rows[i]["TenBan"]).ToString();
+                ban.Text = (dataTable.Rows[i]["TenBan"]).ToString();
                 ban.Width = 180;
                 ban.Height = 110;
                 ban.Image = new Bitmap("BanTrong.png");
@@ -63,8 +63,8 @@ namespace GUI
                 mon.Columns.Add(sL);
                 mon.Columns.Add(ghiChu);
                 panelBan.Controls.Add(ban);
-                danhSachBan.Add(ban.Text,ban);
-                danhSachMon.Add(ban.Text,mon);
+                danhSachBan.Add(ban.Text, ban);
+                danhSachMon.Add(ban.Text, mon);
                 table.Add(ban.Text, dataTable.Rows[i]);
             }
         }
@@ -101,10 +101,6 @@ namespace GUI
             panelKhuVuc.Controls.Add(tang1);
             panelKhuVuc.Controls.Add(tang2);
 
-
-
-            cbGiamGia.SelectedIndex = 0;
-            cbPhuThu.SelectedIndex = 0;
         }
         private void banso(object sender, EventArgs e)
         {
@@ -114,7 +110,7 @@ namespace GUI
                 lbBan01.Text = button.Text;
                 dgvThucDon.DataSource = danhSachMon[lbBan01.Text];
                 danhSachMonHT = danhSachMon[lbBan01.Text];
-               
+
             }
             catch (Exception ex)
             {
@@ -137,7 +133,7 @@ namespace GUI
             {
                 if (table[button.Key]["MaKhuVuc"].ToString() == "KV01")
                 {
-                    panelBan.Controls.Add(danhSachBan[button.Key]);                    
+                    panelBan.Controls.Add(danhSachBan[button.Key]);
                 }
             }
         }
@@ -166,9 +162,10 @@ namespace GUI
         }
         private void btChonmon_Click(object sender, EventArgs e)
         {
-            FrmChonMon frmChonMon = new FrmChonMon();           
+            FrmChonMon frmChonMon = new FrmChonMon();
             frmChonMon.danhSachMon = danhSachMonHT;
             frmChonMon.ShowDialog();
+            TinhThanhTien();
         }
 
         private void btChinhsua_Click(object sender, EventArgs e)
@@ -179,7 +176,7 @@ namespace GUI
                 if (row == null) return;
 
                 ThucDonBLL thucDon = new ThucDonBLL(
-                    row.Cells[2].Value.ToString(),
+                    row.Cells[1].Value.ToString(),
                     int.Parse(row.Cells[3].Value.ToString()),
                     row.Cells[4].Value?.ToString() ?? ""
                 );
@@ -190,15 +187,31 @@ namespace GUI
                     // Cập nhật giá trị trong DataGridView
                     row.Cells[3].Value = thucDon.SoLuong;
                     row.Cells[4].Value = thucDon.GhiChu;
-
+                    TinhThanhTien();
                 }
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Chỉnh sửa lỗi: " + ex.Message);
             }
         }
+        private void btXoa_Click(object sender, EventArgs e)
+        {
 
+            DialogResult result = MessageBox.Show("Bạn có muốn xóa không", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dgvThucDon.SelectedRows)
+                {
+
+                    dgvThucDon.Rows.Remove(row);
+
+                }
+                TinhThanhTien();
+            }
+        }
         private void bànToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ban ban = new Ban();
@@ -216,6 +229,37 @@ namespace GUI
         {
             QLMenu menu = new QLMenu();
             menu.ShowDialog();
+        }
+        public int TinhThanhTien()
+        {
+            int tongTien = 0;
+            foreach (DataRow row in danhSachMonHT.Rows)
+            {
+                tongTien += int.Parse(row["SL"].ToString()) * int.Parse(row["Đơn Giá"].ToString());
+            }
+            tbThanhTien.Text = tongTien.ToString();
+            return tongTien;
+        }
+        private void nhapSo(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && (((TextBox)sender).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbGiamGia_TextChanged(object sender, EventArgs e)
+        {
+            double giamGia;
+            giamGia = int.Parse(tbThanhTien.Text) -(int.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text)/100);
+            tbThanhTien.Text = giamGia.ToString();
         }
     }
 }
