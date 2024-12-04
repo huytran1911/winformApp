@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DTO;
 
 namespace BLL
 {
@@ -22,6 +23,17 @@ namespace BLL
             }
 
             return role; // Trả về quyền: "Admin" hoặc "NV"
+        }
+       
+        public DangNhapDTO LoginWithDetails(string tenDangNhap, string matKhau)
+        {
+            // Kiểm tra dữ liệu đầu vào
+            if (string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau))
+            {
+                throw new ArgumentException("Tên đăng nhập và mật khẩu không được để trống.");
+            }
+
+            return dangNhapDAL.LoginWithDetails(tenDangNhap, matKhau);
         }
     }
 }

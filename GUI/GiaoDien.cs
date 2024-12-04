@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DAL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace GUI
 {
     public partial class GiaoDien : Form
     {
+        public DangNhapDTO NguoiDungDangNhap { get; set; } // Đối tượng lưu thông tin người dùng đăng nhập
         private DataTable mon = new DataTable();
         private Button ban;
         private double tongtien = 0;
@@ -24,9 +26,16 @@ namespace GUI
         Dictionary<string, Button> danhSachBan = new Dictionary<string, Button>();
         Dictionary<string, DataRow> table = new Dictionary<string, DataRow>();
         private int SLB;
+        private string userRole;
+        public GiaoDien(string role)
+        {
+            InitializeComponent();
+            userRole = role;
+        }
         public GiaoDien()
         {
             InitializeComponent();
+
         }
         private void HienBan()
         {
@@ -101,6 +110,21 @@ namespace GUI
             panelKhuVuc.Controls.Add(tang1);
             panelKhuVuc.Controls.Add(tang2);
 
+            if (userRole == "NV")
+            {
+                // Ẩn các chức năng chỉ dành cho Admin
+                danhSáchNhânViênToolStripMenuItem.Visible = false; // Ví dụ menu chỉ dành cho Admin
+                menuToolStripMenuItem.Visible = false;
+            }
+            else if (userRole == "Admin")
+            {
+                danhSáchNhânViênToolStripMenuItem.Visible = true; // Ví dụ menu chỉ dành cho Admin
+                menuToolStripMenuItem.Visible = true;
+            }
+            if (NguoiDungDangNhap != null)
+            {
+                textTenNhanVien.Text = NguoiDungDangNhap.HoTen; // Hiển thị tên nhân viên
+            }
         }
         private void banso(object sender, EventArgs e)
         {
