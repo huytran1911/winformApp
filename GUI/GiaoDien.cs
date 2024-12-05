@@ -77,10 +77,37 @@ namespace GUI
                 table.Add(ban.Text, dataTable.Rows[i]);
             }
         }
+        private void PhanQuyenNguoiDung()
+        {
+            if (userRole == "NV")
+            {
+                // Ẩn các chức năng chỉ dành cho Admin
+                danhSáchNhânViênToolStripMenuItem.Visible = false; // Ví dụ menu chỉ dành cho Admin
+                menuToolStripMenuItem.Visible = false;
+            }
+            else if (userRole == "Admin")
+            {
+                danhSáchNhânViênToolStripMenuItem.Visible = true; // Ví dụ menu chỉ dành cho Admin
+                menuToolStripMenuItem.Visible = true;
+            }
+        }
+
+        private void HienThiThongTinNhanVien()
+        {
+            if (NguoiDungDangNhap != null)
+            {
+                textTenNhanVien.Text = NguoiDungDangNhap.HoTen; // Hiển thị tên nhân viên
+                
+            }
+        }
 
         private void GiaoDien_Load(object sender, EventArgs e)
         {
+            HienThiThongTinNhanVien();
+            PhanQuyenNguoiDung();
             HienBan();
+            
+          
             Button tatca = new Button();
             tatca.Text = "Tất cả";
             tatca.BackColor = Color.Bisque;
@@ -110,21 +137,8 @@ namespace GUI
             panelKhuVuc.Controls.Add(tang1);
             panelKhuVuc.Controls.Add(tang2);
 
-            if (userRole == "NV")
-            {
-                // Ẩn các chức năng chỉ dành cho Admin
-                danhSáchNhânViênToolStripMenuItem.Visible = false; // Ví dụ menu chỉ dành cho Admin
-                menuToolStripMenuItem.Visible = false;
-            }
-            else if (userRole == "Admin")
-            {
-                danhSáchNhânViênToolStripMenuItem.Visible = true; // Ví dụ menu chỉ dành cho Admin
-                menuToolStripMenuItem.Visible = true;
-            }
-            if (NguoiDungDangNhap != null)
-            {
-                textTenNhanVien.Text = NguoiDungDangNhap.HoTen; // Hiển thị tên nhân viên
-            }
+            
+
         }
         private void banso(object sender, EventArgs e)
         {

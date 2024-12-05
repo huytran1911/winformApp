@@ -41,14 +41,16 @@ namespace GUI
             try
             {
                 DangNhapDTO userInfo = dangNhapBLL.LoginWithDetails(tenDangNhap, matKhau);
+                string role = dangNhapBLL.Login(tenDangNhap, matKhau);
 
                 if (userInfo != null)
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Mở form chính
-                    GiaoDien giaoDien = new GiaoDien();
+                    GiaoDien giaoDien = new GiaoDien(role);
                     giaoDien.NguoiDungDangNhap = userInfo;
+                   
                     this.Hide();
                     giaoDien.ShowDialog();
                     this.Close();

@@ -16,10 +16,11 @@
         }
 
         // Constructor chỉ với tên đăng nhập và mật khẩu
-        public DangNhapDTO(string tenDangNhap, string matKhau)
+        public DangNhapDTO(string tenDangNhap, string matKhau, string maQuyen)
         {
             TenDangNhap = tenDangNhap;
             MatKhau = matKhau;
+            MaQuyen = maQuyen;
         }
 
         // Constructor mặc định

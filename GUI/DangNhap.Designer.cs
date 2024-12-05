@@ -139,6 +139,7 @@
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "DangNhap";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "DangNhap";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
