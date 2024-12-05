@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panelBan = new FlowLayoutPanel();
             grbHoadon = new GroupBox();
+            textTenNhanVien = new TextBox();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
             dgvThucDon = new DataGridView();
@@ -62,7 +63,6 @@
             đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
             thoátToolStripMenuItem = new ToolStripMenuItem();
             menuToolStripMenuItem = new ToolStripMenuItem();
-            textTenNhanVien = new TextBox();
             grbHoadon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvThucDon).BeginInit();
             menuStrip1.SuspendLayout();
@@ -111,9 +111,18 @@
             grbHoadon.TabStop = false;
             grbHoadon.Text = "Chi tiết hóa đơn";
             // 
+            // textTenNhanVien
+            // 
+            textTenNhanVien.Cursor = Cursors.IBeam;
+            textTenNhanVien.Location = new Point(118, 153);
+            textTenNhanVien.Margin = new Padding(2, 3, 2, 3);
+            textTenNhanVien.Name = "textTenNhanVien";
+            textTenNhanVien.Size = new Size(277, 27);
+            textTenNhanVien.TabIndex = 23;
+            // 
             // textBox3
             // 
-            textBox3.Location = new Point(313, 900);
+            textBox3.Location = new Point(321, 768);
             textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(95, 27);
@@ -122,7 +131,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(313, 836);
+            textBox2.Location = new Point(321, 704);
             textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(95, 27);
@@ -131,35 +140,35 @@
             // 
             // dgvThucDon
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvThucDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvThucDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvThucDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvThucDon.DefaultCellStyle = dataGridViewCellStyle5;
-            dgvThucDon.Location = new Point(6, 300);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvThucDon.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvThucDon.Location = new Point(17, 268);
             dgvThucDon.Name = "dgvThucDon";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvThucDon.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvThucDon.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvThucDon.RowHeadersWidth = 51;
-            dgvThucDon.Size = new Size(528, 495);
+            dgvThucDon.Size = new Size(528, 429);
             dgvThucDon.TabIndex = 20;
             // 
             // btThanhtoan
@@ -167,17 +176,18 @@
             btThanhtoan.BackColor = Color.DodgerBlue;
             btThanhtoan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btThanhtoan.ForeColor = Color.White;
-            btThanhtoan.Location = new Point(115, 1016);
+            btThanhtoan.Location = new Point(133, 881);
             btThanhtoan.Margin = new Padding(2, 3, 2, 3);
             btThanhtoan.Name = "btThanhtoan";
-            btThanhtoan.Size = new Size(238, 69);
+            btThanhtoan.Size = new Size(238, 58);
             btThanhtoan.TabIndex = 19;
             btThanhtoan.Text = "Thanh toán";
             btThanhtoan.UseVisualStyleBackColor = false;
+            btThanhtoan.Click += btThanhtoan_Click;
             // 
             // tbThanhTien
             // 
-            tbThanhTien.Location = new Point(115, 959);
+            tbThanhTien.Location = new Point(123, 827);
             tbThanhTien.Margin = new Padding(2, 3, 2, 3);
             tbThanhTien.Name = "tbThanhTien";
             tbThanhTien.ReadOnly = true;
@@ -186,7 +196,7 @@
             // 
             // tbPhuThu
             // 
-            tbPhuThu.Location = new Point(113, 900);
+            tbPhuThu.Location = new Point(121, 768);
             tbPhuThu.Margin = new Padding(2, 3, 2, 3);
             tbPhuThu.Name = "tbPhuThu";
             tbPhuThu.Size = new Size(166, 27);
@@ -199,7 +209,7 @@
             // tbGiamGia
             // 
             tbGiamGia.Cursor = Cursors.IBeam;
-            tbGiamGia.Location = new Point(113, 836);
+            tbGiamGia.Location = new Point(121, 704);
             tbGiamGia.Margin = new Padding(2, 3, 2, 3);
             tbGiamGia.Name = "tbGiamGia";
             tbGiamGia.Size = new Size(166, 27);
@@ -212,7 +222,7 @@
             // lbThanhtien
             // 
             lbThanhtien.AutoSize = true;
-            lbThanhtien.Location = new Point(26, 967);
+            lbThanhtien.Location = new Point(22, 835);
             lbThanhtien.Margin = new Padding(2, 0, 2, 0);
             lbThanhtien.Name = "lbThanhtien";
             lbThanhtien.Size = new Size(81, 20);
@@ -222,7 +232,7 @@
             // lbPhuthu
             // 
             lbPhuthu.AutoSize = true;
-            lbPhuthu.Location = new Point(27, 904);
+            lbPhuthu.Location = new Point(23, 772);
             lbPhuthu.Margin = new Padding(2, 0, 2, 0);
             lbPhuthu.Name = "lbPhuthu";
             lbPhuthu.Size = new Size(61, 20);
@@ -232,7 +242,7 @@
             // lbGiamgia
             // 
             lbGiamgia.AutoSize = true;
-            lbGiamgia.Location = new Point(22, 836);
+            lbGiamgia.Location = new Point(18, 704);
             lbGiamgia.Margin = new Padding(2, 0, 2, 0);
             lbGiamgia.Name = "lbGiamgia";
             lbGiamgia.Size = new Size(72, 20);
@@ -312,7 +322,8 @@
             // dateTimePicker1
             // 
             dateTimePicker1.CalendarFont = new Font("Segoe UI", 7F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy hh:mm:ss tt";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new Point(118, 55);
             dateTimePicker1.Margin = new Padding(2, 3, 2, 3);
             dateTimePicker1.Name = "dateTimePicker1";
@@ -412,15 +423,6 @@
             menuToolStripMenuItem.Text = "Menu";
             menuToolStripMenuItem.Click += menuToolStripMenuItem_Click;
             // 
-            // textTenNhanVien
-            // 
-            textTenNhanVien.Cursor = Cursors.IBeam;
-            textTenNhanVien.Location = new Point(118, 153);
-            textTenNhanVien.Margin = new Padding(2, 3, 2, 3);
-            textTenNhanVien.Name = "textTenNhanVien";
-            textTenNhanVien.Size = new Size(277, 27);
-            textTenNhanVien.TabIndex = 23;
-            // 
             // GiaoDien
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -449,7 +451,6 @@
         private FlowLayoutPanel panelBan;
         private GroupBox grbHoadon;
         private Label label2;
-        private DateTimePicker dateTimePicker1;
         private Label label1;
         private TextBox textBox1;
         private Label lbKhachhang;
@@ -483,5 +484,6 @@
         private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textTenNhanVien;
+        private DateTimePicker dateTimePicker1;
     }
 }

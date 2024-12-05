@@ -97,7 +97,7 @@ namespace GUI
             if (NguoiDungDangNhap != null)
             {
                 textTenNhanVien.Text = NguoiDungDangNhap.HoTen; // Hiển thị tên nhân viên
-                
+
             }
         }
 
@@ -106,8 +106,8 @@ namespace GUI
             HienThiThongTinNhanVien();
             PhanQuyenNguoiDung();
             HienBan();
-            
-          
+
+
             Button tatca = new Button();
             tatca.Text = "Tất cả";
             tatca.BackColor = Color.Bisque;
@@ -137,7 +137,7 @@ namespace GUI
             panelKhuVuc.Controls.Add(tang1);
             panelKhuVuc.Controls.Add(tang2);
 
-            
+
 
         }
         private void banso(object sender, EventArgs e)
@@ -243,9 +243,7 @@ namespace GUI
             {
                 foreach (DataGridViewRow row in dgvThucDon.SelectedRows)
                 {
-
                     dgvThucDon.Rows.Remove(row);
-
                 }
                 TinhThanhTien();
             }
@@ -305,6 +303,11 @@ namespace GUI
             double phuThu;
             phuThu = int.Parse(tbThanhTien.Text) + (int.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
             tbThanhTien.Text = phuThu.ToString();
+        }
+
+        private void btThanhtoan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
