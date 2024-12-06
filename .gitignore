@@ -1,0 +1,25 @@
+# Visual Studio files and folders
+.vs/
+*.vscode/
+*.user
+*.suo
+*.sln.docstates
+
+# Build folders
+bin/
+obj/
+
+# Backup and temporary files
+*.log
+*.tmp
+*.bak
+*.ncb
+*.cache
+*.obj
+*.pdb
+
+# Metadata files
+*.v9.bin
+*.dbtcache.*
+*.vsidx
+*.tlog
