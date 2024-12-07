@@ -16,8 +16,8 @@ namespace GUI
     public partial class GiaoDien : Form
     {
         public DangNhapDTO NguoiDungDangNhap { get; set; } // Đối tượng lưu thông tin người dùng đăng nhập
-        private DataTable mon = new DataTable();
-        private Button ban;
+
+        Guid _MaHD = Guid.Empty;
         private double tongtien = 0;
         DAL.BanDAL banDAL = new BanDAL();
         DataTable dataTable;
@@ -25,6 +25,8 @@ namespace GUI
         Dictionary<string, DataTable> danhSachMon = new Dictionary<string, DataTable>();
         Dictionary<string, Button> danhSachBan = new Dictionary<string, Button>();
         Dictionary<string, DataRow> table = new Dictionary<string, DataRow>();
+        Dictionary<string, string> tenKhachHang = new Dictionary<string, string>();
+        Button button;
         private int SLB;
         private string userRole;
         public GiaoDien(string role)
@@ -47,6 +49,8 @@ namespace GUI
             SLB = dataTable.Rows.Count;
             for (int i = 0; i < SLB; i++)
             {
+                Button ban;
+                DataTable mon;
                 ban = new Button();
                 mon = new DataTable();
                 DataColumn stt = new DataColumn("STT");
@@ -59,6 +63,11 @@ namespace GUI
                 tenMon.DataType = typeof(string);
                 sL.DataType = typeof(int);
                 ghiChu.DataType = typeof(string);
+                mon.Columns.Add(stt);
+                mon.Columns.Add(thucDon);
+                mon.Columns.Add(tenMon);
+                mon.Columns.Add(sL);
+                mon.Columns.Add(ghiChu);
                 ban.Click += banso;
                 ban.BackColor = Color.FloralWhite;
                 ban.Text = (dataTable.Rows[i]["TenBan"]).ToString();
@@ -66,14 +75,11 @@ namespace GUI
                 ban.Height = 110;
                 ban.Image = new Bitmap("BanTrong.png");
                 ban.TextImageRelation = TextImageRelation.ImageAboveText;
-                mon.Columns.Add(stt);
-                mon.Columns.Add(thucDon);
-                mon.Columns.Add(tenMon);
-                mon.Columns.Add(sL);
-                mon.Columns.Add(ghiChu);
+
                 panelBan.Controls.Add(ban);
                 danhSachBan.Add(ban.Text, ban);
                 danhSachMon.Add(ban.Text, mon);
+                tenKhachHang.Add(ban.Text, "");
                 table.Add(ban.Text, dataTable.Rows[i]);
             }
         }
@@ -96,7 +102,7 @@ namespace GUI
         {
             if (NguoiDungDangNhap != null)
             {
-                textTenNhanVien.Text = NguoiDungDangNhap.HoTen; // Hiển thị tên nhân viên
+                tbNhanVien.Text = NguoiDungDangNhap.HoTen; // Hiển thị tên nhân viên
 
             }
         }
@@ -144,11 +150,19 @@ namespace GUI
         {
             try
             {
-                Button button = (Button)sender;
+                button = (Button)sender;
                 lbBan01.Text = button.Text;
                 dgvThucDon.DataSource = danhSachMon[lbBan01.Text];
                 danhSachMonHT = danhSachMon[lbBan01.Text];
-
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    if (row["TenBan"].ToString() == button.Text)
+                    {
+                        tbMaBan.Text = row["MaBan"].ToString();
+                        break;
+                    }
+                }
+                tbKhachHang.Text = tenKhachHang[button.Text];
             }
             catch (Exception ex)
             {
@@ -203,6 +217,7 @@ namespace GUI
             FrmChonMon frmChonMon = new FrmChonMon();
             frmChonMon.danhSachMon = danhSachMonHT;
             frmChonMon.ShowDialog();
+            button.Image = new Bitmap("hinh.png");
             TinhThanhTien();
         }
 
@@ -294,20 +309,90 @@ namespace GUI
         private void tbGiamGia_TextChanged(object sender, EventArgs e)
         {
             double giamGia;
-            giamGia = int.Parse(tbThanhTien.Text) - (int.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
-            tbThanhTien.Text = giamGia.ToString();
+            if (tbThanhTien.Text != "")
+            {
+                giamGia = double.Parse(tbThanhTien.Text) - (double.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
+                tbThanhTien.Text = giamGia.ToString();
+
+            }
         }
 
         private void tbPhuThu_TextChanged(object sender, EventArgs e)
         {
             double phuThu;
-            phuThu = int.Parse(tbThanhTien.Text) + (int.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
-            tbThanhTien.Text = phuThu.ToString();
+            if(tbThanhTien.Text != "")
+            {
+                phuThu = double.Parse(tbThanhTien.Text) + (double.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
+                tbThanhTien.Text = phuThu.ToString();
+
+            }
+            
         }
 
         private void btThanhtoan_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Bạn có muốn thanh toán", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
 
+                var hoaDonDTO = new HoaDonDTO
+                {
+                    NgayVao = dtpNgayVao.Value,  // Đảm bảo dtpNgayVao là DateTimePicker
+                    TenKhachHang = tbKhachHang.Text,  // Lấy tên khách hàng từ TextBox
+                    MaNhanVien = tbNhanVien.Text,  // Lấy mã nhân viên từ TextBox
+                    PhuThuTheoPhanTram = tbPhuThu.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
+                    GiamGiaTheoPhanTram = tbGiamGia.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
+                    NgayThanhToan = DateTime.Now,  // Ngày thanh toán là thời gian hiện tại
+                    ThanhTien = decimal.TryParse(tbThanhTien.Text, out decimal thanhTien) ? thanhTien : 0,  // Kiểm tra giá trị thanh tiền và gán
+                    DaThanhToan = true,  // Đã thanh toán
+                    MaBan = int.Parse(tbMaBan.Text),
+                };
+
+                // Gọi BLL để xử lý thanh toán
+                HoaDonBLL hoaDonBLL = new HoaDonBLL();
+                bool result = hoaDonBLL.ThanhToan(hoaDonDTO);
+
+                if (result)
+                {
+                    DataTable mon = new DataTable();
+                    MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DataColumn stt = new DataColumn("STT");
+                    DataColumn thucDon = new DataColumn("Thực Đơn");
+                    DataColumn tenMon = new DataColumn("Đơn Giá");
+                    DataColumn sL = new DataColumn("SL");
+                    DataColumn ghiChu = new DataColumn("Ghi Chú");
+                    stt.DataType = typeof(int);
+                    thucDon.DataType = typeof(string);
+                    tenMon.DataType = typeof(string);
+                    sL.DataType = typeof(int);
+                    ghiChu.DataType = typeof(string);
+
+                    mon.Columns.Add(stt);
+                    mon.Columns.Add(thucDon);
+                    mon.Columns.Add(tenMon);
+                    mon.Columns.Add(sL);
+                    mon.Columns.Add(ghiChu);
+
+                    danhSachMon[lbBan01.Text] = mon;
+                    dgvThucDon.DataSource = mon;
+                    tbThanhTien.Text = "";
+                    tbKhachHang.Text = "";
+                    tenKhachHang[button.Text] =" ";
+                    tbPhuThu.Text = "";
+                    tbGiamGia.Text = "";
+                    button.Image = new Bitmap("BanTrong.png");
+                }
+                else
+                {
+                    MessageBox.Show(hoaDonDTO.DaThanhToan.ToString());
+                }
+
+            }
+        }
+
+        private void tbKhachHang_TextChanged(object sender, EventArgs e)
+        {
+            tenKhachHang[button.Text]=tbKhachHang.Text;
         }
     }
 }
