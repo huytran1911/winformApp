@@ -77,10 +77,27 @@ namespace GUI
                 ban.TextImageRelation = TextImageRelation.ImageAboveText;
 
                 panelBan.Controls.Add(ban);
-                danhSachBan.Add(ban.Text, ban);
-                danhSachMon.Add(ban.Text, mon);
-                tenKhachHang.Add(ban.Text, "");
-                table.Add(ban.Text, dataTable.Rows[i]);
+
+                // Prevent duplicate keys
+                if (!danhSachBan.ContainsKey(ban.Text))
+                {
+                    danhSachBan.Add(ban.Text, ban);
+                }
+
+                if (!danhSachMon.ContainsKey(ban.Text))
+                {
+                    danhSachMon.Add(ban.Text, mon);
+                }
+
+                if (!tenKhachHang.ContainsKey(ban.Text))
+                {
+                    tenKhachHang.Add(ban.Text, "");
+                }
+
+                if (!table.ContainsKey(ban.Text))
+                {
+                    table.Add(ban.Text, dataTable.Rows[i]);
+                }
             }
         }
         private void PhanQuyenNguoiDung()
