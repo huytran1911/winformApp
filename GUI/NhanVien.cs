@@ -30,7 +30,19 @@ namespace GUI
         {
 
         }
-
+        private void dgvDanhSachNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvDanhSachNhanVien.Rows[e.RowIndex];
+            tbMaNhanVien.Text = row.Cells["MaNV"].Value.ToString();
+            tbTenNhanVien.Text = row.Cells["TenNV"].Value.ToString();
+            tbDiaChi.Text = row.Cells["DiaChi"].Value.ToString();
+            tbSDT.Text = row.Cells["SDT"].Value.ToString();
+            tbEmail.Text = row.Cells["Email"].Value.ToString();
+            tbDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
+            tbMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
+            tbMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
+            tbMaQuyen.Text = row.Cells["MaQuyen"].Value.ToString();
+        }
         private void btThem_Click(object sender, EventArgs e)
         {
             string maNV = tbMaNhanVien.Text;
@@ -131,20 +143,8 @@ namespace GUI
         {
             this.Close();
         }
-        private void dgvDanhSachNhanVien_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-        {
-            int i = 0;
-            i = dgvDanhSachNhanVien.CurrentRow.Index;
-            tbMaNhanVien.Text = dgvDanhSachNhanVien.Rows[i].Cells[0].Value.ToString();
-            tbTenNhanVien.Text = dgvDanhSachNhanVien.Rows[i].Cells[1].Value.ToString();
-            tbDiaChi.Text = dgvDanhSachNhanVien.Rows[i].Cells[2].Value.ToString();
-            tbSDT.Text = dgvDanhSachNhanVien.Rows[i].Cells[3].Value.ToString();
-            tbEmail.Text = dgvDanhSachNhanVien.Rows[i].Cells[4].Value.ToString();
-            tbDangNhap.Text = dgvDanhSachNhanVien.Rows[i].Cells[5].Value.ToString();
-            tbMatKhau.Text = dgvDanhSachNhanVien.Rows[i].Cells[6].Value.ToString();
-            tbMaQuyen.Text = dgvDanhSachNhanVien.Rows[i].Cells[7].Value.ToString();
-        }
-
         
+
+       
     }
 }
