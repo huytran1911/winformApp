@@ -19,5 +19,16 @@ namespace BLL
         {
             return hoaDonDAL.HoaDon(hoaDonDTO);
         }
+        public bool AddHoaDon(HoaDonDTO hoaDonDTO)
+        {
+            // Add any business rules here if necessary
+            return hoaDonDAL.HoaDon(hoaDonDTO);
+        }
+
+        public List<HoaDonDTO> GetAllHoaDon()
+        {
+            // Add any business rules here if necessary
+            return hoaDonDAL.GetHoaDonList();
+        }
     }
 }

@@ -32,6 +32,60 @@ namespace DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+        public List<HoaDonDTO> GetHoaDonList()
+        {
+            List<HoaDonDTO> hoaDonList = new List<HoaDonDTO>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"
+                    SELECT 
+                        HoaDon.NgayVao, 
+                        HoaDon.TenKhachHang, 
+                        HoaDon.MaNhanVien, 
+                        HoaDon.PhuThuTheoPhanTram, 
+                        HoaDon.GiamGiaTheoPhanTram, 
+                        HoaDon.NgayThanhToan, 
+                        HoaDon.ThanhTien, 
+                        HoaDon.DaThanhToan, 
+                        HoaDon.MaBan,
+                        Mon.MaBill,
+                        Mon.MaThucDon,
+                        Mon.MaHoaDon,
+                        Mon.SL,
+                        Mon.GhiChu
+                    FROM HoaDon,Mon
+                    WHERE HoaDon.MaHoaDon = Mon.MaHoaDon
+                    ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        HoaDonDTO hoaDon = new HoaDonDTO
+                        {
+                            NgayVao = reader.GetDateTime(reader.GetOrdinal("NgayVao")),
+                            TenKhachHang = reader.GetString(reader.GetOrdinal("TenKhachHang")),
+                            MaNhanVien = reader.GetString(reader.GetOrdinal("MaNhanVien")),
+                            PhuThuTheoPhanTram = reader.GetBoolean(reader.GetOrdinal("PhuThuTheoPhanTram")),
+                            GiamGiaTheoPhanTram = reader.GetBoolean(reader.GetOrdinal("GiamGiaTheoPhanTram")),
+                            NgayThanhToan = reader.GetDateTime(reader.GetOrdinal("NgayThanhToan")),
+                            ThanhTien = reader.GetDecimal(reader.GetOrdinal("ThanhTien")),
+                            DaThanhToan = reader.GetBoolean(reader.GetOrdinal("DaThanhToan")),
+                            MaBan = reader.GetInt32(reader.GetOrdinal("MaBan")),
+                            MaBill = reader.GetInt32(reader.GetOrdinal("MaBill")),
+                            MaThucDon = reader.GetString(reader.GetOrdinal("MaThucDon")),
+                            MaHoaDon = reader.GetInt32(reader.GetOrdinal("MaHoaDon")),
+                            SL = reader.GetInt32(reader.GetOrdinal("SL")),
+                            GhiChu = reader.GetString(reader.GetOrdinal("GhiChu")),
+                        };
+                        hoaDonList.Add(hoaDon);
+                    }
+                }
+            }
+            return hoaDonList;
+        }
+
 
     }
 }

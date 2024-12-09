@@ -33,7 +33,7 @@ namespace GUI
         private void dgvDanhSachNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvDanhSachNhanVien.Rows[e.RowIndex];
-            tbMaNhanVien.Text = row.Cells["MaNV"].Value.ToString();
+            tbMaNhanVien.Text = row.Cells["MaNhanVien"].Value.ToString();
             tbTenNhanVien.Text = row.Cells["TenNV"].Value.ToString();
             tbDiaChi.Text = row.Cells["DiaChi"].Value.ToString();
             tbSDT.Text = row.Cells["SDT"].Value.ToString();

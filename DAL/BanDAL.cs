@@ -18,7 +18,7 @@ namespace DAL
         }
         public DataTable LoadBan()
         {
-            string query = "SELECT MaBan, TenBan, MaKhuVuc, (SELECT TenKhuVuc FROM KHUVUC WHERE KHUVUC.MaKhuVuc = Ban.MaKhuVuc) AS TenKhuVuc FROM Ban";
+            string query = "SELECT MaBan, TenBan, MaKhuVuc, (SELECT TenKhuVuc FROM KhuVuc WHERE KHUVUC.MaKhuVuc = Ban.MaKhuVuc) AS TenKhuVuc FROM Ban";
             SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
             DataTable table = new DataTable();
             adapter.Fill(table);

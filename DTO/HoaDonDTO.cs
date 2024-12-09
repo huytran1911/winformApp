@@ -8,7 +8,7 @@ namespace DTO
 {
     public class HoaDonDTO
     {
-        public Guid MaHD { get; set; } // uniqueidentifier
+        public int MaHoaDon { get; set; } // uniqueidentifier
         public DateTime NgayVao { get; set; } // Ngày vào
         public string TenKhachHang { get; set; } // Tên khách hàng
         public string MaNhanVien { get; set; } // Mã nhân viên
@@ -20,7 +20,11 @@ namespace DTO
         public decimal ThanhTien { get; set; } // Thành tiền
         public bool DaThanhToan { get; set; } // Đã thanh toán
         public int MaBan { get; set; } // Mã bàn
-
+        public int MaBill { get; set; }
+        public string MaThucDon { get; set; }
+        public int SL {  get; set; }
+        public string GhiChu { get; set; }
+        
 
     }
 }

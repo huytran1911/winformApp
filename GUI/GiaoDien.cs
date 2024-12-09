@@ -17,7 +17,7 @@ namespace GUI
     {
         public DangNhapDTO NguoiDungDangNhap { get; set; } // Đối tượng lưu thông tin người dùng đăng nhập
 
-        Guid _MaHD = Guid.Empty;
+        
         private double tongtien = 0;
         DAL.BanDAL banDAL = new BanDAL();
         DataTable dataTable;
@@ -27,6 +27,7 @@ namespace GUI
         Dictionary<string, DataRow> table = new Dictionary<string, DataRow>();
         Dictionary<string, string> tenKhachHang = new Dictionary<string, string>();
         Button button;
+        HoaDonBLL hoaDonBLL = new HoaDonBLL();
         private int SLB;
         private string userRole;
         public GiaoDien(string role)
@@ -129,7 +130,12 @@ namespace GUI
             HienThiThongTinNhanVien();
             PhanQuyenNguoiDung();
             HienBan();
-
+            HoaDonDAL hoaDonDAL = new HoaDonDAL();
+            List<HoaDonDTO> hoaDonList = hoaDonBLL.GetAllHoaDon();
+            foreach (var item in hoaDonList)
+            {
+                MessageBox.Show($"Tên khách hàng: {item.TenKhachHang},Mã thực đơn {item.MaThucDon}, Thành tiền: {item.ThanhTien}");
+            }
 
             Button tatca = new Button();
             tatca.Text = "Tất cả";
@@ -233,9 +239,13 @@ namespace GUI
         {
             FrmChonMon frmChonMon = new FrmChonMon();
             frmChonMon.danhSachMon = danhSachMonHT;
-            frmChonMon.ShowDialog();
-            button.Image = new Bitmap("hinh.png");
-            TinhThanhTien();
+            if(frmChonMon.ShowDialog()== DialogResult.OK)
+            {
+                button.Image = new Bitmap("hinh.png");
+                TinhThanhTien();
+                LuuThongTin();
+            }
+                    
         }
 
         private void btChinhsua_Click(object sender, EventArgs e)
@@ -276,6 +286,9 @@ namespace GUI
                 foreach (DataGridViewRow row in dgvThucDon.SelectedRows)
                 {
                     dgvThucDon.Rows.Remove(row);
+                }               
+                if (dgvThucDon.Rows.Count == 1) {
+                    button.Image = new Bitmap("BanTrong.png");
                 }
                 TinhThanhTien();
             }
@@ -367,7 +380,7 @@ namespace GUI
                 // Gọi BLL để xử lý thanh toán
                 HoaDonBLL hoaDonBLL = new HoaDonBLL();
                 bool result = hoaDonBLL.ThanhToan(hoaDonDTO);
-
+                
                 if (result)
                 {
                     DataTable mon = new DataTable();
@@ -406,7 +419,24 @@ namespace GUI
 
             }
         }
+        private void LuuThongTin()
+        {
+            var hoaDonDTO = new HoaDonDTO
+            {
+                NgayVao = dtpNgayVao.Value,  // Đảm bảo dtpNgayVao là DateTimePicker
+                TenKhachHang = tbKhachHang.Text,  // Lấy tên khách hàng từ TextBox
+                MaNhanVien = tbNhanVien.Text,  // Lấy mã nhân viên từ TextBox
+                PhuThuTheoPhanTram = tbPhuThu.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
+                GiamGiaTheoPhanTram = tbGiamGia.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
+                NgayThanhToan = DateTime.Now,  // Ngày thanh toán là thời gian hiện tại
+                ThanhTien = decimal.TryParse(tbThanhTien.Text, out decimal thanhTien) ? thanhTien : 0,  // Kiểm tra giá trị thanh tiền và gán
+                DaThanhToan = false,  // Chưa thanh toán
+                MaBan = int.Parse(tbMaBan.Text),
+            };
+            HoaDonBLL hoaDonBLL = new HoaDonBLL();
+            bool result = hoaDonBLL.ThanhToan(hoaDonDTO);
 
+        }
         private void tbKhachHang_TextChanged(object sender, EventArgs e)
         {
             tenKhachHang[button.Text]=tbKhachHang.Text;

@@ -79,6 +79,7 @@
             // btChon
             // 
             btChon.BackColor = Color.DeepSkyBlue;
+            btChon.DialogResult = DialogResult.OK;
             btChon.ForeColor = Color.White;
             btChon.Location = new Point(38, 306);
             btChon.Margin = new Padding(3, 2, 3, 2);
