@@ -28,7 +28,35 @@ namespace DAL
                 return dt;
             }
         }
+        public DataRow HangMenu(string maThucDon)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+         
+                string query = "SELECT * FROM Menu WHERE MaThucDon = '" + maThucDon.ToString() +"'";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
 
+                da.Fill(dt); conn.Close();
+
+                da.Dispose();
+                return dt.Rows[0];
+            }
+        }
+        public DataTable Menu(string tenThucDon)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Menu WHERE TenThucDon = N'" + tenThucDon +"'";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt); conn.Close();
+
+                da.Dispose();
+                return dt;
+            }
+        }
         public bool InsertMenu(MenuDTO menu)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -43,7 +71,7 @@ namespace DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-
+        
         public bool UpdateMenu(MenuDTO menu)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -58,7 +86,7 @@ namespace DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-
+        
         public bool DeleteMenu(string maThucDon)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))

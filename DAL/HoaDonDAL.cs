@@ -32,6 +32,25 @@ namespace DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+        public bool UpdateHoaDon(HoaDonDTO hoaDonDTO)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE HoaDon SET NgayVao= @NgayVao,TenKhachHang=@TenKhachHang, MaNhanVien=@MaNhanVien, PhuThuTheoPhanTram=@PhuThuTheoPhanTram, GiamGiaTheoPhanTram=@GiamGiaTheoPhanTram,NgayThanhToan=@NgayThanhToan,ThanhTien=@ThanhTien,DaThanhToan=@DaThanhToan,MaBan=@MaBan WHERE MaBan=@MaBan " ;
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@NgayVao", hoaDonDTO.NgayVao);
+                cmd.Parameters.AddWithValue("@TenKhachHang", hoaDonDTO.TenKhachHang);
+                cmd.Parameters.AddWithValue("@MaNhanVien", hoaDonDTO.MaNhanVien);
+                cmd.Parameters.AddWithValue("@PhuThuTheoPhanTram", hoaDonDTO.PhuThuTheoPhanTram);
+                cmd.Parameters.AddWithValue("@GiamGiaTheoPhanTram", hoaDonDTO.GiamGiaTheoPhanTram);
+                cmd.Parameters.AddWithValue("@NgayThanhToan", hoaDonDTO.NgayThanhToan);
+                cmd.Parameters.AddWithValue("@ThanhTien", hoaDonDTO.ThanhTien);
+                cmd.Parameters.AddWithValue("@DaThanhToan", hoaDonDTO.DaThanhToan);
+                cmd.Parameters.AddWithValue("@MaBan", hoaDonDTO.MaBan);
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
         public List<HoaDonDTO> GetHoaDonList()
         {
             List<HoaDonDTO> hoaDonList = new List<HoaDonDTO>();
@@ -54,7 +73,7 @@ namespace DAL
                         Mon.SL,
                         Mon.GhiChu
                     FROM HoaDon,Mon
-                    WHERE HoaDon.MaHoaDon = Mon.MaHoaDon
+                    WHERE HoaDon.MaHoaDon = Mon.MaHoaDon AND HoaDon.DaThanhToan = 0
                     ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
@@ -85,7 +104,42 @@ namespace DAL
             }
             return hoaDonList;
         }
-
+        public List<HoaDonDTO>  MaBan(string maBan)
+        {
+            List<HoaDonDTO> hoaDonList = new List<HoaDonDTO>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"SELECT HoaDon.MaHoaDon, HoaDon.NgayVao, HoaDon.TenKhachHang, HoaDon.MaNhanVien, HoaDon.PhuThuTheoPhanTram, HoaDon.GiamGiaTheoPhanTram, HoaDon.NgayThanhToan, HoaDon.ThanhTien, HoaDon.DaThanhToan, HoaDon.MaBan 
+                                FROM HoaDon
+                                WHERE MaBan = '" + maBan.ToString()+ "' AND DaThanhToan = 0";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        HoaDonDTO hoaDon = new HoaDonDTO
+                        {
+                            MaHoaDon = reader.GetInt32(reader.GetOrdinal("MaHoaDon")),
+                            NgayVao = reader.GetDateTime(reader.GetOrdinal("NgayVao")),
+                            TenKhachHang = reader.GetString(reader.GetOrdinal("TenKhachHang")),
+                            MaNhanVien = reader.GetString(reader.GetOrdinal("MaNhanVien")),
+                            PhuThuTheoPhanTram = reader.GetBoolean(reader.GetOrdinal("PhuThuTheoPhanTram")),
+                            GiamGiaTheoPhanTram = reader.GetBoolean(reader.GetOrdinal("GiamGiaTheoPhanTram")),
+                            NgayThanhToan = reader.GetDateTime(reader.GetOrdinal("NgayThanhToan")),
+                            ThanhTien = reader.GetDecimal(reader.GetOrdinal("ThanhTien")),
+                            DaThanhToan = reader.GetBoolean(reader.GetOrdinal("DaThanhToan")),
+                            MaBan = reader.GetInt32(reader.GetOrdinal("MaBan")),
+                            
+                        };
+                        hoaDonList.Add(hoaDon);
+                        
+                    }
+                }
+            }
+            return hoaDonList;
+        }
+        
 
     }
 }

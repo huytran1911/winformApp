@@ -17,7 +17,6 @@ namespace GUI
     {
         public DangNhapDTO NguoiDungDangNhap { get; set; } // Đối tượng lưu thông tin người dùng đăng nhập
 
-        
         private double tongtien = 0;
         DAL.BanDAL banDAL = new BanDAL();
         DataTable dataTable;
@@ -45,6 +44,8 @@ namespace GUI
             danhSachMon = new Dictionary<string, DataTable>();
             danhSachBan = new Dictionary<string, Button>();
             table = new Dictionary<string, DataRow>();
+            HoaDonDAL hoaDonDAL = new HoaDonDAL();
+            List<HoaDonDTO> hoaDonList = hoaDonBLL.GetAllHoaDon();
             panelBan.Controls.Clear();
             dataTable = banDAL.LoadBan();
             SLB = dataTable.Rows.Count;
@@ -85,10 +86,7 @@ namespace GUI
                     danhSachBan.Add(ban.Text, ban);
                 }
 
-                if (!danhSachMon.ContainsKey(ban.Text))
-                {
-                    danhSachMon.Add(ban.Text, mon);
-                }
+                
 
                 if (!tenKhachHang.ContainsKey(ban.Text))
                 {
@@ -99,7 +97,34 @@ namespace GUI
                 {
                     table.Add(ban.Text, dataTable.Rows[i]);
                 }
+                if (!danhSachMon.ContainsKey(ban.Text))
+                {
+                    int dem = 1;
+                    foreach (var item in hoaDonList)
+                    {
+                        
+                        if (item.DaThanhToan == false && item.MaBan == int.Parse(table[ban.Text]["MaBan"].ToString()))
+                        {
+                            MenuDAL menuDAL = new MenuDAL();
+                            DataRow row = mon.NewRow();
+                            ban.Image = new Bitmap("hinh.png");
+                            row["STT"] = dem;
+                            row["Thực Đơn"] = menuDAL.HangMenu(item.MaThucDon)["TenThucDon"];
+                            row["Đơn Giá"] = menuDAL.HangMenu(item.MaThucDon)["Gia"];
+                            row["SL"] = item.SL;
+                            row["Ghi Chú"] = item.GhiChu;
+                            mon.Rows.Add(row);
+                            dem++;
+                        }
+                        
+                    }
+                    danhSachMon.Add(ban.Text, mon);
+                    
+
+                }
             }
+            
+            
         }
         private void PhanQuyenNguoiDung()
         {
@@ -130,12 +155,7 @@ namespace GUI
             HienThiThongTinNhanVien();
             PhanQuyenNguoiDung();
             HienBan();
-            HoaDonDAL hoaDonDAL = new HoaDonDAL();
-            List<HoaDonDTO> hoaDonList = hoaDonBLL.GetAllHoaDon();
-            foreach (var item in hoaDonList)
-            {
-                MessageBox.Show($"Tên khách hàng: {item.TenKhachHang},Mã thực đơn {item.MaThucDon}, Thành tiền: {item.ThanhTien}");
-            }
+            
 
             Button tatca = new Button();
             tatca.Text = "Tất cả";
@@ -165,6 +185,7 @@ namespace GUI
             panelKhuVuc.Controls.Add(tangtret);
             panelKhuVuc.Controls.Add(tang1);
             panelKhuVuc.Controls.Add(tang2);
+            
 
 
 
@@ -267,14 +288,26 @@ namespace GUI
                     // Cập nhật giá trị trong DataGridView
                     row.Cells[3].Value = thucDon.SoLuong;
                     row.Cells[4].Value = thucDon.GhiChu;
+                    MonDAL monDAL = new MonDAL();
+                    MenuDAL menuDAL = new MenuDAL();
+                    HoaDonDAL hoaDonDAL = new HoaDonDAL();
+                    var monDTO = new MonDTO
+                    {
+                        MaBill =  1,
+                        MaThucDon = menuDAL.Menu(row.Cells[1].Value.ToString()).Rows[0]["MaThucDon"].ToString(),
+                        MaHoaDon = hoaDonDAL.MaBan(tbMaBan.Text)[0].MaHoaDon,
+                        SL =  thucDon.SoLuong,
+                        GhiChu = thucDon.GhiChu,
+                    };
+                    monDAL.UpdateMon(monDTO);
                     TinhThanhTien();
                 }
 
 
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Chỉnh sửa lỗi: " + ex.Message);
+                MessageBox.Show("Chỉnh sửa lỗi: " );
             }
         }
         private void btXoa_Click(object sender, EventArgs e)
@@ -289,8 +322,9 @@ namespace GUI
                 }               
                 if (dgvThucDon.Rows.Count == 1) {
                     button.Image = new Bitmap("BanTrong.png");
-                }
+                }               
                 TinhThanhTien();
+                LuuThongTin();
             }
         }
         private void bànToolStripMenuItem_Click(object sender, EventArgs e)
@@ -421,21 +455,64 @@ namespace GUI
         }
         private void LuuThongTin()
         {
-            var hoaDonDTO = new HoaDonDTO
+            HoaDonDAL hoaDonDAL = new HoaDonDAL();
+            DateTime ngayThanhToan = DateTime.Now;
+            string ngayThanhToanFormat = ngayThanhToan.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            if (hoaDonDAL.MaBan(tbMaBan.Text).Count == 0)
             {
-                NgayVao = dtpNgayVao.Value,  // Đảm bảo dtpNgayVao là DateTimePicker
-                TenKhachHang = tbKhachHang.Text,  // Lấy tên khách hàng từ TextBox
-                MaNhanVien = tbNhanVien.Text,  // Lấy mã nhân viên từ TextBox
-                PhuThuTheoPhanTram = tbPhuThu.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
-                GiamGiaTheoPhanTram = tbGiamGia.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
-                NgayThanhToan = DateTime.Now,  // Ngày thanh toán là thời gian hiện tại
-                ThanhTien = decimal.TryParse(tbThanhTien.Text, out decimal thanhTien) ? thanhTien : 0,  // Kiểm tra giá trị thanh tiền và gán
-                DaThanhToan = false,  // Chưa thanh toán
-                MaBan = int.Parse(tbMaBan.Text),
-            };
-            HoaDonBLL hoaDonBLL = new HoaDonBLL();
-            bool result = hoaDonBLL.ThanhToan(hoaDonDTO);
+                
+                var hoaDonDTO = new HoaDonDTO
+                {
+                    NgayVao = dtpNgayVao.Value,  // Đảm bảo dtpNgayVao là DateTimePicker
+                    TenKhachHang = tbKhachHang.Text,  // Lấy tên khách hàng từ TextBox
+                    MaNhanVien = tbNhanVien.Text,  // Lấy mã nhân viên từ TextBox
+                    PhuThuTheoPhanTram = tbPhuThu.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
+                    GiamGiaTheoPhanTram = tbGiamGia.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
+                    NgayThanhToan = ngayThanhToan,  // Ngày thanh toán là thời gian hiện tại
+                    ThanhTien = decimal.TryParse(tbThanhTien.Text, out decimal thanhTien) ? thanhTien : 0,  // Kiểm tra giá trị thanh tiền và gán
+                    DaThanhToan = false,  // Chưa thanh toán
+                    MaBan = int.Parse(tbMaBan.Text),
+                };
+                HoaDonBLL hoaDonBLL = new HoaDonBLL();
+                bool result = hoaDonBLL.ThanhToan(hoaDonDTO);
+            }
+            else
+            {
 
+                var hoaDonDTO = new HoaDonDTO
+                {
+                    NgayVao = dtpNgayVao.Value,  // Đảm bảo dtpNgayVao là DateTimePicker
+                    TenKhachHang = tbKhachHang.Text,  // Lấy tên khách hàng từ TextBox
+                    MaNhanVien = tbNhanVien.Text,  // Lấy mã nhân viên từ TextBox
+                    PhuThuTheoPhanTram = tbPhuThu.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
+                    GiamGiaTheoPhanTram = tbGiamGia.Text == "Phần trăm (%)",  // Kiểm tra nếu là "Phần trăm (%)"
+                    NgayThanhToan = ngayThanhToan,  // Ngày thanh toán là thời gian hiện tại
+                    ThanhTien = decimal.TryParse(tbThanhTien.Text, out decimal thanhTien) ? thanhTien : 0,  // Kiểm tra giá trị thanh tiền và gán
+                    DaThanhToan = false,  // Chưa thanh toán
+                    MaBan = int.Parse(tbMaBan.Text),
+                };
+                hoaDonDAL.UpdateHoaDon(hoaDonDTO);
+            }
+                      
+            
+            MonDAL monDAL = new MonDAL();          
+            MenuDAL menuDAL = new MenuDAL();
+            monDAL.DeleteMon(hoaDonDAL.MaBan(tbMaBan.Text)[0].MaHoaDon);
+            
+
+            foreach (DataRow mon in danhSachMonHT.Rows)
+            {
+                
+                MonDTO monDTO = new MonDTO
+                {
+
+                    MaThucDon = (menuDAL.Menu(mon["Thực Đơn"].ToString()).Rows[0]["MaThucDon"]).ToString(),
+                    MaHoaDon = hoaDonDAL.MaBan(tbMaBan.Text)[0].MaHoaDon,
+                    SL = int.Parse(mon["SL"].ToString()),
+                    GhiChu = mon["Ghi Chú"].ToString(),
+                };
+                monDAL.InsertMon(monDTO);
+            }
         }
         private void tbKhachHang_TextChanged(object sender, EventArgs e)
         {
