@@ -31,9 +31,14 @@ namespace BLL
             return banDAL.Update(ban);
         }
 
-        public DataTable Search(string keyword)
+        public DataTable TimBan(string tenBan)
         {
-            return banDAL.Search(keyword);
+            if (string.IsNullOrWhiteSpace(tenBan) && string.IsNullOrWhiteSpace(tenBan))
+            {
+                throw new ArgumentException("Từ khóa tìm kiếm không được để trống!");
+            }
+
+            return banDAL.TimBan(tenBan);
         }
     }
 }

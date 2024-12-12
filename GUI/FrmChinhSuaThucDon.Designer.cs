@@ -89,7 +89,7 @@
             tbGhiChu.Margin = new Padding(3, 2, 3, 2);
             tbGhiChu.Multiline = true;
             tbGhiChu.Name = "tbGhiChu";
-            tbGhiChu.Size = new Size(350, 92);
+            tbGhiChu.Size = new Size(349, 84);
             tbGhiChu.TabIndex = 5;
             // 
             // btLuu
@@ -97,7 +97,7 @@
             btLuu.Location = new Point(64, 273);
             btLuu.Margin = new Padding(3, 2, 3, 2);
             btLuu.Name = "btLuu";
-            btLuu.Size = new Size(115, 22);
+            btLuu.Size = new Size(120, 34);
             btLuu.TabIndex = 6;
             btLuu.Text = "Lưu và đóng";
             btLuu.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             btDong.Location = new Point(455, 273);
             btDong.Margin = new Padding(3, 2, 3, 2);
             btDong.Name = "btDong";
-            btDong.Size = new Size(85, 22);
+            btDong.Size = new Size(94, 34);
             btDong.TabIndex = 7;
             btDong.Text = "Đóng";
             btDong.UseVisualStyleBackColor = true;

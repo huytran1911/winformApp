@@ -39,9 +39,8 @@ namespace DAL
                 return cmd.ExecuteNonQuery() > 0;
 
             }
-
-
         }
+
         public bool Delete(string tenBan)
         {
             using (SqlConnection connection = new SqlConnection(DB.connectionString))
@@ -74,16 +73,28 @@ namespace DAL
             
         }
 
-        public DataTable Search(string keyword)
+        public DataTable TimBan(string tenBan)
         {
-            string query = "SELECT MaBan, TenBan, MaKhuVuc, (SELECT TenKhuVuc FROM KHUVUC WHERE KHUVUC.MaKhuVuc = BAN.MaKhuVuc) AS TenKhuVuc FROM BAN WHERE MaBan LIKE @Keyword OR TenBan LIKE @Keyword OR MaKhuVuc LIKE @Keyword";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+            using (SqlConnection connection = new SqlConnection(DB.connectionString)) // Sử dụng phương thức kết nối từ lớp DB
+            {
+                try
+                {
+                    string TimKiem = " SELECT * FROM Ban WHERE TenBan = @TenBan ";
+                    SqlCommand command = new SqlCommand(TimKiem, connection);
 
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            return table;
+                    command.Parameters.AddWithValue("@TenBan", tenBan);
+                    SqlDataAdapter da = new SqlDataAdapter(command);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    Console.WriteLine(dt.ToString());
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi khi tìm kiếm nhân viên: " + ex.Message);
+                    return null;
+                }
+            }
         }
     }
 }

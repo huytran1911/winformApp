@@ -43,7 +43,25 @@ namespace GUI
             tbMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
             tbMaQuyen.Text = row.Cells["MaQuyen"].Value.ToString();
         }
-        private void btThem_Click(object sender, EventArgs e)
+
+        private void bt_clear_Click(object sender, EventArgs e)
+        {
+            if (dgvDanhSachNhanVien.CurrentRow != null)
+            {
+                string maNV = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value?.ToString() ?? string.Empty;
+                if (nhanVienDAL.XoaNhanVien(maNV))
+                {
+                    MessageBox.Show("Xóa nhân viên thành công!");
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi khi xóa nhân viên.");
+                }
+            }
+        }
+
+        private void bt_add_Click(object sender, EventArgs e)
         {
             string maNV = tbMaNhanVien.Text;
             string tenNV = tbTenNhanVien.Text;
@@ -71,23 +89,8 @@ namespace GUI
                 MessageBox.Show("Thông tin không hợp lệ.");
             }
         }
-        private void btXoa_Click(object sender, EventArgs e)
-        {
-            if (dgvDanhSachNhanVien.CurrentRow != null)
-            {
-                string maNV = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value?.ToString() ?? string.Empty;
-                if (nhanVienDAL.XoaNhanVien(maNV))
-                {
-                    MessageBox.Show("Xóa nhân viên thành công!");
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show("Lỗi khi xóa nhân viên.");
-                }
-            }
-        }
-        private void btSua_Click(object sender, EventArgs e)
+
+        private void bt_update_Click(object sender, EventArgs e)
         {
             if (dgvDanhSachNhanVien.CurrentRow != null)
             {
@@ -117,7 +120,13 @@ namespace GUI
                 }
             }
         }
-        private void btTimKiem_Click(object sender, EventArgs e)
+
+        private void bt_out_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bt_find_Click(object sender, EventArgs e)
         {
             string maNV = tbTimKiem.Text.Trim(); // Lấy từ khóa người dùng nhập
             string tenNV = tbTimKiem.Text.Trim();
@@ -139,12 +148,5 @@ namespace GUI
                 MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
             }
         }
-        private void Thoát_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        
-
-       
     }
 }

@@ -76,7 +76,7 @@
             panelBan.Location = new Point(178, 24);
             panelBan.Margin = new Padding(2);
             panelBan.Name = "panelBan";
-            panelBan.Size = new Size(542, 875);
+            panelBan.Size = new Size(560, 875);
             panelBan.TabIndex = 8;
             // 
             // grbHoadon
@@ -104,11 +104,11 @@
             grbHoadon.Controls.Add(lbBan01);
             grbHoadon.Dock = DockStyle.Right;
             grbHoadon.Font = new Font("Segoe UI", 9F);
-            grbHoadon.Location = new Point(724, 24);
+            grbHoadon.Location = new Point(742, 24);
             grbHoadon.Margin = new Padding(2);
             grbHoadon.Name = "grbHoadon";
             grbHoadon.Padding = new Padding(2);
-            grbHoadon.Size = new Size(487, 767);
+            grbHoadon.Size = new Size(584, 767);
             grbHoadon.TabIndex = 9;
             grbHoadon.TabStop = false;
             grbHoadon.Text = "Chi tiết hóa đơn";
@@ -177,7 +177,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvThucDon.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvThucDon.RowHeadersWidth = 51;
-            dgvThucDon.Size = new Size(462, 322);
+            dgvThucDon.Size = new Size(557, 322);
             dgvThucDon.TabIndex = 20;
             // 
             // btThanhtoan
@@ -404,7 +404,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 2, 0, 2);
-            menuStrip1.Size = new Size(1211, 24);
+            menuStrip1.Size = new Size(1326, 24);
             menuStrip1.TabIndex = 10;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -418,13 +418,14 @@
             // đăngXuấtToolStripMenuItem
             // 
             đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            đăngXuấtToolStripMenuItem.Size = new Size(128, 22);
+            đăngXuấtToolStripMenuItem.Size = new Size(180, 22);
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click;
             // 
             // thoátToolStripMenuItem
             // 
             thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            thoátToolStripMenuItem.Size = new Size(128, 22);
+            thoátToolStripMenuItem.Size = new Size(180, 22);
             thoátToolStripMenuItem.Text = "Thoát";
             // 
             // menuToolStripMenuItem
@@ -439,7 +440,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(1211, 791);
+            ClientSize = new Size(1326, 791);
             Controls.Add(panelKhuVuc);
             Controls.Add(grbHoadon);
             Controls.Add(panelBan);

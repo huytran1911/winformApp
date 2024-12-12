@@ -94,6 +94,7 @@
             txtMatKhau.Location = new Point(494, 184);
             txtMatKhau.Margin = new Padding(3, 2, 3, 2);
             txtMatKhau.Name = "txtMatKhau";
+            txtMatKhau.PasswordChar = '*';
             txtMatKhau.Size = new Size(181, 23);
             txtMatKhau.TabIndex = 6;
             // 

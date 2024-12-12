@@ -21,6 +21,7 @@ namespace GUI
         private void LoadData()
         {
             dgv_listBan.DataSource = banBLL.GetAll();
+            dgv_listBan.Columns[0].HeaderText = "Mã bàn";
             dgv_listBan.Columns[1].HeaderText = "Tên bàn";
             dgv_listBan.Columns[2].HeaderText = "Mã khu vực";
             dgv_listBan.Columns[3].HeaderText = "Tên khu vực";
@@ -38,7 +39,7 @@ namespace GUI
         private void bt_add_Click(object sender, EventArgs e)
         {
             BanDTO ban = new BanDTO(tbTenBan.Text, tbMaKhuVuc.Text);
-            if(banBLL.Add(ban))
+            if (banBLL.Add(ban))
             {
                 MessageBox.Show("Thêm thành công");
 
@@ -48,7 +49,7 @@ namespace GUI
                 MessageBox.Show("Thêm thất bại");
 
             }
-            
+
             LoadData();
 
 
@@ -88,6 +89,26 @@ namespace GUI
             }
         }
 
-        
+        private void bt_find_Click(object sender, EventArgs e)
+        {
+            string tenBan = tb_find.Text.Trim(); // Lấy từ khóa người dùng nhập
+            try
+            {
+                DataTable dt = banBLL.TimBan(tenBan); // Gọi phương thức BLL để tìm kiếm
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    dgv_listBan.DataSource = dt; // Hiển thị kết quả tìm kiếm trên DataGridView
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy nhân viên phù hợp!");
+                    dgv_listBan.DataSource = null; // Xóa kết quả nếu không tìm thấy
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
+            }
+        }
     }
 }

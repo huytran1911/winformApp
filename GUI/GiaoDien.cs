@@ -86,7 +86,7 @@ namespace GUI
                     danhSachBan.Add(ban.Text, ban);
                 }
 
-                
+
 
                 if (!tenKhachHang.ContainsKey(ban.Text))
                 {
@@ -102,7 +102,7 @@ namespace GUI
                     int dem = 1;
                     foreach (var item in hoaDonList)
                     {
-                        
+
                         if (item.DaThanhToan == false && item.MaBan == int.Parse(table[ban.Text]["MaBan"].ToString()))
                         {
                             MenuDAL menuDAL = new MenuDAL();
@@ -116,15 +116,15 @@ namespace GUI
                             mon.Rows.Add(row);
                             dem++;
                         }
-                        
+
                     }
                     danhSachMon.Add(ban.Text, mon);
-                    
+
 
                 }
             }
-            
-            
+
+
         }
         private void PhanQuyenNguoiDung()
         {
@@ -155,7 +155,7 @@ namespace GUI
             HienThiThongTinNhanVien();
             PhanQuyenNguoiDung();
             HienBan();
-            
+
 
             Button tatca = new Button();
             tatca.Text = "Tất cả";
@@ -185,7 +185,7 @@ namespace GUI
             panelKhuVuc.Controls.Add(tangtret);
             panelKhuVuc.Controls.Add(tang1);
             panelKhuVuc.Controls.Add(tang2);
-            
+
 
 
 
@@ -207,6 +207,7 @@ namespace GUI
                     }
                 }
                 tbKhachHang.Text = tenKhachHang[button.Text];
+                TinhThanhTien();
             }
             catch (Exception ex)
             {
@@ -260,13 +261,13 @@ namespace GUI
         {
             FrmChonMon frmChonMon = new FrmChonMon();
             frmChonMon.danhSachMon = danhSachMonHT;
-            if(frmChonMon.ShowDialog()== DialogResult.OK)
+            if (frmChonMon.ShowDialog() == DialogResult.OK)
             {
                 button.Image = new Bitmap("hinh.png");
                 TinhThanhTien();
                 LuuThongTin();
             }
-                    
+
         }
 
         private void btChinhsua_Click(object sender, EventArgs e)
@@ -293,10 +294,10 @@ namespace GUI
                     HoaDonDAL hoaDonDAL = new HoaDonDAL();
                     var monDTO = new MonDTO
                     {
-                        MaBill =  1,
+                        MaBill = 1,
                         MaThucDon = menuDAL.Menu(row.Cells[1].Value.ToString()).Rows[0]["MaThucDon"].ToString(),
                         MaHoaDon = hoaDonDAL.MaBan(tbMaBan.Text)[0].MaHoaDon,
-                        SL =  thucDon.SoLuong,
+                        SL = thucDon.SoLuong,
                         GhiChu = thucDon.GhiChu,
                     };
                     monDAL.UpdateMon(monDTO);
@@ -305,9 +306,9 @@ namespace GUI
 
 
             }
-            catch 
+            catch
             {
-                MessageBox.Show("Chỉnh sửa lỗi: " );
+                MessageBox.Show("Chỉnh sửa lỗi: ");
             }
         }
         private void btXoa_Click(object sender, EventArgs e)
@@ -319,10 +320,11 @@ namespace GUI
                 foreach (DataGridViewRow row in dgvThucDon.SelectedRows)
                 {
                     dgvThucDon.Rows.Remove(row);
-                }               
-                if (dgvThucDon.Rows.Count == 1) {
+                }
+                if (dgvThucDon.Rows.Count == 1)
+                {
                     button.Image = new Bitmap("BanTrong.png");
-                }               
+                }
                 TinhThanhTien();
                 LuuThongTin();
             }
@@ -384,13 +386,13 @@ namespace GUI
         private void tbPhuThu_TextChanged(object sender, EventArgs e)
         {
             double phuThu;
-            if(tbThanhTien.Text != "")
+            if (tbThanhTien.Text != "")
             {
                 phuThu = double.Parse(tbThanhTien.Text) + (double.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
                 tbThanhTien.Text = phuThu.ToString();
 
             }
-            
+
         }
 
         private void btThanhtoan_Click(object sender, EventArgs e)
@@ -414,7 +416,7 @@ namespace GUI
                 // Gọi BLL để xử lý thanh toán
                 HoaDonBLL hoaDonBLL = new HoaDonBLL();
                 bool result = hoaDonBLL.ThanhToan(hoaDonDTO);
-                
+
                 if (result)
                 {
                     DataTable mon = new DataTable();
@@ -441,7 +443,7 @@ namespace GUI
                     dgvThucDon.DataSource = mon;
                     tbThanhTien.Text = "";
                     tbKhachHang.Text = "";
-                    tenKhachHang[button.Text] =" ";
+                    tenKhachHang[button.Text] = " ";
                     tbPhuThu.Text = "";
                     tbGiamGia.Text = "";
                     button.Image = new Bitmap("BanTrong.png");
@@ -460,7 +462,7 @@ namespace GUI
             string ngayThanhToanFormat = ngayThanhToan.ToString("yyyy-MM-dd HH:mm:ss.fff");
             if (hoaDonDAL.MaBan(tbMaBan.Text).Count == 0)
             {
-                
+
                 var hoaDonDTO = new HoaDonDTO
                 {
                     NgayVao = dtpNgayVao.Value,  // Đảm bảo dtpNgayVao là DateTimePicker
@@ -493,16 +495,16 @@ namespace GUI
                 };
                 hoaDonDAL.UpdateHoaDon(hoaDonDTO);
             }
-                      
-            
-            MonDAL monDAL = new MonDAL();          
+
+
+            MonDAL monDAL = new MonDAL();
             MenuDAL menuDAL = new MenuDAL();
             monDAL.DeleteMon(hoaDonDAL.MaBan(tbMaBan.Text)[0].MaHoaDon);
-            
+
 
             foreach (DataRow mon in danhSachMonHT.Rows)
             {
-                
+
                 MonDTO monDTO = new MonDTO
                 {
 
@@ -516,7 +518,12 @@ namespace GUI
         }
         private void tbKhachHang_TextChanged(object sender, EventArgs e)
         {
-            tenKhachHang[button.Text]=tbKhachHang.Text;
+            tenKhachHang[button.Text] = tbKhachHang.Text;
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
