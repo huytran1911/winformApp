@@ -19,6 +19,10 @@ namespace BLL
                 return thongkeDAL.LoadThongKe();
             }
 
-        } 
+        }
+        public DataTable FilterThongKeByDate(DateTime startDate, DateTime endDate)
+        {
+            return thongkeDAL.FilterThongKeByDate(startDate, endDate);
+        }
     }
 }

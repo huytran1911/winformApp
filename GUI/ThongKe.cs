@@ -34,7 +34,25 @@ namespace GUI
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            
+            // Lấy giá trị từ hai DateTimePicker
+            DateTime startDate = dateTimePickerStart.Value;
+            DateTime endDate = dateTimePickerEnd.Value;
+
+            // Kiểm tra logic thời gian (endDate phải lớn hơn startDate)
+            if (startDate > endDate)
+            {
+                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lọc dữ liệu và hiển thị lên DataGridView
+            DataTable dtThongKe = thongkeBLL.FilterThongKeByDate(startDate, endDate);
+            dgvThongKe.DataSource = dtThongKe;
+
+            if (dtThongKe.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu trong khoảng thời gian này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void ThongKe_Load(object sender, EventArgs e)

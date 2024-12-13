@@ -30,9 +30,9 @@
         {
             label1 = new Label();
             dgvThongKe = new DataGridView();
-            dtpFromDate = new DateTimePicker();
-            dtpToDate = new DateTimePicker();
             btnThongKe = new Button();
+            dateTimePickerStart = new DateTimePicker();
+            dateTimePickerEnd = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvThongKe).BeginInit();
             SuspendLayout();
             // 
@@ -48,26 +48,13 @@
             // 
             // dgvThongKe
             // 
+            dgvThongKe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvThongKe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvThongKe.Location = new Point(0, 140);
             dgvThongKe.Name = "dgvThongKe";
             dgvThongKe.RowHeadersWidth = 51;
             dgvThongKe.Size = new Size(1048, 355);
             dgvThongKe.TabIndex = 1;
-            // 
-            // dtpFromDate
-            // 
-            dtpFromDate.Location = new Point(36, 93);
-            dtpFromDate.Name = "dtpFromDate";
-            dtpFromDate.Size = new Size(270, 27);
-            dtpFromDate.TabIndex = 2;
-            // 
-            // dtpToDate
-            // 
-            dtpToDate.Location = new Point(711, 93);
-            dtpToDate.Name = "dtpToDate";
-            dtpToDate.Size = new Size(270, 27);
-            dtpToDate.TabIndex = 3;
             // 
             // btnThongKe
             // 
@@ -77,15 +64,38 @@
             btnThongKe.TabIndex = 4;
             btnThongKe.Text = "Thống Kê";
             btnThongKe.UseVisualStyleBackColor = true;
+            btnThongKe.Click += btnThongKe_Click;
+            // 
+            // dateTimePickerStart
+            // 
+            dateTimePickerStart.CalendarFont = new Font("Segoe UI", 7F);
+            dateTimePickerStart.CustomFormat = "dd/MM/yyyy hh:mm:ss tt";
+            dateTimePickerStart.Format = DateTimePickerFormat.Custom;
+            dateTimePickerStart.Location = new Point(50, 91);
+            dateTimePickerStart.Margin = new Padding(2, 3, 2, 3);
+            dateTimePickerStart.Name = "dateTimePickerStart";
+            dateTimePickerStart.Size = new Size(277, 27);
+            dateTimePickerStart.TabIndex = 5;
+            // 
+            // dateTimePickerEnd
+            // 
+            dateTimePickerEnd.CalendarFont = new Font("Segoe UI", 7F);
+            dateTimePickerEnd.CustomFormat = "dd/MM/yyyy hh:mm:ss tt";
+            dateTimePickerEnd.Format = DateTimePickerFormat.Custom;
+            dateTimePickerEnd.Location = new Point(713, 91);
+            dateTimePickerEnd.Margin = new Padding(2, 3, 2, 3);
+            dateTimePickerEnd.Name = "dateTimePickerEnd";
+            dateTimePickerEnd.Size = new Size(277, 27);
+            dateTimePickerEnd.TabIndex = 6;
             // 
             // ThongKe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1049, 546);
+            Controls.Add(dateTimePickerEnd);
+            Controls.Add(dateTimePickerStart);
             Controls.Add(btnThongKe);
-            Controls.Add(dtpToDate);
-            Controls.Add(dtpFromDate);
             Controls.Add(dgvThongKe);
             Controls.Add(label1);
             Name = "ThongKe";
@@ -100,8 +110,8 @@
 
         private Label label1;
         private DataGridView dgvThongKe;
-        private DateTimePicker dtpFromDate;
-        private DateTimePicker dtpToDate;
         private Button btnThongKe;
+        private DateTimePicker dateTimePickerStart;
+        private DateTimePicker dateTimePickerEnd;
     }
 }
