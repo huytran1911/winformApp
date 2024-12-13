@@ -75,7 +75,7 @@ namespace GUI
                 ban.Text = (dataTable.Rows[i]["TenBan"]).ToString();
                 ban.Width = 180;
                 ban.Height = 110;
-                ban.Image = new Bitmap("BanTrong.png");
+                ban.Image = new Bitmap("T1.jpg");
                 ban.TextImageRelation = TextImageRelation.ImageAboveText;
 
                 panelBan.Controls.Add(ban);
@@ -263,7 +263,7 @@ namespace GUI
             frmChonMon.danhSachMon = danhSachMonHT;
             if (frmChonMon.ShowDialog() == DialogResult.OK)
             {
-                button.Image = new Bitmap("hinh.png");
+                button.Image = new Bitmap("T1.jpg");
                 TinhThanhTien();
                 LuuThongTin();
             }
@@ -524,6 +524,12 @@ namespace GUI
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ThongKe thongKe = new ThongKe();
+            thongKe.Show();
         }
     }
 }
