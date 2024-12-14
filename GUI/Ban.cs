@@ -22,6 +22,13 @@ namespace GUI
             LoadData();
 
         }
+        private void ResetTextBoxes()
+        {
+            // Giả sử bạn có các TextBox: txtMaThucDon, txtTenThucDon, txtGia
+            tbTenBan.Clear();  // Xóa dữ liệu trong TextBox MaThucDon
+            tbMaKhuVuc.Clear(); // Xóa dữ liệu trong TextBox TenThucDon
+            
+        }
         private void LoadData()
         {
             dgv_listBan.DataSource = banDAL.LayDanhSachBan();
@@ -48,6 +55,7 @@ namespace GUI
                     {
                         MessageBox.Show("Thêm thành công");
                         LoadData();
+                        ResetTextBoxes();
                     }
                     else
                     {
@@ -98,6 +106,7 @@ namespace GUI
                         {
                             MessageBox.Show("Sửa nhân bàn thành công!");
                             LoadData();
+                            ResetTextBoxes();
                         }
                         else
                         {
@@ -128,6 +137,7 @@ namespace GUI
                     {
                         MessageBox.Show("Xóa bàn thành công!");
                         LoadData();
+                        ResetTextBoxes();
                     }
                     else
                     {

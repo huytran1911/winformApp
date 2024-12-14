@@ -59,6 +59,7 @@ namespace GUI
             tbGia.Text = row.Cells["Gia"].Value.ToString();
         }
 
+      
         private void btThem_Click(object sender, EventArgs e)
         {
             try
@@ -80,6 +81,7 @@ namespace GUI
                     {
                         MessageBox.Show("Thêm thực đơn thành công!");
                         LoadData();
+                        ResetTextBoxes();
                     }
                     else
                     {
@@ -123,6 +125,7 @@ namespace GUI
                         {
                             MessageBox.Show("Thêm thực đơn thành công!");
                             LoadData();
+                            ResetTextBoxes();
                         }
                         else
                         {
@@ -152,6 +155,7 @@ namespace GUI
                     {
                         MessageBox.Show("Xóa nhân viên thành công!");
                         LoadData();
+                        ResetTextBoxes();
                     }
                     else
                     {

@@ -43,7 +43,18 @@ namespace GUI
             tbMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
             tbMaQuyen.Text = row.Cells["MaQuyen"].Value.ToString();
         }
-
+        private void ResetTextBoxes()
+        {
+            // Giả sử bạn có các TextBox: txtMaThucDon, txtTenThucDon, txtGia
+            tbMaNhanVien.Clear();  
+            tbTenNhanVien.Clear(); 
+            tbDiaChi.Clear();
+            tbSDT.Clear();
+            tbEmail.Clear();
+            tbDangNhap.Clear();
+            tbMatKhau.Clear();
+            tbMaQuyen.Clear();
+        }
         private void bt_clear_Click(object sender, EventArgs e)
         {
             try
@@ -55,6 +66,7 @@ namespace GUI
                     {
                         MessageBox.Show("Xóa nhân viên thành công!");
                         LoadData();
+                        ResetTextBoxes();
                     }
                     else
                     {
@@ -84,6 +96,7 @@ namespace GUI
                     {
                         MessageBox.Show("Thêm nhân viên thành công!");
                         LoadData();
+                        ResetTextBoxes();
                     }
                     else
                     {
@@ -136,6 +149,7 @@ namespace GUI
                         {
                             MessageBox.Show("Sửa nhân viên thành công!");
                             LoadData();
+                            ResetTextBoxes();
                         }
                         else
                         {

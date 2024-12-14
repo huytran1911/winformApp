@@ -82,24 +82,26 @@
             // dateTimePickerStart
             // 
             dateTimePickerStart.CalendarFont = new Font("Segoe UI", 7F);
-            dateTimePickerStart.CustomFormat = "dd/MM/yyyy hh:mm:ss tt";
+            dateTimePickerStart.CustomFormat = "dd/MM/yyyy ";
             dateTimePickerStart.Format = DateTimePickerFormat.Custom;
             dateTimePickerStart.Location = new Point(50, 91);
             dateTimePickerStart.Margin = new Padding(2, 3, 2, 3);
             dateTimePickerStart.Name = "dateTimePickerStart";
             dateTimePickerStart.Size = new Size(277, 27);
             dateTimePickerStart.TabIndex = 5;
+            dateTimePickerStart.Value = new DateTime(2024, 12, 14, 0, 0, 0, 0);
             // 
             // dateTimePickerEnd
             // 
             dateTimePickerEnd.CalendarFont = new Font("Segoe UI", 7F);
-            dateTimePickerEnd.CustomFormat = "dd/MM/yyyy hh:mm:ss tt";
+            dateTimePickerEnd.CustomFormat = "dd/MM/yyyy ";
             dateTimePickerEnd.Format = DateTimePickerFormat.Custom;
             dateTimePickerEnd.Location = new Point(713, 91);
             dateTimePickerEnd.Margin = new Padding(2, 3, 2, 3);
             dateTimePickerEnd.Name = "dateTimePickerEnd";
             dateTimePickerEnd.Size = new Size(277, 27);
             dateTimePickerEnd.TabIndex = 6;
+            dateTimePickerEnd.Value = new DateTime(2024, 12, 14, 0, 0, 0, 0);
             // 
             // btnTinh1
             // 

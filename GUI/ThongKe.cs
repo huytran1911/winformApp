@@ -44,7 +44,7 @@ namespace GUI
             // Lấy giá trị từ hai DateTimePicker
             DateTime startDate = dateTimePickerStart.Value;
             DateTime endDate = dateTimePickerEnd.Value;
-
+            endDate = startDate.AddHours(23).AddMinutes(59).AddSeconds(59);
             // Kiểm tra logic thời gian (endDate phải lớn hơn startDate)
             if (startDate > endDate)
             {
