@@ -32,6 +32,11 @@ namespace BLL
         {
             return thongkeDAL.CalculateTotalRevenueByDay(date);
         }
+        public decimal GetPreviousRevenueByMonth(DateTime date)
+        {
+            return thongkeDAL.CalculateTotalRevenueByMonth(date);
+        }
+
 
     }
 

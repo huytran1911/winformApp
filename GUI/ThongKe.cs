@@ -83,6 +83,16 @@ namespace GUI
             textThang.Text = totalRevenue.ToString("N0");  // "N0" format will display number without currency symbol
         }
 
-      
+        private void btnTinh3_Click(object sender, EventArgs e)
+        {
+            // Step 1: Get the selected month and year from DateTimePicker
+            DateTime selectedMonth = comboBoxDatePicker.Value; // Ensure it's set to show month/year
+
+            // Step 2: Call the BLL method to calculate revenue for the selected month
+            decimal previousRevenue = thongkeBLL.GetPreviousRevenueByMonth(selectedMonth);
+
+            // Step 3: Display revenue in the TextBox
+            textDoanhThuTruoc.Text = previousRevenue.ToString("N0"); // Format as number
+        }
     }
 }

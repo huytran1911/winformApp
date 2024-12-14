@@ -41,6 +41,11 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            label6 = new Label();
+            textDoanhThuTruoc = new TextBox();
+            label7 = new Label();
+            btnTinh3 = new Button();
+            comboBoxDatePicker = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvThongKe).BeginInit();
             SuspendLayout();
             // 
@@ -98,7 +103,7 @@
             // 
             // btnTinh1
             // 
-            btnTinh1.Location = new Point(275, 413);
+            btnTinh1.Location = new Point(275, 392);
             btnTinh1.Name = "btnTinh1";
             btnTinh1.Size = new Size(151, 27);
             btnTinh1.TabIndex = 7;
@@ -108,7 +113,7 @@
             // 
             // btnTinh2
             // 
-            btnTinh2.Location = new Point(275, 482);
+            btnTinh2.Location = new Point(275, 438);
             btnTinh2.Name = "btnTinh2";
             btnTinh2.Size = new Size(151, 27);
             btnTinh2.TabIndex = 8;
@@ -118,14 +123,14 @@
             // 
             // textNgay
             // 
-            textNgay.Location = new Point(766, 413);
+            textNgay.Location = new Point(766, 389);
             textNgay.Name = "textNgay";
             textNgay.Size = new Size(209, 27);
             textNgay.TabIndex = 9;
             // 
             // textThang
             // 
-            textThang.Location = new Point(766, 482);
+            textThang.Location = new Point(766, 441);
             textThang.Name = "textThang";
             textThang.Size = new Size(209, 27);
             textThang.TabIndex = 10;
@@ -133,7 +138,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(36, 420);
+            label2.Location = new Point(38, 396);
             label2.Name = "label2";
             label2.Size = new Size(231, 20);
             label2.TabIndex = 11;
@@ -142,7 +147,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(36, 489);
+            label3.Location = new Point(38, 441);
             label3.Name = "label3";
             label3.Size = new Size(233, 20);
             label3.TabIndex = 12;
@@ -151,7 +156,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(981, 416);
+            label4.Location = new Point(981, 392);
             label4.Name = "label4";
             label4.Size = new Size(40, 20);
             label4.TabIndex = 13;
@@ -160,17 +165,67 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(981, 482);
+            label5.Location = new Point(981, 445);
             label5.Name = "label5";
             label5.Size = new Size(40, 20);
             label5.TabIndex = 14;
             label5.Text = "VNĐ";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(38, 498);
+            label6.Name = "label6";
+            label6.Size = new Size(154, 20);
+            label6.TabIndex = 16;
+            label6.Text = "Tính Doanh Thu Trước";
+            // 
+            // textDoanhThuTruoc
+            // 
+            textDoanhThuTruoc.Location = new Point(766, 495);
+            textDoanhThuTruoc.Name = "textDoanhThuTruoc";
+            textDoanhThuTruoc.Size = new Size(209, 27);
+            textDoanhThuTruoc.TabIndex = 18;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(981, 495);
+            label7.Name = "label7";
+            label7.Size = new Size(40, 20);
+            label7.TabIndex = 19;
+            label7.Text = "VNĐ";
+            // 
+            // btnTinh3
+            // 
+            btnTinh3.Location = new Point(472, 498);
+            btnTinh3.Name = "btnTinh3";
+            btnTinh3.Size = new Size(151, 27);
+            btnTinh3.TabIndex = 21;
+            btnTinh3.Text = "Tính";
+            btnTinh3.UseVisualStyleBackColor = true;
+            btnTinh3.Click += btnTinh3_Click;
+            // 
+            // comboBoxDatePicker
+            // 
+            comboBoxDatePicker.CustomFormat = "MM/yyyy";
+            comboBoxDatePicker.Format = DateTimePickerFormat.Custom;
+            comboBoxDatePicker.Location = new Point(198, 498);
+            comboBoxDatePicker.Name = "comboBoxDatePicker";
+            comboBoxDatePicker.ShowUpDown = true;
+            comboBoxDatePicker.Size = new Size(249, 27);
+            comboBoxDatePicker.TabIndex = 20;
             // 
             // ThongKe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1049, 546);
+            Controls.Add(btnTinh3);
+            Controls.Add(comboBoxDatePicker);
+            Controls.Add(label7);
+            Controls.Add(textDoanhThuTruoc);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -207,5 +262,10 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Label label6;
+        private TextBox textDoanhThuTruoc;
+        private Label label7;
+        private Button btnTinh3;
+        private DateTimePicker comboBoxDatePicker;
     }
 }
