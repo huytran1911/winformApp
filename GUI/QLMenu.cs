@@ -153,13 +153,13 @@ namespace GUI
                     string maThucDon = dgvMenu.CurrentRow.Cells["MaThucDon"].Value?.ToString() ?? string.Empty;
                     if (menuDAL.XoaMenu(maThucDon))
                     {
-                        MessageBox.Show("Xóa nhân viên thành công!");
+                        MessageBox.Show("Xóa menu thành công!");
                         LoadData();
                         ResetTextBoxes();
                     }
                     else
                     {
-                        MessageBox.Show("Lỗi khi xóa nhân viên.");
+                        MessageBox.Show("Lỗi khi xóa menu.");
                     }
                 }
             }
