@@ -80,10 +80,6 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@TenBan", tenBan);
                 cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
-
-
-
-
                 connection.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
