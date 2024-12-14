@@ -36,6 +36,14 @@ namespace GUI
         private void Ban_Load(object sender, EventArgs e)
         {
             LoadData();
+            LoadBan();
+        }
+        private void LoadBan()
+        {
+            dgv_listBan.DataSource = banBLL.GetAllNhanVien();
+            dgv_listBan.Columns[0].HeaderText = "Mã bàn";
+            dgv_listBan.Columns[1].HeaderText = "Tên bàn";
+            dgv_listBan.Columns[2].HeaderText = "Mã khu vực";
         }
         private void dgv_listBan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -104,7 +112,7 @@ namespace GUI
                         // Thực hiện cập nhật thông tin nhân viên
                         if (banDAL.SuaBan(tenBan, maKhuVuc))
                         {
-                            MessageBox.Show("Sửa nhân bàn thành công!");
+                            MessageBox.Show("Sửa bàn thành công!");
                             LoadData();
                             ResetTextBoxes();
                         }

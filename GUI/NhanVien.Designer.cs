@@ -75,16 +75,16 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(34, 24);
+            groupBox1.Location = new Point(12, 24);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(374, 473);
+            groupBox1.Size = new Size(396, 473);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Nhân viên";
             // 
             // tbMaQuyen
             // 
-            tbMaQuyen.Location = new Point(135, 418);
+            tbMaQuyen.Location = new Point(157, 418);
             tbMaQuyen.Multiline = true;
             tbMaQuyen.Name = "tbMaQuyen";
             tbMaQuyen.Size = new Size(233, 33);
@@ -101,7 +101,7 @@
             // 
             // tbMatKhau
             // 
-            tbMatKhau.Location = new Point(135, 371);
+            tbMatKhau.Location = new Point(157, 371);
             tbMatKhau.Multiline = true;
             tbMatKhau.Name = "tbMatKhau";
             tbMatKhau.Size = new Size(233, 33);
@@ -109,7 +109,7 @@
             // 
             // tbDangNhap
             // 
-            tbDangNhap.Location = new Point(135, 314);
+            tbDangNhap.Location = new Point(157, 314);
             tbDangNhap.Multiline = true;
             tbDangNhap.Name = "tbDangNhap";
             tbDangNhap.Size = new Size(233, 33);
@@ -117,7 +117,7 @@
             // 
             // tbEmail
             // 
-            tbEmail.Location = new Point(135, 261);
+            tbEmail.Location = new Point(157, 261);
             tbEmail.Multiline = true;
             tbEmail.Name = "tbEmail";
             tbEmail.Size = new Size(233, 33);
@@ -125,7 +125,7 @@
             // 
             // tbSDT
             // 
-            tbSDT.Location = new Point(135, 213);
+            tbSDT.Location = new Point(157, 213);
             tbSDT.Multiline = true;
             tbSDT.Name = "tbSDT";
             tbSDT.Size = new Size(233, 33);
@@ -133,7 +133,7 @@
             // 
             // tbDiaChi
             // 
-            tbDiaChi.Location = new Point(135, 163);
+            tbDiaChi.Location = new Point(157, 163);
             tbDiaChi.Multiline = true;
             tbDiaChi.Name = "tbDiaChi";
             tbDiaChi.Size = new Size(233, 33);
@@ -141,7 +141,7 @@
             // 
             // tbTenNhanVien
             // 
-            tbTenNhanVien.Location = new Point(135, 115);
+            tbTenNhanVien.Location = new Point(157, 115);
             tbTenNhanVien.Multiline = true;
             tbTenNhanVien.Name = "tbTenNhanVien";
             tbTenNhanVien.Size = new Size(233, 33);
@@ -149,7 +149,7 @@
             // 
             // tbMaNhanVien
             // 
-            tbMaNhanVien.Location = new Point(135, 61);
+            tbMaNhanVien.Location = new Point(157, 61);
             tbMaNhanVien.Name = "tbMaNhanVien";
             tbMaNhanVien.Size = new Size(233, 33);
             tbMaNhanVien.TabIndex = 7;
@@ -166,11 +166,11 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(8, 314);
+            label6.Location = new Point(6, 317);
             label6.Name = "label6";
-            label6.Size = new Size(105, 25);
+            label6.Size = new Size(137, 25);
             label6.TabIndex = 5;
-            label6.Text = "Đăng nhập";
+            label6.Text = "Tên đăng nhập";
             // 
             // label5
             // 

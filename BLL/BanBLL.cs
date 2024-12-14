@@ -20,7 +20,10 @@ namespace BLL
             return true;
         }
 
-
+        public DataTable GetAllNhanVien()
+        {
+            return banDAL.LayDanhSachBan();
+        }
         public DataTable TimBan(string tenBan)
         {
             if (string.IsNullOrWhiteSpace(tenBan) && string.IsNullOrWhiteSpace(tenBan))

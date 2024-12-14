@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using DAL;
 using DTO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -28,7 +29,18 @@ namespace GUI
         }
         private void NhanVien_Load(object sender, EventArgs e)
         {
-
+            LoadNhanVien();
+        }
+        private void LoadNhanVien()
+        {
+            dgvDanhSachNhanVien.DataSource = nhanVienBLL.GetAllNhanVien();
+            dgvDanhSachNhanVien.Columns[0].HeaderText = "Mã nhân viên";
+            dgvDanhSachNhanVien.Columns[1].HeaderText = "Tên nhân viên";
+            dgvDanhSachNhanVien.Columns[2].HeaderText = "Địa chỉ";
+            dgvDanhSachNhanVien.Columns[3].HeaderText = "Email";
+            dgvDanhSachNhanVien.Columns[4].HeaderText = "Tên đăng nhập";
+            dgvDanhSachNhanVien.Columns[5].HeaderText = "Mật khẩu";
+            dgvDanhSachNhanVien.Columns[6].HeaderText = "Mã quyền";
         }
         private void dgvDanhSachNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {

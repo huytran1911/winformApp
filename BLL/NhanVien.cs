@@ -13,6 +13,7 @@ namespace BLL
 {
     public class NhanVien
     {
+        private DAL.NhanVien nhanVienDAL = new DAL.NhanVien();
         public bool KiemTraThongTinHopLe(string tenNV, string diaChi, string sdt, string email, string dangNhap, string matKhau,string maQuyen)
         {
             if(string.IsNullOrWhiteSpace(tenNV)) return false;
@@ -24,7 +25,10 @@ namespace BLL
             if (string.IsNullOrWhiteSpace(maQuyen)) return false;
             return true;
         }
-        private DAL.NhanVien nhanVienDAL = new DAL.NhanVien();
+        public DataTable GetAllNhanVien()
+        {
+            return nhanVienDAL.LayDanhSachNhanVien();
+        }
         public DataTable TimNhanVien(string maNV, string tenNV)
         {
             if (string.IsNullOrWhiteSpace(maNV) && string.IsNullOrWhiteSpace(tenNV))
