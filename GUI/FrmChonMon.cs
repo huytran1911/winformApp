@@ -42,35 +42,41 @@ namespace GUI
 
         private void btChon_Click(object sender, EventArgs e)
         {
-            // Lấy tên món ăn từ cell
-            string tenMon = row.Cells[1].Value.ToString();
-
-            // Kiểm tra xem món ăn đã tồn tại trong danh sách chưa
-            bool daTonTai = false;
-            foreach (DataRow row in danhSachMon.Rows)
+            try
             {
-                if (row["Thực Đơn"].ToString() == tenMon)
+
+
+                // Lấy tên món ăn từ cell
+                string tenMon = row.Cells[1].Value.ToString();
+
+                // Kiểm tra xem món ăn đã tồn tại trong danh sách chưa
+                bool daTonTai = false;
+                foreach (DataRow row in danhSachMon.Rows)
                 {
-                    daTonTai = true;
-                    break;
+                    if (row["Thực Đơn"].ToString() == tenMon)
+                    {
+                        daTonTai = true;
+                        break;
+                    }
+                }
+
+                if (daTonTai)
+                {
+                    MessageBox.Show("Món này đã được chọn. Vui lòng chọn món khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DataRow row2 = danhSachMon.NewRow();
+                    row2["STT"] = danhSachMon.Rows.Count + 1;
+                    row2["Thực Đơn"] = tenMon;
+                    row2["Đơn Giá"] = row.Cells[2].Value;
+                    row2["SL"] = 1;
+                    row2["Ghi Chú"] = "";
+                    danhSachMon.Rows.Add(row2);
+                    this.Close();
                 }
             }
-
-            if (daTonTai)
-            {
-                MessageBox.Show("Món này đã được chọn. Vui lòng chọn món khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                DataRow row2 = danhSachMon.NewRow();
-                row2["STT"] = danhSachMon.Rows.Count + 1;
-                row2["Thực Đơn"] = tenMon;
-                row2["Đơn Giá"] = row.Cells[2].Value;
-                row2["SL"] = 1;
-                row2["Ghi Chú"] = "";
-                danhSachMon.Rows.Add(row2);
-                this.Close();
-            }
+            catch  { }
         }
 
         private void btThoat_Click(object sender, EventArgs e)

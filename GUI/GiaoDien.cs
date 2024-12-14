@@ -263,15 +263,21 @@ namespace GUI
         }
         private void btChonmon_Click(object sender, EventArgs e)
         {
-            FrmChonMon frmChonMon = new FrmChonMon();
-            frmChonMon.danhSachMon = danhSachMon[button.Text];
-            if (frmChonMon.ShowDialog() == DialogResult.OK)
+            try
             {
-                button.Image = new Bitmap("BanCoKhach.png");
-                TinhThanhTien();
-                LuuThongTin();
-            }
 
+
+                FrmChonMon frmChonMon = new FrmChonMon();
+                frmChonMon.danhSachMon = danhSachMon[button.Text];
+                if (frmChonMon.ShowDialog() == DialogResult.OK)
+                {
+                    button.Image = new Bitmap("BanCoKhach.png");
+                    TinhThanhTien();
+                    LuuThongTin();
+                }
+
+            }
+            catch { }
         }
 
         private void btChinhsua_Click(object sender, EventArgs e)
@@ -317,20 +323,26 @@ namespace GUI
         }
         private void btXoa_Click(object sender, EventArgs e)
         {
-
-            DialogResult result = MessageBox.Show("Bạn có muốn xóa không", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            try
             {
-                foreach (DataGridViewRow row in dgvThucDon.SelectedRows)
+                DialogResult result = MessageBox.Show("Bạn có muốn xóa không", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    dgvThucDon.Rows.Remove(row);
+                    foreach (DataGridViewRow row in dgvThucDon.SelectedRows)
+                    {
+                        dgvThucDon.Rows.Remove(row);
+                    }
+                    if (dgvThucDon.Rows.Count == 1)
+                    {
+                        button.Image = new Bitmap("BanTrong.png");
+                    }
+                    TinhThanhTien();
+                    LuuThongTin();
                 }
-                if (dgvThucDon.Rows.Count == 1)
-                {
-                    button.Image = new Bitmap("BanTrong.png");
-                }
-                TinhThanhTien();
-                LuuThongTin();
+            }
+            catch
+            {
+                
             }
         }
         private void bànToolStripMenuItem_Click(object sender, EventArgs e)
@@ -522,7 +534,9 @@ namespace GUI
         }
         private void tbKhachHang_TextChanged(object sender, EventArgs e)
         {
+
             tenKhachHang[button.Text] = tbKhachHang.Text;
+
         }
         public event EventHandler OnDangXuat;
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
