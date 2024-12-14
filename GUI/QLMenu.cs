@@ -77,7 +77,7 @@ namespace GUI
 
                 if (menuBLL.KiemTraThongTinHopLe(maThucDon, tenThucDon, gia))
                 {
-                    if (menuDAL.ThemMenu(maThucDon, tenThucDon, gia))
+                    if (menuDAL.ThemMenu( maThucDon,tenThucDon, gia))
                     {
                         MessageBox.Show("Thêm thực đơn thành công!");
                         LoadData();
@@ -101,8 +101,7 @@ namespace GUI
 
         private void btSua_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 if (dgvMenu.CurrentRow != null)
                 {
 
@@ -111,25 +110,25 @@ namespace GUI
                     string maThucDon = tbMaThucDon.Text;
                     string tenThucDon = tbTenThucDon.Text;
                     string gia = tbGia.Text;
+                    MessageBox.Show(maThucDon);
 
                     // Kiểm tra nếu gia không phải là số hợp lệ
                     if (!float.TryParse(gia, out float giaFloat))
                     {
-                        MessageBox.Show("Giá không hợp lệ. Vui lòng nhập số hợp lệ.");
+                        MessageBox.Show("Giá trị không hợp lệ. Vui lòng nhập thông tin hợp lệ.");
                         return; // Kết thúc sự kiện nếu giá trị không hợp lệ
                     }
 
-                    if (menuBLL.KiemTraThongTinHopLe(maThucDon, tenThucDon, giaFloat))
+                    if (menuBLL.KiemTraThongTinHopLe( maThucDon,tenThucDon, giaFloat))
                     {
-                        if (menuDAL.ThemMenu(maThucDon, tenThucDon, giaFloat))
+                        if (menuDAL.SuaMenu( maThucDon,tenThucDon, giaFloat))
                         {
-                            MessageBox.Show("Thêm thực đơn thành công!");
+                            MessageBox.Show("Sửa thành công!");
                             LoadData();
-                            ResetTextBoxes();
                         }
                         else
                         {
-                            MessageBox.Show("Lỗi khi thêm thực đơn.");
+                            MessageBox.Show("Lỗi khi sửa thực đơn.");
                         }
                     }
                     else
@@ -137,11 +136,7 @@ namespace GUI
                         MessageBox.Show("Thông tin không hợp lệ.");
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex}");
-            }
+            
         }
 
         private void btXoa_Click(object sender, EventArgs e)
@@ -150,8 +145,8 @@ namespace GUI
             {
                 if (dgvMenu.CurrentRow != null)
                 {
-                    string maThucDon = dgvMenu.CurrentRow.Cells["MaThucDon"].Value?.ToString() ?? string.Empty;
-                    if (menuDAL.XoaMenu(maThucDon))
+                    string tenThucDon = dgvMenu.CurrentRow.Cells["TenThucDon"].Value?.ToString() ?? string.Empty;
+                    if (menuDAL.XoaMenu(tenThucDon))
                     {
                         MessageBox.Show("Xóa menu thành công!");
                         LoadData();

@@ -57,7 +57,7 @@ namespace DAL
         {
             using (SqlConnection conn = new SqlConnection(DB.connectionString))
             {
-                string query = "INSERT INTO Menu (MaThucDon, TenThucDon, Gia) VALUES (@MaThucDon, @TenThucDon, @Gia)";
+                string query = "INSERT INTO Menu (MaThucDon,TenThucDon, Gia) VALUES (@MaThucDon, @TenThucDon, @Gia)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MaThucDon", maThucDon);
                 cmd.Parameters.AddWithValue("@TenThucDon", tenThucDon);
@@ -72,7 +72,7 @@ namespace DAL
         {
             using (SqlConnection conn = new SqlConnection(DB.connectionString))
             {
-                string query = "UPDATE Menu SET TenThucDon = @TenThucDon, Gia = @Gia WHERE MaThucDon = @MaThucDon";
+                string query = "UPDATE Menu SET TenThucDon = @TenThucDon, Gia = @Gia WHERE MaThucDon = @MaThucDon ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MaThucDon", maThucDon);
                 cmd.Parameters.AddWithValue("@TenThucDon", tenThucDon);

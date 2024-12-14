@@ -76,7 +76,7 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(DB.connectionString))
             {
-                string query = "UPDATE Ban SET TenBan = @TenBan, MaKhuVuc = @MaKhuVuc WHERE MaBan = @MaBan";
+                string query = "UPDATE Ban SET MaKhuVuc = @MaKhuVuc WHERE TenBan = @TenBan";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@TenBan", tenBan);
                 cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
