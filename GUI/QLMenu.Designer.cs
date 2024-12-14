@@ -40,7 +40,7 @@
             btThem = new Button();
             btXoa = new Button();
             btSua = new Button();
-            Thoát = new Button();
+            btThoat = new Button();
             dgvMenu = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvMenu).BeginInit();
             SuspendLayout();
@@ -139,14 +139,15 @@
             btSua.UseVisualStyleBackColor = true;
             btSua.Click += btSua_Click;
             // 
-            // Thoát
+            // btThoat
             // 
-            Thoát.Location = new Point(461, 228);
-            Thoát.Name = "Thoát";
-            Thoát.Size = new Size(75, 23);
-            Thoát.TabIndex = 11;
-            Thoát.Text = "Thoát";
-            Thoát.UseVisualStyleBackColor = true;
+            btThoat.Location = new Point(461, 228);
+            btThoat.Name = "btThoat";
+            btThoat.Size = new Size(75, 23);
+            btThoat.TabIndex = 11;
+            btThoat.Text = "Thoát";
+            btThoat.UseVisualStyleBackColor = true;
+            btThoat.Click += btThoat_Click;
             // 
             // dgvMenu
             // 
@@ -166,7 +167,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(745, 547);
             Controls.Add(dgvMenu);
-            Controls.Add(Thoát);
+            Controls.Add(btThoat);
             Controls.Add(btSua);
             Controls.Add(btXoa);
             Controls.Add(btThem);
@@ -199,7 +200,7 @@
         private Button btThem;
         private Button btXoa;
         private Button btSua;
-        private Button Thoát;
+        private Button btThoat;
         private DataGridView dgvMenu;
     }
 }

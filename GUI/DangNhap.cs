@@ -51,7 +51,7 @@ namespace GUI
                     GiaoDien giaoDien = new GiaoDien(role);
                     giaoDien.NguoiDungDangNhap = userInfo;
                     giaoDien.OnDangXuat += OnDangXuat;
-                   
+
                     this.Hide();
                     giaoDien.ShowDialog();
                     this.Show();
@@ -69,7 +69,7 @@ namespace GUI
 
         private void OnDangXuat(object sender, EventArgs e)
         {
-         
+
             txtTenDangNhap.Text = "";
             txtMatKhau.Text = "";
         }
