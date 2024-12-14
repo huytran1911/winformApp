@@ -154,6 +154,7 @@
             dgvMenu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMenu.Location = new Point(36, 273);
             dgvMenu.Name = "dgvMenu";
+            dgvMenu.ReadOnly = true;
             dgvMenu.RowHeadersWidth = 51;
             dgvMenu.Size = new Size(618, 262);
             dgvMenu.TabIndex = 12;

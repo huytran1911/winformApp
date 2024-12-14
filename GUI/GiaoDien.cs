@@ -263,7 +263,7 @@ namespace GUI
             frmChonMon.danhSachMon = danhSachMonHT;
             if (frmChonMon.ShowDialog() == DialogResult.OK)
             {
-                button.Image = new Bitmap("BanCoKhach.jpg");
+                button.Image = new Bitmap("BanCoKhach.png");
                 TinhThanhTien();
                 LuuThongTin();
             }

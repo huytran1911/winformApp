@@ -75,7 +75,7 @@
             panelBan.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelBan.BackColor = Color.DimGray;
             panelBan.Location = new Point(178, 24);
-            panelBan.Margin = new Padding(2, 2, 2, 2);
+            panelBan.Margin = new Padding(2);
             panelBan.Name = "panelBan";
             panelBan.Size = new Size(560, 875);
             panelBan.TabIndex = 8;
@@ -106,9 +106,9 @@
             grbHoadon.Dock = DockStyle.Right;
             grbHoadon.Font = new Font("Segoe UI", 9F);
             grbHoadon.Location = new Point(742, 24);
-            grbHoadon.Margin = new Padding(2, 2, 2, 2);
+            grbHoadon.Margin = new Padding(2);
             grbHoadon.Name = "grbHoadon";
-            grbHoadon.Padding = new Padding(2, 2, 2, 2);
+            grbHoadon.Padding = new Padding(2);
             grbHoadon.Size = new Size(584, 767);
             grbHoadon.TabIndex = 9;
             grbHoadon.TabStop = false;
@@ -126,7 +126,7 @@
             // 
             tbNhanVien.Cursor = Cursors.IBeam;
             tbNhanVien.Location = new Point(103, 115);
-            tbNhanVien.Margin = new Padding(2, 2, 2, 2);
+            tbNhanVien.Margin = new Padding(2);
             tbNhanVien.Name = "tbNhanVien";
             tbNhanVien.ReadOnly = true;
             tbNhanVien.Size = new Size(243, 23);
@@ -170,6 +170,7 @@
             dgvThucDon.Location = new Point(15, 201);
             dgvThucDon.Margin = new Padding(3, 2, 3, 2);
             dgvThucDon.Name = "dgvThucDon";
+            dgvThucDon.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -188,7 +189,7 @@
             btThanhtoan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btThanhtoan.ForeColor = Color.White;
             btThanhtoan.Location = new Point(116, 661);
-            btThanhtoan.Margin = new Padding(2, 2, 2, 2);
+            btThanhtoan.Margin = new Padding(2);
             btThanhtoan.Name = "btThanhtoan";
             btThanhtoan.Size = new Size(208, 44);
             btThanhtoan.TabIndex = 19;
@@ -199,7 +200,7 @@
             // tbThanhTien
             // 
             tbThanhTien.Location = new Point(108, 620);
-            tbThanhTien.Margin = new Padding(2, 2, 2, 2);
+            tbThanhTien.Margin = new Padding(2);
             tbThanhTien.Name = "tbThanhTien";
             tbThanhTien.ReadOnly = true;
             tbThanhTien.Size = new Size(257, 23);
@@ -208,7 +209,7 @@
             // tbPhuThu
             // 
             tbPhuThu.Location = new Point(106, 576);
-            tbPhuThu.Margin = new Padding(2, 2, 2, 2);
+            tbPhuThu.Margin = new Padding(2);
             tbPhuThu.Name = "tbPhuThu";
             tbPhuThu.Size = new Size(146, 23);
             tbPhuThu.TabIndex = 15;
@@ -221,7 +222,7 @@
             // 
             tbGiamGia.Cursor = Cursors.IBeam;
             tbGiamGia.Location = new Point(106, 528);
-            tbGiamGia.Margin = new Padding(2, 2, 2, 2);
+            tbGiamGia.Margin = new Padding(2);
             tbGiamGia.Name = "tbGiamGia";
             tbGiamGia.Size = new Size(146, 23);
             tbGiamGia.TabIndex = 14;
@@ -266,7 +267,7 @@
             btXoa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btXoa.ForeColor = Color.White;
             btXoa.Location = new Point(300, 147);
-            btXoa.Margin = new Padding(2, 2, 2, 2);
+            btXoa.Margin = new Padding(2);
             btXoa.Name = "btXoa";
             btXoa.Size = new Size(121, 43);
             btXoa.TabIndex = 9;
@@ -279,7 +280,7 @@
             btChinhsua.BackColor = Color.Yellow;
             btChinhsua.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btChinhsua.Location = new Point(154, 147);
-            btChinhsua.Margin = new Padding(2, 2, 2, 2);
+            btChinhsua.Margin = new Padding(2);
             btChinhsua.Name = "btChinhsua";
             btChinhsua.Size = new Size(121, 43);
             btChinhsua.TabIndex = 8;
@@ -293,7 +294,7 @@
             btChonmon.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btChonmon.ForeColor = Color.White;
             btChonmon.Location = new Point(18, 147);
-            btChonmon.Margin = new Padding(2, 2, 2, 2);
+            btChonmon.Margin = new Padding(2);
             btChonmon.Name = "btChonmon";
             btChonmon.Size = new Size(116, 43);
             btChonmon.TabIndex = 7;
@@ -315,7 +316,7 @@
             // 
             tbKhachHang.Cursor = Cursors.IBeam;
             tbKhachHang.Location = new Point(103, 77);
-            tbKhachHang.Margin = new Padding(2, 2, 2, 2);
+            tbKhachHang.Margin = new Padding(2);
             tbKhachHang.Name = "tbKhachHang";
             tbKhachHang.Size = new Size(243, 23);
             tbKhachHang.TabIndex = 4;
@@ -337,7 +338,7 @@
             dtpNgayVao.CustomFormat = "dd/MM/yyyy hh:mm:ss tt";
             dtpNgayVao.Format = DateTimePickerFormat.Custom;
             dtpNgayVao.Location = new Point(103, 41);
-            dtpNgayVao.Margin = new Padding(2, 2, 2, 2);
+            dtpNgayVao.Margin = new Padding(2);
             dtpNgayVao.Name = "dtpNgayVao";
             dtpNgayVao.Size = new Size(243, 23);
             dtpNgayVao.TabIndex = 2;
@@ -454,7 +455,7 @@
             Controls.Add(grbHoadon);
             Controls.Add(panelBan);
             Controls.Add(menuStrip1);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "GiaoDien";
             Text = "Quản lý cà phê";
             WindowState = FormWindowState.Maximized;

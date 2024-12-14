@@ -57,6 +57,7 @@
             dgvChonMon.Location = new Point(6, 29);
             dgvChonMon.Margin = new Padding(3, 2, 3, 2);
             dgvChonMon.Name = "dgvChonMon";
+            dgvChonMon.ReadOnly = true;
             dgvChonMon.RowHeadersWidth = 51;
             dgvChonMon.Size = new Size(722, 290);
             dgvChonMon.TabIndex = 4;
