@@ -38,16 +38,21 @@ namespace GUI
         }
         private void bt_add_Click(object sender, EventArgs e)
         {
-            BanDTO ban = new BanDTO(tbTenBan.Text, tbMaKhuVuc.Text);
-            if (banBLL.Add(ban))
+            try
             {
-                MessageBox.Show("Thêm thành công");
-
+                BanDTO ban = new BanDTO(tbTenBan.Text, tbMaKhuVuc.Text);
+                if (banBLL.Add(ban))
+                {
+                    MessageBox.Show("Thêm thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Thêm thất bại");
-
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             LoadData();

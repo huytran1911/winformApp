@@ -40,6 +40,19 @@ namespace DAL
 
             }
         }
+        public bool CheckTenBan(string tenBan)
+        {
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Ban WHERE TenBan = @TenBan";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenBan", tenBan);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
 
         public bool Delete(string tenBan)
         {
