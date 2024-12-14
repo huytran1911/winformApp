@@ -61,62 +61,29 @@ namespace GUI
 
         private void btThem_Click(object sender, EventArgs e)
         {
-            string maThucDon = tbMaThucDon.Text;
-            string tenThucDon = tbTenThucDon.Text;
-            float gia = float.Parse(tbGia.Text);
-            
-
-            if (menuBLL.KiemTraThongTinHopLe(maThucDon,tenThucDon,gia))
+            try
             {
-                if (menuDAL.ThemMenu(maThucDon, tenThucDon, gia))
-                {
-                    MessageBox.Show("Thêm nhân viên thành công!");
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show("Lỗi khi thêm nhân viên.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Thông tin không hợp lệ.");
-            }
-        }
-
-        private void btSua_Click(object sender, EventArgs e)
-        {
-            if (dgvMenu.CurrentRow != null)
-            {
-
-
-                // Lấy các giá trị khác từ giao diện
                 string maThucDon = tbMaThucDon.Text;
                 string tenThucDon = tbTenThucDon.Text;
-                float gia = float.Parse(tbGia.Text);
+                float gia;
 
-                // Kiểm tra thông tin hợp lệ
+                // Kiểm tra giá trị tbGia.Text có hợp lệ hay không
+                if (!float.TryParse(tbGia.Text, out gia))
+                {
+                    MessageBox.Show("Giá không hợp lệ. Vui lòng nhập số hợp lệ.");
+                    return; // Kết thúc sự kiện nếu giá trị không hợp lệ
+                }
+
                 if (menuBLL.KiemTraThongTinHopLe(maThucDon, tenThucDon, gia))
                 {
-                    // Lấy mã nhân viên từ DataGridView
-                    string maThucDonBD = dgvMenu.CurrentRow.Cells["MaNhanVien"].Value.ToString() ?? string.Empty;
-                    string maThucDonHT = tbMaThucDon.Text;
-
-                    // Kiểm tra nếu mã nhân viên đã bị thay đổi
-                    if (maThucDonBD != maThucDonHT)
+                    if (menuDAL.ThemMenu(maThucDon, tenThucDon, gia))
                     {
-                        MessageBox.Show("Mã nhân viên không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    // Thực hiện cập nhật thông tin nhân viên
-                    if (menuDAL.SuaMenu(maThucDon, tenThucDon, gia))
-                    {
-                        MessageBox.Show("Sửa nhân viên thành công!");
+                        MessageBox.Show("Thêm thực đơn thành công!");
                         LoadData();
                     }
                     else
                     {
-                        MessageBox.Show("Lỗi khi sửa nhân viên.");
+                        MessageBox.Show("Lỗi khi thêm thực đơn.");
                     }
                 }
                 else
@@ -124,22 +91,77 @@ namespace GUI
                     MessageBox.Show("Thông tin không hợp lệ.");
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex}");
+            }
+        }
+
+        private void btSua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvMenu.CurrentRow != null)
+                {
+
+
+                    // Lấy các giá trị khác từ giao diện
+                    string maThucDon = tbMaThucDon.Text;
+                    string tenThucDon = tbTenThucDon.Text;
+                    string gia = tbGia.Text;
+
+                    // Kiểm tra nếu gia không phải là số hợp lệ
+                    if (!float.TryParse(gia, out float giaFloat))
+                    {
+                        MessageBox.Show("Giá không hợp lệ. Vui lòng nhập số hợp lệ.");
+                        return; // Kết thúc sự kiện nếu giá trị không hợp lệ
+                    }
+
+                    if (menuBLL.KiemTraThongTinHopLe(maThucDon, tenThucDon, giaFloat))
+                    {
+                        if (menuDAL.ThemMenu(maThucDon, tenThucDon, giaFloat))
+                        {
+                            MessageBox.Show("Thêm thực đơn thành công!");
+                            LoadData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi khi thêm thực đơn.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thông tin không hợp lệ.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex}");
+            }
         }
 
         private void btXoa_Click(object sender, EventArgs e)
         {
-            if (dgvMenu.CurrentRow != null)
+            try
             {
-                string maThucDon =   dgvMenu.CurrentRow.Cells["MaThucDon"].Value?.ToString() ?? string.Empty;
-                if (menuDAL.XoaMenu(maThucDon))
+                if (dgvMenu.CurrentRow != null)
                 {
-                    MessageBox.Show("Xóa nhân viên thành công!");
-                    LoadData();
+                    string maThucDon = dgvMenu.CurrentRow.Cells["MaThucDon"].Value?.ToString() ?? string.Empty;
+                    if (menuDAL.XoaMenu(maThucDon))
+                    {
+                        MessageBox.Show("Xóa nhân viên thành công!");
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi khi xóa nhân viên.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Lỗi khi xóa nhân viên.");
-                }
+            }
+            catch
+            {
+
             }
         }
 

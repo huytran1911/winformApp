@@ -46,57 +46,30 @@ namespace GUI
 
         private void bt_clear_Click(object sender, EventArgs e)
         {
-            if (dgvDanhSachNhanVien.CurrentRow != null)
+            try
             {
-                string maNV = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value?.ToString() ?? string.Empty;
-                if (nhanVienDAL.XoaNhanVien(maNV))
+                if (dgvDanhSachNhanVien.CurrentRow != null)
                 {
-                    MessageBox.Show("Xóa nhân viên thành công!");
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show("Lỗi khi xóa nhân viên.");
+                    string maNV = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value?.ToString() ?? string.Empty;
+                    if (nhanVienDAL.XoaNhanVien(maNV))
+                    {
+                        MessageBox.Show("Xóa nhân viên thành công!");
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi khi xóa nhân viên.");
+                    }
                 }
             }
+            catch { }
         }
 
         private void bt_add_Click(object sender, EventArgs e)
         {
-            string maNV = tbMaNhanVien.Text;
-            string tenNV = tbTenNhanVien.Text;
-            string diaChi = tbDiaChi.Text;
-            string sdt = tbSDT.Text;
-            string email = tbEmail.Text;
-            string dangNhap = tbDangNhap.Text;
-            string matKhau = tbMatKhau.Text;
-            string maQuyen = tbMaQuyen.Text;
-
-            if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau,maQuyen))
+            try
             {
-                if (nhanVienDAL.ThemNhanVien(maNV, tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
-                {
-                    MessageBox.Show("Thêm nhân viên thành công!");
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show("Lỗi khi thêm nhân viên.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Thông tin không hợp lệ.");
-            }
-        }
-
-        private void bt_update_Click(object sender, EventArgs e)
-        {
-            if (dgvDanhSachNhanVien.CurrentRow != null)
-            {
-                
-
-                // Lấy các giá trị khác từ giao diện
+                string maNV = tbMaNhanVien.Text;
                 string tenNV = tbTenNhanVien.Text;
                 string diaChi = tbDiaChi.Text;
                 string sdt = tbSDT.Text;
@@ -105,34 +78,79 @@ namespace GUI
                 string matKhau = tbMatKhau.Text;
                 string maQuyen = tbMaQuyen.Text;
 
-                // Kiểm tra thông tin hợp lệ
-                if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau,maQuyen))
+                if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
                 {
-                    // Lấy mã nhân viên từ DataGridView
-                    string maNVBanDau = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value.ToString() ?? string.Empty;
-                    string maNVHienTai = tbMaNhanVien.Text;
-
-                    // Kiểm tra nếu mã nhân viên đã bị thay đổi
-                    if (maNVBanDau != maNVHienTai)
+                    if (nhanVienDAL.ThemNhanVien(maNV, tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
                     {
-                        MessageBox.Show("Mã nhân viên không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    // Thực hiện cập nhật thông tin nhân viên
-                    if (nhanVienDAL.SuaNhanVien(maNVBanDau, tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
-                    {
-                        MessageBox.Show("Sửa nhân viên thành công!");
+                        MessageBox.Show("Thêm nhân viên thành công!");
                         LoadData();
                     }
                     else
                     {
-                        MessageBox.Show("Lỗi khi sửa nhân viên.");
+                        MessageBox.Show("Lỗi khi thêm nhân viên.");
                     }
                 }
                 else
                 {
                     MessageBox.Show("Thông tin không hợp lệ.");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex}");
+            }
+        }
+
+        private void bt_update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvDanhSachNhanVien.CurrentRow != null)
+                {
+
+
+                    // Lấy các giá trị khác từ giao diện
+                    string tenNV = tbTenNhanVien.Text;
+                    string diaChi = tbDiaChi.Text;
+                    string sdt = tbSDT.Text;
+                    string email = tbEmail.Text;
+                    string dangNhap = tbDangNhap.Text;
+                    string matKhau = tbMatKhau.Text;
+                    string maQuyen = tbMaQuyen.Text;
+
+                    // Kiểm tra thông tin hợp lệ
+                    if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
+                    {
+                        // Lấy mã nhân viên từ DataGridView
+                        string maNVBanDau = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value.ToString() ?? string.Empty;
+                        string maNVHienTai = tbMaNhanVien.Text;
+
+                        // Kiểm tra nếu mã nhân viên đã bị thay đổi
+                        if (maNVBanDau != maNVHienTai)
+                        {
+                            MessageBox.Show("Mã nhân viên không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        // Thực hiện cập nhật thông tin nhân viên
+                        if (nhanVienDAL.SuaNhanVien(maNVBanDau, tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
+                        {
+                            MessageBox.Show("Sửa nhân viên thành công!");
+                            LoadData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi khi sửa nhân viên.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thông tin không hợp lệ.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex}");
             }
         }
 

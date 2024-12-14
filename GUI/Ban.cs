@@ -38,23 +38,30 @@ namespace GUI
         }
         private void bt_add_Click(object sender, EventArgs e)
         {
-            string tenBan = tbTenBan.Text;
-            string maKhuVuc = tbMaKhuVuc.Text;
-            if (banBLL.KiemTraThongTin(tenBan, maKhuVuc))
+            try
             {
-                if (banDAL.ThemBan(tenBan, maKhuVuc))
+                string tenBan = tbTenBan.Text;
+                string maKhuVuc = tbMaKhuVuc.Text;
+                if (banBLL.KiemTraThongTin(tenBan, maKhuVuc))
                 {
-                    MessageBox.Show("Thêm thành công");
-                    LoadData();
+                    if (banDAL.ThemBan(tenBan, maKhuVuc))
+                    {
+                        MessageBox.Show("Thêm thành công");
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thất bại");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Thêm thất bại");
+                    MessageBox.Show("Thông tin không hợp lệ.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Thông tin không hợp lệ.");
+                MessageBox.Show($"Error: {ex}");
             }
         }
             
@@ -64,58 +71,73 @@ namespace GUI
 
         private void bt_update_Click(object sender, EventArgs e)
         {
-            if (dgv_listBan.CurrentRow != null)
+            try
             {
-               
-                // Lấy các giá trị khác từ giao diện
-                string tenBan =tbTenBan.Text;
-                string maKhuVuc = tbMaKhuVuc.Text;
-
-                // Kiểm tra thông tin hợp lệ
-                if (banBLL.KiemTraThongTin(tenBan,maKhuVuc))
+                if (dgv_listBan.CurrentRow != null)
                 {
-                    // Lấy mã nhân viên từ DataGridView
-                    string tenBanBD = dgv_listBan.CurrentRow.Cells["TenBan"].Value.ToString() ?? string.Empty;
-                    string tenBanHT = tbTenBan.Text;
 
-                    // Kiểm tra nếu mã nhân viên đã bị thay đổi
-                    if (tenBanBD != tenBanHT)
+                    // Lấy các giá trị khác từ giao diện
+                    string tenBan = tbTenBan.Text;
+                    string maKhuVuc = tbMaKhuVuc.Text;
+
+                    // Kiểm tra thông tin hợp lệ
+                    if (banBLL.KiemTraThongTin(tenBan, maKhuVuc))
                     {
-                        MessageBox.Show("Tên bàn không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    // Thực hiện cập nhật thông tin nhân viên
-                    if (banDAL.SuaBan(tenBan,maKhuVuc))
-                    {
-                        MessageBox.Show("Sửa nhân bàn thành công!");
-                        LoadData();
+                        // Lấy mã nhân viên từ DataGridView
+                        string tenBanBD = dgv_listBan.CurrentRow.Cells["TenBan"].Value.ToString() ?? string.Empty;
+                        string tenBanHT = tbTenBan.Text;
+
+                        // Kiểm tra nếu mã nhân viên đã bị thay đổi
+                        if (tenBanBD != tenBanHT)
+                        {
+                            MessageBox.Show("Tên bàn không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        // Thực hiện cập nhật thông tin nhân viên
+                        if (banDAL.SuaBan(tenBan, maKhuVuc))
+                        {
+                            MessageBox.Show("Sửa nhân bàn thành công!");
+                            LoadData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi khi sửa bàn.");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Lỗi khi sửa bàn.");
+                        MessageBox.Show("Thông tin không hợp lệ.");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Thông tin không hợp lệ.");
-                }
             }
+            catch (Exception ex)
+            {   
+                MessageBox.Show($"Error: {ex}");
+            }
+            
         }
 
         private void bt_clear_Click(object sender, EventArgs e)
         {
-            if (dgv_listBan.CurrentRow != null)
+            try
             {
-                string tenBan = dgv_listBan.CurrentRow.Cells["TenBan"].Value?.ToString() ?? string.Empty;
-                if (banDAL.XoaBan(tenBan))
+                if (dgv_listBan.CurrentRow != null)
                 {
-                    MessageBox.Show("Xóa bàn thành công!");
-                    LoadData();
+                    string tenBan = dgv_listBan.CurrentRow.Cells["TenBan"].Value?.ToString() ?? string.Empty;
+                    if (banDAL.XoaBan(tenBan))
+                    {
+                        MessageBox.Show("Xóa bàn thành công!");
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi khi xóa bàn.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Lỗi khi xóa bàn.");
-                }
+            }
+            catch 
+            {
+                
             }
         }
 
