@@ -31,7 +31,7 @@ namespace GUI
         {
             string tenDangNhap = txtTenDangNhap.Text.Trim();
             string matKhau = txtMatKhau.Text.Trim();
-
+            this.AcceptButton = btnDangNhap;
             if (string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -50,10 +50,11 @@ namespace GUI
                     // Mở form chính
                     GiaoDien giaoDien = new GiaoDien(role);
                     giaoDien.NguoiDungDangNhap = userInfo;
+                    giaoDien.OnDangXuat += OnDangXuat;
                    
                     this.Hide();
                     giaoDien.ShowDialog();
-                    this.Close();
+                    this.Show();
                 }
                 else
                 {
@@ -66,7 +67,12 @@ namespace GUI
             }
         }
 
-
+        private void OnDangXuat(object sender, EventArgs e)
+        {
+         
+            txtTenDangNhap.Text = "";
+            txtMatKhau.Text = "";
+        }
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();

@@ -101,7 +101,7 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy nhân viên phù hợp!");
+                    MessageBox.Show("Không tìm thấy bàn phù hợp!");
                     dgv_listBan.DataSource = null; // Xóa kết quả nếu không tìm thấy
                 }
             }

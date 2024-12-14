@@ -75,7 +75,7 @@ namespace GUI
                 ban.Text = (dataTable.Rows[i]["TenBan"]).ToString();
                 ban.Width = 180;
                 ban.Height = 110;
-                ban.Image = new Bitmap("T1.jpg");
+                ban.Image = new Bitmap("BanTrong.PNG");
                 ban.TextImageRelation = TextImageRelation.ImageAboveText;
 
                 panelBan.Controls.Add(ban);
@@ -107,7 +107,7 @@ namespace GUI
                         {
                             MenuDAL menuDAL = new MenuDAL();
                             DataRow row = mon.NewRow();
-                            ban.Image = new Bitmap("hinh.png");
+                            ban.Image = new Bitmap("BanCoKhach.png");
                             row["STT"] = dem;
                             row["Thực Đơn"] = menuDAL.HangMenu(item.MaThucDon)["TenThucDon"];
                             row["Đơn Giá"] = menuDAL.HangMenu(item.MaThucDon)["Gia"];
@@ -520,10 +520,11 @@ namespace GUI
         {
             tenKhachHang[button.Text] = tbKhachHang.Text;
         }
-
+        public event EventHandler OnDangXuat;
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OnDangXuat?.Invoke(this, EventArgs.Empty);
+            this.Close();
         }
 
         private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)

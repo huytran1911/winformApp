@@ -91,7 +91,7 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Lỗi khi tìm kiếm nhân viên: " + ex.Message);
+                    Console.WriteLine("Lỗi khi tìm kiếm bàn " + ex.Message);
                     return null;
                 }
             }
