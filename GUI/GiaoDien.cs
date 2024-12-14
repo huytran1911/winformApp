@@ -15,16 +15,16 @@ namespace GUI
 {
     public partial class GiaoDien : Form
     {
-        public DangNhapDTO NguoiDungDangNhap { get; set; } // Đối tượng lưu thông tin người dùng đăng nhập
-
-        private double tongtien = 0;
+        public DangNhapDTO NguoiDungDangNhap { get; set; } // Đối tượng lưu thông tin người dùng đăng nhập      
+        private double tongTien = 0;
         DAL.BanDAL banDAL = new BanDAL();
         DataTable dataTable;
-        DataTable danhSachMonHT;
         Dictionary<string, DataTable> danhSachMon = new Dictionary<string, DataTable>();
         Dictionary<string, Button> danhSachBan = new Dictionary<string, Button>();
         Dictionary<string, DataRow> table = new Dictionary<string, DataRow>();
         Dictionary<string, string> tenKhachHang = new Dictionary<string, string>();
+        Dictionary<string , string> giamGiaPhanTram = new Dictionary<string , string>();
+        Dictionary<string, string> phuThuPhanTram = new Dictionary<string, string>();
         Button button;
         HoaDonBLL hoaDonBLL = new HoaDonBLL();
         private int SLB;
@@ -43,6 +43,8 @@ namespace GUI
         {
             danhSachMon = new Dictionary<string, DataTable>();
             danhSachBan = new Dictionary<string, Button>();
+            giamGiaPhanTram = new Dictionary<string, string>();
+            phuThuPhanTram = new Dictionary<string, string>();
             table = new Dictionary<string, DataRow>();
             HoaDonDAL hoaDonDAL = new HoaDonDAL();
             List<HoaDonDTO> hoaDonList = hoaDonBLL.GetAllHoaDon();
@@ -52,9 +54,7 @@ namespace GUI
             for (int i = 0; i < SLB; i++)
             {
                 Button ban;
-                DataTable mon;
-                ban = new Button();
-                mon = new DataTable();
+                DataTable mon;              
                 DataColumn stt = new DataColumn("STT");
                 DataColumn thucDon = new DataColumn("Thực Đơn");
                 DataColumn tenMon = new DataColumn("Đơn Giá");
@@ -65,11 +65,7 @@ namespace GUI
                 tenMon.DataType = typeof(string);
                 sL.DataType = typeof(int);
                 ghiChu.DataType = typeof(string);
-                mon.Columns.Add(stt);
-                mon.Columns.Add(thucDon);
-                mon.Columns.Add(tenMon);
-                mon.Columns.Add(sL);
-                mon.Columns.Add(ghiChu);
+                ban = new Button();               
                 ban.Click += banso;
                 ban.BackColor = Color.FloralWhite;
                 ban.Text = (dataTable.Rows[i]["TenBan"]).ToString();
@@ -77,22 +73,31 @@ namespace GUI
                 ban.Height = 110;
                 ban.Image = new Bitmap("BanTrong.PNG");
                 ban.TextImageRelation = TextImageRelation.ImageAboveText;
-
                 panelBan.Controls.Add(ban);
+                
 
-                // Prevent duplicate keys
-                if (!danhSachBan.ContainsKey(ban.Text))
-                {
-                    danhSachBan.Add(ban.Text, ban);
-                }
-
-
-
+                mon = new DataTable();
+                mon.Columns.Add(stt);
+                mon.Columns.Add(thucDon);
+                mon.Columns.Add(tenMon);
+                mon.Columns.Add(sL);
+                mon.Columns.Add(ghiChu);
                 if (!tenKhachHang.ContainsKey(ban.Text))
                 {
                     tenKhachHang.Add(ban.Text, "");
                 }
-
+                if (!danhSachBan.ContainsKey(ban.Text))
+                {
+                    danhSachBan.Add(ban.Text, ban);
+                }
+                if (!giamGiaPhanTram.ContainsKey(ban.Text))
+                {
+                    giamGiaPhanTram.Add(ban.Text, "0");
+                }
+                if (!phuThuPhanTram.ContainsKey(ban.Text))
+                {
+                    phuThuPhanTram.Add(ban.Text, "0");
+                }
                 if (!table.ContainsKey(ban.Text))
                 {
                     table.Add(ban.Text, dataTable.Rows[i]);
@@ -119,9 +124,9 @@ namespace GUI
 
                     }
                     danhSachMon.Add(ban.Text, mon);
-
-
                 }
+                // Prevent duplicate keys
+                
             }
 
 
@@ -194,12 +199,10 @@ namespace GUI
         }
         private void banso(object sender, EventArgs e)
         {
-            try
-            {
+            
                 button = (Button)sender;
                 lbBan01.Text = button.Text;
                 dgvThucDon.DataSource = danhSachMon[lbBan01.Text];
-                danhSachMonHT = danhSachMon[lbBan01.Text];
                 foreach (DataRow row in dataTable.Rows)
                 {
                     if (row["TenBan"].ToString() == button.Text)
@@ -209,12 +212,11 @@ namespace GUI
                     }
                 }
                 tbKhachHang.Text = tenKhachHang[button.Text];
+                tbGiamGia.Text = giamGiaPhanTram[button.Text];
+                tbPhuThu.Text = phuThuPhanTram[button.Text];
+
                 TinhThanhTien();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi xử lý bàn: " + ex.Message);
-            }
+            
         }
         private void tatca_click(object sender, EventArgs e)
         {
@@ -262,7 +264,7 @@ namespace GUI
         private void btChonmon_Click(object sender, EventArgs e)
         {
             FrmChonMon frmChonMon = new FrmChonMon();
-            frmChonMon.danhSachMon = danhSachMonHT;
+            frmChonMon.danhSachMon = danhSachMon[button.Text];
             if (frmChonMon.ShowDialog() == DialogResult.OK)
             {
                 button.Image = new Bitmap("BanCoKhach.png");
@@ -349,10 +351,10 @@ namespace GUI
             QLMenu menu = new QLMenu();
             menu.ShowDialog();
         }
-        public int TinhThanhTien()
+        public double TinhThanhTien()
         {
-            int tongTien = 0;
-            foreach (DataRow row in danhSachMonHT.Rows)
+            tongTien = 0;
+            foreach (DataRow row in danhSachMon[button.Text].Rows)
             {
                 tongTien += int.Parse(row["SL"].ToString()) * int.Parse(row["Đơn Giá"].ToString());
             }
@@ -379,10 +381,11 @@ namespace GUI
             double giamGia;
             if (tbThanhTien.Text != "")
             {
-                giamGia = double.Parse(tbThanhTien.Text) - (double.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
+                giamGia = tongTien - (tongTien * double.Parse(tbGiamGia.Text) / 100);
                 tbThanhTien.Text = giamGia.ToString();
-
+                giamGiaPhanTram[button.Text] = tbGiamGia.Text;
             }
+            
         }
 
         private void tbPhuThu_TextChanged(object sender, EventArgs e)
@@ -390,11 +393,10 @@ namespace GUI
             double phuThu;
             if (tbThanhTien.Text != "")
             {
-                phuThu = double.Parse(tbThanhTien.Text) + (double.Parse(tbThanhTien.Text) * double.Parse(tbGiamGia.Text) / 100);
+                phuThu = tongTien + (tongTien * double.Parse(tbGiamGia.Text) / 100);
                 tbThanhTien.Text = phuThu.ToString();
-
+                phuThuPhanTram[button.Text] = tbPhuThu.Text;
             }
-
         }
 
         private void btThanhtoan_Click(object sender, EventArgs e)
@@ -504,7 +506,7 @@ namespace GUI
             monDAL.DeleteMon(hoaDonDAL.MaBan(tbMaBan.Text)[0].MaHoaDon);
 
 
-            foreach (DataRow mon in danhSachMonHT.Rows)
+            foreach (DataRow mon in danhSachMon[button.Text].Rows)
             {
 
                 MonDTO monDTO = new MonDTO
