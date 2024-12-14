@@ -29,6 +29,13 @@ namespace GUI
         private void LoadThongKe()
         {
             dgvThongKe.DataSource = thongkeBLL.GetAllThongKe();
+            dgvThongKe.Columns[0].HeaderText = "Mã hóa đơn";
+            dgvThongKe.Columns[1].HeaderText = "Ngày vào";
+            dgvThongKe.Columns[2].HeaderText = "Ngày thanh toán";
+            dgvThongKe.Columns[3].HeaderText = "Thành Tiền";
+            dgvThongKe.Columns[4].HeaderText = "Tên khách hàng";
+            dgvThongKe.Columns[5].HeaderText = "Mã bàn";
+            dgvThongKe.Columns[6].HeaderText = "Tên nhân viên";
 
         }
 
