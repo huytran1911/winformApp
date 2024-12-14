@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,16 @@ namespace GUI
     public partial class Ban : Form
     {
         private BanBLL banBLL = new BanBLL();
+        private BanDAL banDAL = new BanDAL();
         public Ban()
         {
             InitializeComponent();
+            LoadData();
+
         }
         private void LoadData()
         {
-            dgv_listBan.DataSource = banBLL.GetAll();
-            dgv_listBan.Columns[0].HeaderText = "Mã bàn";
-            dgv_listBan.Columns[1].HeaderText = "Tên bàn";
-            dgv_listBan.Columns[2].HeaderText = "Mã khu vực";
-            dgv_listBan.Columns[3].HeaderText = "Tên khu vực";
+            dgv_listBan.DataSource = banDAL.LayDanhSachBan();
         }
         private void Ban_Load(object sender, EventArgs e)
         {
@@ -38,51 +38,85 @@ namespace GUI
         }
         private void bt_add_Click(object sender, EventArgs e)
         {
-            try
+            string tenBan = tbTenBan.Text;
+            string maKhuVuc = tbMaKhuVuc.Text;
+            if (banBLL.KiemTraThongTin(tenBan, maKhuVuc))
             {
-                BanDTO ban = new BanDTO(tbTenBan.Text, tbMaKhuVuc.Text);
-                if (banBLL.Add(ban))
+                if (banDAL.ThemBan(tenBan, maKhuVuc))
                 {
                     MessageBox.Show("Thêm thành công");
+                    LoadData();
                 }
                 else
                 {
                     MessageBox.Show("Thêm thất bại");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thông tin không hợp lệ.");
             }
-
-            LoadData();
-
-
         }
+            
+
+
+        
 
         private void bt_update_Click(object sender, EventArgs e)
         {
-            BanDTO ban = new BanDTO(tbTenBan.Text, tbMaKhuVuc.Text);
-            if (banBLL.Update(ban))
+            if (dgv_listBan.CurrentRow != null)
             {
-                MessageBox.Show("Thêm thành công");
-            }
-            else
-            {
-                MessageBox.Show("Thêm thất công");
-            }
+               
+                // Lấy các giá trị khác từ giao diện
+                string tenBan =tbTenBan.Text;
+                string maKhuVuc = tbMaKhuVuc.Text;
 
-            LoadData();
+                // Kiểm tra thông tin hợp lệ
+                if (banBLL.KiemTraThongTin(tenBan,maKhuVuc))
+                {
+                    // Lấy mã nhân viên từ DataGridView
+                    string tenBanBD = dgv_listBan.CurrentRow.Cells["TenBan"].Value.ToString() ?? string.Empty;
+                    string tenBanHT = tbTenBan.Text;
+
+                    // Kiểm tra nếu mã nhân viên đã bị thay đổi
+                    if (tenBanBD != tenBanHT)
+                    {
+                        MessageBox.Show("Tên bàn không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    // Thực hiện cập nhật thông tin nhân viên
+                    if (banDAL.SuaBan(tenBan,maKhuVuc))
+                    {
+                        MessageBox.Show("Sửa nhân bàn thành công!");
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi khi sửa bàn.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Thông tin không hợp lệ.");
+                }
+            }
         }
 
         private void bt_clear_Click(object sender, EventArgs e)
         {
-            if (banBLL.Delete(tbTenBan.Text))
+            if (dgv_listBan.CurrentRow != null)
             {
-                MessageBox.Show("Xóa thành công!");
-                LoadData();
+                string tenBan = dgv_listBan.CurrentRow.Cells["TenBan"].Value?.ToString() ?? string.Empty;
+                if (banDAL.XoaBan(tenBan))
+                {
+                    MessageBox.Show("Xóa bàn thành công!");
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi khi xóa bàn.");
+                }
             }
-            LoadData();
         }
 
         private void bt_out_Click(object sender, EventArgs e)

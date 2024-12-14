@@ -25,28 +25,7 @@ namespace DTO
         public int SL {  get; set; }
         public string GhiChu { get; set; }
 
-        public HoaDonDTO(int maHoaDon, DateTime ngayVao, string tenKhachHang, string maNhanVien,
-                        decimal phuThu, bool phuThuTheoPhanTram, decimal giamGia, bool giamGiaTheoPhanTram,
-                        DateTime ngayThanhToan, decimal thanhTien, bool daThanhToan, int maBan,
-                        int maBill, string maThucDon, int sl, string ghiChu)
-        {
-            MaHoaDon = maHoaDon;
-            NgayVao = ngayVao;
-            TenKhachHang = tenKhachHang;
-            MaNhanVien = maNhanVien;
-            PhuThu = phuThu;
-            PhuThuTheoPhanTram = phuThuTheoPhanTram;
-            GiamGia = giamGia;
-            GiamGiaTheoPhanTram = giamGiaTheoPhanTram;
-            NgayThanhToan = ngayThanhToan;
-            ThanhTien = thanhTien;
-            DaThanhToan = daThanhToan;
-            MaBan = maBan;
-            MaBill = maBill;
-            MaThucDon = maThucDon;
-            SL = sl;
-            GhiChu = ghiChu;
-        }
+        
     }
     
 }

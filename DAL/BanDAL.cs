@@ -26,66 +26,16 @@ namespace DAL
             adapter.Dispose();
             return table;
         }
-        public bool Add(BanDTO ban)
+        public DataTable LayDanhSachBan()
         {
             using (SqlConnection connection = new SqlConnection(DB.connectionString))
             {
-                string query = "INSERT INTO Ban (TenBan,MaKhuVuc) VALUES ( @TenBan, @MaKhuVuc)";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);
-                cmd.Parameters.AddWithValue("@MaKhuVuc", ban.MaKhuVuc);
-
-                connection.Open();
-                return cmd.ExecuteNonQuery() > 0;
-
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM Ban", DB.connectionString);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                return dataTable;
             }
         }
-        public bool CheckTenBan(string tenBan)
-        {
-            using (SqlConnection connection = new SqlConnection(DB.connectionString))
-            {
-                string query = "SELECT COUNT(*) FROM Ban WHERE TenBan = @TenBan";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@TenBan", tenBan);
-
-                connection.Open();
-                int count = (int)cmd.ExecuteScalar();
-                return count > 0;
-            }
-        }
-
-        public bool Delete(string tenBan)
-        {
-            using (SqlConnection connection = new SqlConnection(DB.connectionString))
-            {
-                string query = "DELETE FROM Ban WHERE TenBan = @TenBan";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@TenBan", tenBan);
-                    
-
-                connection.Open();
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            
-        }
-        public bool Update(BanDTO ban)
-        {
-            using ( SqlConnection connection  = new SqlConnection(DB.connectionString))
-            {
-                string query = "UPDATE Ban SET TenBan = @TenBan, MaKhuVuc = @MaKhuVuc WHERE MaBan = @MaBan";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@TenBan", ban.TenBan);
-                cmd.Parameters.AddWithValue("@MaKhuVuc", ban.MaKhuVuc);
-
-            
-
-
-                connection.Open();
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            
-        }
-
         public DataTable TimBan(string tenBan)
         {
             using (SqlConnection connection = new SqlConnection(DB.connectionString)) // Sử dụng phương thức kết nối từ lớp DB
@@ -108,6 +58,66 @@ namespace DAL
                     return null;
                 }
             }
+        }
+        public bool ThemBan(string tenBan, string maKhuVuc)
+        {
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
+            {
+                string query = "INSERT INTO  VALUES ( @TenBan, @MaKhuVuc)";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenBan", tenBan);
+                cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+                connection.Open();
+                return cmd.ExecuteNonQuery() > 0;
+
+            }
+        }
+        public bool SuaBan(string tenBan, string maKhuVuc)
+        {
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
+            {
+                string query = "UPDATE Ban SET TenBan = @TenBan, MaKhuVuc = @MaKhuVuc WHERE MaBan = @MaBan";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenBan", tenBan);
+                cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+
+
+
+
+                connection.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+
+        }
+        
+
+        public bool CheckTenBan(string tenBan)
+        {
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Ban WHERE TenBan = @TenBan";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenBan", tenBan);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public bool XoaBan(string tenBan)
+        {
+            using (SqlConnection connection = new SqlConnection(DB.connectionString))
+            {
+                string query = "DELETE FROM Ban WHERE TenBan = @TenBan";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenBan", tenBan);
+
+
+                connection.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+
         }
     }
 }

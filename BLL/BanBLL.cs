@@ -12,29 +12,14 @@ namespace BLL
     public class BanBLL
     {
         private BanDAL banDAL = new BanDAL();
-        public DataTable GetAll()
-        {
-            return banDAL.LoadBan();
-        }
-        public bool Add(BanDTO ban)
-        {
-            if (banDAL.CheckTenBan(ban.TenBan))
-            {
-                throw new Exception("Tên bàn đã tồn tại!");
-            }
 
-            return banDAL.Add(ban);
+        public bool KiemTraThongTin(string tenBan,string tenKhuVuc)
+        {
+            if (string.IsNullOrWhiteSpace(tenBan)) return false;
+            if (string.IsNullOrWhiteSpace(tenKhuVuc)) return false;
+            return true;
         }
 
-        public bool Delete(string maBan)
-        {
-            return banDAL.Delete(maBan);
-        }
-
-        public bool Update(BanDTO ban)
-        {
-            return banDAL.Update(ban);
-        }
 
         public DataTable TimBan(string tenBan)
         {

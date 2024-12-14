@@ -72,7 +72,7 @@ namespace GUI
             string matKhau = tbMatKhau.Text;
             string maQuyen = tbMaQuyen.Text;
 
-            if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau))
+            if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau,maQuyen))
             {
                 if (nhanVienDAL.ThemNhanVien(maNV, tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
                 {
@@ -94,16 +94,7 @@ namespace GUI
         {
             if (dgvDanhSachNhanVien.CurrentRow != null)
             {
-                // Lấy mã nhân viên từ DataGridView
-                string maNVBanDau = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value.ToString() ?? string.Empty;
-                string maNVHienTai = tbMaNhanVien.Text;
-
-                // Kiểm tra nếu mã nhân viên đã bị thay đổi
-                if (maNVBanDau != maNVHienTai)
-                {
-                    MessageBox.Show("Mã nhân viên không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                
 
                 // Lấy các giá trị khác từ giao diện
                 string tenNV = tbTenNhanVien.Text;
@@ -115,8 +106,18 @@ namespace GUI
                 string maQuyen = tbMaQuyen.Text;
 
                 // Kiểm tra thông tin hợp lệ
-                if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau))
+                if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau,maQuyen))
                 {
+                    // Lấy mã nhân viên từ DataGridView
+                    string maNVBanDau = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value.ToString() ?? string.Empty;
+                    string maNVHienTai = tbMaNhanVien.Text;
+
+                    // Kiểm tra nếu mã nhân viên đã bị thay đổi
+                    if (maNVBanDau != maNVHienTai)
+                    {
+                        MessageBox.Show("Mã nhân viên không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     // Thực hiện cập nhật thông tin nhân viên
                     if (nhanVienDAL.SuaNhanVien(maNVBanDau, tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
                     {
