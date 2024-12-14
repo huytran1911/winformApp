@@ -63,7 +63,7 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(DB.connectionString))
             {
-                string query = "INSERT INTO  VALUES ( @TenBan, @MaKhuVuc)";
+                string query = "INSERT INTO Ban  VALUES (@TenBan, @MaKhuVuc)";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@TenBan", tenBan);
                 cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);

@@ -38,31 +38,29 @@ namespace GUI
         }
         private void bt_add_Click(object sender, EventArgs e)
         {
-            try
+
+
+            string tenBan = tbTenBan.Text;
+            string maKhuVuc = tbMaKhuVuc.Text;
+            
+            if (banBLL.KiemTraThongTin(tenBan, maKhuVuc))
             {
-                string tenBan = tbTenBan.Text;
-                string maKhuVuc = tbMaKhuVuc.Text;
-                if (banBLL.KiemTraThongTin(tenBan, maKhuVuc))
+                if (banDAL.ThemBan(tenBan, maKhuVuc))
                 {
-                    if (banDAL.ThemBan(tenBan, maKhuVuc))
-                    {
-                        MessageBox.Show("Thêm thành công");
-                        LoadData();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm thất bại");
-                    }
+                    MessageBox.Show("Thêm thành công");
+                    LoadData();
                 }
                 else
                 {
-                    MessageBox.Show("Thông tin không hợp lệ.");
+                    MessageBox.Show("Thêm thất bại");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error: {ex}");
+                MessageBox.Show("Thông tin không hợp lệ.");
             }
+
+
         }
             
 
