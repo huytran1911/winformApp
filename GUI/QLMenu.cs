@@ -25,7 +25,13 @@ namespace GUI
         private MenuBLL menuBLL = new MenuBLL();
 
 
-
+        private void ResetTextBoxes()
+        {
+            // Giả sử bạn có các TextBox: txtMaThucDon, txtTenThucDon, txtGia
+            tbMaThucDon.Clear();  // Xóa dữ liệu trong TextBox MaThucDon
+            tbTenThucDon.Clear(); // Xóa dữ liệu trong TextBox TenThucDon
+            tbGia.Clear();        // Xóa dữ liệu trong TextBox Gia
+        }
 
 
         private void LoadMenu()
@@ -54,6 +60,7 @@ namespace GUI
             {
                 MessageBox.Show("Thêm thành công!");
                 LoadMenu();
+                ResetTextBoxes();
             }
             else
             {
@@ -68,6 +75,7 @@ namespace GUI
             {
                 MessageBox.Show("Sửa thành công!");
                 LoadMenu();
+                ResetTextBoxes();
             }
             else
             {
@@ -81,6 +89,7 @@ namespace GUI
             {
                 MessageBox.Show("Xóa thành công!");
                 LoadMenu();
+                ResetTextBoxes();
             }
             else
             {

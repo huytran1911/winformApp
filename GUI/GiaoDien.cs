@@ -133,11 +133,13 @@ namespace GUI
                 // Ẩn các chức năng chỉ dành cho Admin
                 danhSáchNhânViênToolStripMenuItem.Visible = false; // Ví dụ menu chỉ dành cho Admin
                 menuToolStripMenuItem.Visible = false;
+                thốngKêToolStripMenuItem.Visible=false;
             }
             else if (userRole == "Admin")
             {
                 danhSáchNhânViênToolStripMenuItem.Visible = true; // Ví dụ menu chỉ dành cho Admin
                 menuToolStripMenuItem.Visible = true;
+                thốngKêToolStripMenuItem.Visible = true;
             }
         }
 
