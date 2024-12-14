@@ -52,6 +52,7 @@
             // 
             // dgvChonMon
             // 
+            dgvChonMon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvChonMon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvChonMon.Location = new Point(6, 29);
             dgvChonMon.Margin = new Padding(3, 2, 3, 2);

@@ -55,69 +55,65 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(293, 33);
+            label1.Location = new Point(256, 25);
             label1.Name = "label1";
-            label1.Size = new Size(263, 50);
+            label1.Size = new Size(206, 40);
             label1.TabIndex = 1;
             label1.Text = "Quản lý MENU";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(41, 132);
+            label2.Location = new Point(36, 99);
             label2.Name = "label2";
-            label2.Size = new Size(93, 20);
+            label2.Size = new Size(75, 15);
             label2.TabIndex = 2;
             label2.Text = "Mã thực đơn";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(41, 187);
+            label3.Location = new Point(36, 140);
             label3.Name = "label3";
-            label3.Size = new Size(95, 20);
+            label3.Size = new Size(76, 15);
             label3.TabIndex = 3;
             label3.Text = "Tên thực đơn";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(41, 241);
+            label4.Location = new Point(36, 181);
             label4.Name = "label4";
-            label4.Size = new Size(31, 20);
+            label4.Size = new Size(24, 15);
             label4.TabIndex = 4;
             label4.Text = "Giá";
             // 
             // tbMaThucDon
             // 
-            tbMaThucDon.Location = new Point(185, 132);
-            tbMaThucDon.Margin = new Padding(3, 4, 3, 4);
+            tbMaThucDon.Location = new Point(162, 99);
             tbMaThucDon.Name = "tbMaThucDon";
-            tbMaThucDon.Size = new Size(562, 27);
+            tbMaThucDon.Size = new Size(492, 23);
             tbMaThucDon.TabIndex = 4;
             // 
             // tbTenThucDon
             // 
-            tbTenThucDon.Location = new Point(185, 183);
-            tbTenThucDon.Margin = new Padding(3, 4, 3, 4);
+            tbTenThucDon.Location = new Point(162, 137);
             tbTenThucDon.Name = "tbTenThucDon";
-            tbTenThucDon.Size = new Size(562, 27);
+            tbTenThucDon.Size = new Size(492, 23);
             tbTenThucDon.TabIndex = 6;
             // 
             // tbGia
             // 
-            tbGia.Location = new Point(185, 231);
-            tbGia.Margin = new Padding(3, 4, 3, 4);
+            tbGia.Location = new Point(162, 173);
             tbGia.Name = "tbGia";
-            tbGia.Size = new Size(562, 27);
+            tbGia.Size = new Size(492, 23);
             tbGia.TabIndex = 7;
             // 
             // btThem
             // 
-            btThem.Location = new Point(41, 304);
-            btThem.Margin = new Padding(3, 4, 3, 4);
+            btThem.Location = new Point(36, 228);
             btThem.Name = "btThem";
-            btThem.Size = new Size(86, 31);
+            btThem.Size = new Size(75, 23);
             btThem.TabIndex = 8;
             btThem.Text = "Thêm";
             btThem.UseVisualStyleBackColor = true;
@@ -125,10 +121,9 @@
             // 
             // btXoa
             // 
-            btXoa.Location = new Point(185, 304);
-            btXoa.Margin = new Padding(3, 4, 3, 4);
+            btXoa.Location = new Point(162, 228);
             btXoa.Name = "btXoa";
-            btXoa.Size = new Size(86, 31);
+            btXoa.Size = new Size(75, 23);
             btXoa.TabIndex = 9;
             btXoa.Text = "Xóa";
             btXoa.UseVisualStyleBackColor = true;
@@ -136,10 +131,9 @@
             // 
             // btSua
             // 
-            btSua.Location = new Point(362, 304);
-            btSua.Margin = new Padding(3, 4, 3, 4);
+            btSua.Location = new Point(317, 228);
             btSua.Name = "btSua";
-            btSua.Size = new Size(86, 31);
+            btSua.Size = new Size(75, 23);
             btSua.TabIndex = 10;
             btSua.Text = "Sửa";
             btSua.UseVisualStyleBackColor = true;
@@ -147,30 +141,29 @@
             // 
             // Thoát
             // 
-            Thoát.Location = new Point(527, 304);
-            Thoát.Margin = new Padding(3, 4, 3, 4);
+            Thoát.Location = new Point(461, 228);
             Thoát.Name = "Thoát";
-            Thoát.Size = new Size(86, 31);
+            Thoát.Size = new Size(75, 23);
             Thoát.TabIndex = 11;
             Thoát.Text = "Thoát";
             Thoát.UseVisualStyleBackColor = true;
             // 
             // dgvMenu
             // 
+            dgvMenu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMenu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMenu.Location = new Point(41, 364);
-            dgvMenu.Margin = new Padding(3, 4, 3, 4);
+            dgvMenu.Location = new Point(36, 273);
             dgvMenu.Name = "dgvMenu";
             dgvMenu.RowHeadersWidth = 51;
-            dgvMenu.Size = new Size(706, 349);
+            dgvMenu.Size = new Size(618, 262);
             dgvMenu.TabIndex = 12;
             dgvMenu.CellClick += dgvMenu_CellClick;
             // 
             // QLMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(851, 729);
+            ClientSize = new Size(745, 547);
             Controls.Add(dgvMenu);
             Controls.Add(Thoát);
             Controls.Add(btSua);
@@ -183,7 +176,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "QLMenu";
             StartPosition = FormStartPosition.CenterParent;
             Text = "QLMenu";
