@@ -44,7 +44,48 @@ namespace DAL
 
                 return dt;
             }
+
         }
+        public decimal CalculateTotalRevenueByMonth(DateTime date)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"
+            SELECT SUM(ThanhTien) AS TotalRevenue
+            FROM HoaDon
+            WHERE MONTH(NgayThanhToan) = @Month AND YEAR(NgayThanhToan) = @Year";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Month", date.Month);
+                cmd.Parameters.AddWithValue("@Year", date.Year);
+
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                conn.Close();
+
+                return result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+            }
+        }
+        public decimal CalculateTotalRevenueByDay(DateTime date)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"
+            SELECT SUM(ThanhTien) AS TotalRevenue
+            FROM HoaDon
+            WHERE CAST(NgayThanhToan AS DATE) = @Date";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Date", date.Date); // Chỉ lấy phần ngày
+
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                conn.Close();
+
+                return result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+            }
+        }
+
     }
 }
 

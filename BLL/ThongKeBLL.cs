@@ -24,5 +24,16 @@ namespace BLL
         {
             return thongkeDAL.FilterThongKeByDate(startDate, endDate);
         }
+        public decimal GetTotalRevenueByMonth(DateTime date)
+        {
+            return thongkeDAL.CalculateTotalRevenueByMonth(date);
+        }
+        public decimal GetTotalRevenueByDay(DateTime date)
+        {
+            return thongkeDAL.CalculateTotalRevenueByDay(date);
+        }
+
     }
+
+
 }

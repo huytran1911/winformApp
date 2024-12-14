@@ -59,6 +59,30 @@ namespace GUI
         {
             LoadThongKe();
         }
-    }
 
+        private void btnTinh1_Click(object sender, EventArgs e)
+        {
+            DateTime selectedDate = dateTimePickerStart.Value.Date;
+
+            // Gọi phương thức tính tổng doanh thu theo ngày
+            decimal totalRevenue = thongkeBLL.GetTotalRevenueByDay(selectedDate);
+
+            // Hiển thị doanh thu trên TextBox mà không có ký hiệu tiền tệ
+            textNgay.Text = totalRevenue.ToString("N0");  // "N0" format will display number without currency symbol
+        }
+
+        private void btnTinh2_Click(object sender, EventArgs e)
+        {
+            // Lấy tháng và năm từ DateTimePicker
+            DateTime selectedDate = dateTimePickerStart.Value.Date;
+
+            // Gọi phương thức tính tổng doanh thu theo tháng
+            decimal totalRevenue = thongkeBLL.GetTotalRevenueByMonth(selectedDate);
+
+            // Hiển thị doanh thu trên TextBox mà không có ký hiệu tiền tệ
+            textThang.Text = totalRevenue.ToString("N0");  // "N0" format will display number without currency symbol
+        }
+
+      
+    }
 }
