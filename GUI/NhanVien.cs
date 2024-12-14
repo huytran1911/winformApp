@@ -94,7 +94,18 @@ namespace GUI
         {
             if (dgvDanhSachNhanVien.CurrentRow != null)
             {
-                string maNV = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value.ToString() ?? string.Empty;
+                // Lấy mã nhân viên từ DataGridView
+                string maNVBanDau = dgvDanhSachNhanVien.CurrentRow.Cells["MaNhanVien"].Value.ToString() ?? string.Empty;
+                string maNVHienTai = tbMaNhanVien.Text;
+
+                // Kiểm tra nếu mã nhân viên đã bị thay đổi
+                if (maNVBanDau != maNVHienTai)
+                {
+                    MessageBox.Show("Mã nhân viên không được thay đổi.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lấy các giá trị khác từ giao diện
                 string tenNV = tbTenNhanVien.Text;
                 string diaChi = tbDiaChi.Text;
                 string sdt = tbSDT.Text;
@@ -102,9 +113,12 @@ namespace GUI
                 string dangNhap = tbDangNhap.Text;
                 string matKhau = tbMatKhau.Text;
                 string maQuyen = tbMaQuyen.Text;
+
+                // Kiểm tra thông tin hợp lệ
                 if (nhanVienBLL.KiemTraThongTinHopLe(tenNV, diaChi, sdt, email, dangNhap, matKhau))
                 {
-                    if (nhanVienDAL.SuaNhanVien(maNV, tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
+                    // Thực hiện cập nhật thông tin nhân viên
+                    if (nhanVienDAL.SuaNhanVien(maNVBanDau, tenNV, diaChi, sdt, email, dangNhap, matKhau, maQuyen))
                     {
                         MessageBox.Show("Sửa nhân viên thành công!");
                         LoadData();

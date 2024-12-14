@@ -18,6 +18,11 @@ namespace BLL
         }
         public bool Add(BanDTO ban)
         {
+            if (banDAL.CheckTenBan(ban.TenBan))
+            {
+                throw new Exception("Tên bàn đã tồn tại!");
+            }
+
             return banDAL.Add(ban);
         }
 
