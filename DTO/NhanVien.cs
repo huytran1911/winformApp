@@ -15,5 +15,15 @@ namespace DTO
         private string Email { get; set; }
         private string TenDangNhap { get; set; }
         private string MatKhau { get; set; }
+        public NhanVien(int maNhanVien, string tenNV, string diaChi, string sDT, string email, string tenDangNhap, string matKhau)
+        {
+            MaNhanVien = maNhanVien;
+            TenNV = tenNV;
+            DiaChi = diaChi;
+            SDT = sDT;
+            Email = email;
+            TenDangNhap = tenDangNhap;
+            MatKhau = matKhau;
+        }
     }
 }

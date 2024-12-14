@@ -14,6 +14,16 @@ namespace DTO
         public int SL { get; set; }
         public string GhiChu { get; set; }
 
+        public MonDTO(int maBill, string maThucDon, int maHoaDon, int sL, string ghiChu )
+        {
+            MaBill = maBill;
+            MaThucDon = maThucDon;
+            MaHoaDon = maHoaDon;
+            SL = sL;
+                
+            GhiChu = ghiChu;
 
+        }
     }
+   
 }
